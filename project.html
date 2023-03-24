@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teammate. | Settings</title>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    <!-- css -->
+    <link rel="stylesheet" href="style/styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="floating-labels.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header  -->
+    <header>
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Teammate.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="my_projects.html">My Projects</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+                </ul>       
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light" type="submit">Search</button>
+            </form>
+            </div>
+            </div>
+        </nav>
+      </header>
+
+      <main class="project">
+
+        <div class="project-left-contaner">
+            <div class="p-text-container">
+                <h1>Title</h1>
+                <p class="p-text">Project Title</p>
+            </div>
+    
+            <div class="p-text-container mt-3 mb-3">
+                <h1>discription</h1>
+                <p class="p-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+            </div>
+    
+            <div class="p-text-container">
+                <h1>Skills Needed</h1>
+                <ul class="p-text">
+                    <li>HTML</li>
+                    <li>Java Script</li>
+                    <li>CSS</li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        <div class="project-right-contaner">
+            <div class="project-images">
+                <!-- <img src="images/1.png" alt=""> -->
+                        <!-- Carousel -->
+                <div id="carousel" class="carousel-project slide">
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/1.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/2.webp" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/3.jpeg" class="d-block w-100" alt="...">
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="btn btn-secondary btn-lg mt-3">Apply</button>
+        </div>
+
+      </main>
+
+
+
+    <footer>
+        <p>&copy; Teammate.</p>
+    </footer>
+
+
+</body>
+</html>
