@@ -12,7 +12,13 @@ body{
 main{
     margin: 0 7%;
 }
-
+/* logo */
+.logoText{
+    color: #ffffff;
+}
+.logoEnd{
+    color:#DAB16B;
+}
 
 /* Buttons */
 .btn-secondary{
@@ -232,5 +238,8 @@ footer{
     padding-top: 25px;
     text-align: center;
 }
-
+/* search symbol */
+.searchSymbol{
+    width: 22px;
+}
 
