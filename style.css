@@ -1,0 +1,49 @@
+body {
+	display: flex;
+	background-color: #EBEFFF;
+
+
+}
+
+.rectangle {
+	position: absolute;
+	width: 438px;
+	height: 720px;
+	left: 842px;
+	top: 0px;
+
+	background: #AFB3FF;
+}
+
+.img {
+	width: 438px;
+	height: 720px;
+	left: 842px;
+	top: 0px;
+	position: absolute;
+	
+
+}
+
+.container form input {
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	border-radius: 1rem;
+	border: 1px solid #656ED3;
+	font-size: 16px;
+	background-color: #EBEFFF;
+
+}
+
+.container form input[type="submit"] {
+	background-color: #656ED3;
+	color: #fff;
+	cursor: pointer;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+	/* no underline */
+}
