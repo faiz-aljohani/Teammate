@@ -14,10 +14,42 @@ main{
 }
 
 
+/* Buttons */
+.btn-secondary{
+    background-color: #656ED3;  
+    color: #fff;
+}
+.btn-secondary:hover{
+    background-color: #656ED3;  
+    color: #fff;
+
+    opacity: .8;
+}
+.btn-secondary:focus{
+    background-color: #656ED3;  
+    color: #fff;
+    opacity: .9;
+}
 
 /* Navbar */
 .navbar{
     background-color: #656ED3;
+}
+
+.navbar-brand{
+    font-weight: 700;
+}
+
+/* Carousel */
+.carousel-home{
+    width: 70%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.carousel-project{
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+
 }
 
 /* Cards */
@@ -30,14 +62,13 @@ main{
     padding: 0;
     width: 230px; 
     height: 320px; 
-    border-radius: 20px;
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
     background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    text-align: left;
+    text-align: center;
     transition: .8s;
 
 }
@@ -60,6 +91,7 @@ main{
     margin: 0;
 }
 
+
 .card .card-text{
     display: -webkit-box;
     overflow: hidden;
@@ -68,7 +100,6 @@ main{
 }
 
 .card .card-title{
-    text-align: center;
     font-weight: 600;
     color: #29245E;
     display: -webkit-box;
@@ -76,6 +107,11 @@ main{
     font-size: 1rem;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+}
+
+.card-btn{
+    color: black;
+    text-decoration: none;
 }
 
 
@@ -97,9 +133,96 @@ main{
     opacity: 1;
 }
 
+/* Project Page  */
+.project{
+    display: flex;
+}
+
+.project-left-contaner{
+    width: 50%;
+    margin: 40px;
+}
+
+.project-right-contaner{
+    width: 35%;
+    text-align: center;
+    margin: 40px;
+}
+
+.project-right-contaner .btn{
+    width: 80%;
+}
+
+.p-text-container{
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+}
+
+.p-text-container h1{
+    color: #656ED3;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.p-text-container .p-text{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
 
 
+.project img{
+    width: 80%;
+    aspect-ratio: 1/1;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+}
+
+/* Settings */
+
+.settings-container{
+    background-color: #fff;
+    aspect-ratio : 2 / 1;
+    width: 700px;
+    margin: auto;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+    margin-top: 90px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 0 40px;
+    
+}
+
+.settings-img{
+    width: 20%;
+
+}
+
+.settings-header{
+    position: relative;
+
+    top: -50px;
+}
+
+.settings-body{
+    position: relative;
+    top: -25px;
+}
+
+.settings-btn{
+    width: 20%;
+    background-color: #656ED3;  
+}
+
+.settings-btn:hover{
+    background-color: #656ED3;  
+
+    opacity: .9;
+}
+
+.change-password-lnk{
+    color: #656ED3;
+}
 
 footer{
     height: 70px;
