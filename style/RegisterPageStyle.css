@@ -1,0 +1,312 @@
+
+body {
+	display: flex;
+	background-color: #EBEFFF;
+}
+
+aside{
+    position: relative;
+    height: 100%;
+    width: 55%;
+
+    /* position: relative; */
+
+}
+
+.container{
+    height: 100%;
+    width: 45%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10%;
+
+}
+
+/* V *Need work w/ height &w */
+#desktop-pic {
+    position: absolute;
+    left: 12.73%;
+    right:  45.39%;
+    top:  24.58vh;
+    bottom:  7.08vh;
+    z-index: 1;
+}
+
+#Rectangle7{
+    position: absolute;
+    width: 49.6vw;
+    height: 52.4vh;
+    background: #AFB3FF;
+    border-radius: 105.53px;
+    transform: rotate(-90deg);
+}
+
+#Rectangle6{
+    position: absolute;
+    width: 49.0vw;
+    height: 52.4vh;
+    background: #656ED3;
+    border-radius: 105.53px;
+    transform: rotate(-97.17deg);
+
+    
+}
+
+/* img{
+    height: 100px;
+    width: 100px;
+} */
+
+/* 
+
+
+.rectangle {
+	position: absolute;
+	width: 438px;
+	height: 720px;
+	left: 842px;
+	top: 0px;
+
+	background: #AFB3FF;
+}
+
+.img {
+	width: 438px;
+	height: 720px;
+	left: 842px;
+	top: 0px;
+	position: absolute;
+	
+
+}
+
+.container form input {
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	border-radius: 1rem;
+	border: 1px solid #656ED3;
+	font-size: 16px;
+	background-color: #EBEFFF;
+
+}
+
+.container form input[type="submit"] {
+	background-color: #656ED3;
+	color: #fff;
+	cursor: pointer;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+	no underline
+} */
+
+
+/* 
+
+
+Rectangle 7
+
+
+position: absolute;
+width: 635px;
+height: 377px;
+left: 165px;
+top: 536px;
+
+background: #AFB3FF;
+border-radius: 105.53px;
+transform: rotate(-90deg);
+
+Rectangle 6
+
+
+position: absolute;
+width: 635px;
+height: 377px;
+left: 180.26px;
+top: 510.09px;
+
+background: #656ED3;
+border-radius: 105.53px;
+transform: rotate(-97.17deg);
+
+Rectangle 10
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 367px;
+height: 34px;
+left: 756px;
+top: 284px;
+
+border: 1px solid #656ED3;
+border-radius: 50px;
+
+Rectangle 8
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 367px;
+height: 34px;
+left: 758px;
+top: 440px;
+
+border: 1px solid #656ED3;
+border-radius: 50px;
+
+Rectangle 3
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 367px;
+height: 34px;
+left: 758px;
+top: 364px;
+
+border: 1px solid #656ED3;
+border-radius: 50px;
+
+Rectangle 9
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 367px;
+height: 34px;
+left: 756px;
+top: 202px;
+
+border: 1px solid #656ED3;
+border-radius: 50px;
+
+Full name:
+
+
+position: absolute;
+width: 77px;
+height: 19px;
+left: 756px;
+top: 172px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+
+Please Fill out form to Register!
+
+
+position: absolute;
+width: 243px;
+height: 19px;
+left: 818px;
+top: 126px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #1A1A1A;
+
+Confirm Password:
+
+
+position: absolute;
+width: 143px;
+height: 19px;
+left: 760px;
+top: 410px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+Email:
+
+
+position: absolute;
+width: 45px;
+height: 19px;
+left: 758px;
+top: 254px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+
+
+Button 
+
+Register
+
+
+position: absolute;
+width: 64px;
+height: 19px;
+left: 910px;
+top: 504px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+Rectangle 4
+
+
+position: absolute;
+width: 365px;
+height: 34px;
+left: 760px;
+top: 497px;
+
+background: #656ED3;
+border-radius: 50px;
+
+Yes i have an account? Login
+
+
+position: absolute;
+width: 219px;
+height: 19px;
+left: 838px;
+top: 558px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000; */
