@@ -78,13 +78,36 @@
                 <button class="btn btn-secondary btn-lg btn-block mt-3 mb-2" type="submit">Save</button>
             </div>
             
-            <a class="change-password-lnk" href="">Change Password</a>
+            <a class="change-password-lnk" id="changePassowrdBtn">Change Password</a>
+        </div>
+
+
+        <div class="popupWindow hidePopupWindow" id="changePasswordWindow">
+            <h3>Change Password</h3>
+            <div class="form-label-group">
+                <input type="password" class="form-control" placeholder="Old Password" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <input type="password" class="form-control mt-2 mb-2" placeholder="New Password" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <input type="password" class="form-control" placeholder="Repeat New Password" required autofocus>
+            </div>
+            <button class="btn btn-danger btn-lg mt-3" id="changePassword">Change Password</button>
+            <a class="mt-2" id="cancelChangingPassword">Cancel</a>
         </div>
 
     </form>
 
 
 
+    <script>
+        document.getElementById("cancelChangingPassword").addEventListener("click", popup);
+        document.getElementById("changePassowrdBtn").addEventListener("click", popup);
+        function popup(){
+            document.getElementById("changePasswordWindow").classList.toggle("hidePopupWindow")
+        }
+    </script>
 
 
     <footer>

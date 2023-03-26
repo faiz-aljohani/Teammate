@@ -9,7 +9,7 @@
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    
+
     <!-- css -->
     <link rel="stylesheet" href="style/styles.css">
 
@@ -89,7 +89,8 @@
             <div class="project-images">
                 <!-- <img src="images/1.png" alt=""> -->
                         <!-- Carousel -->
-                <div id="carousel" class="carousel-project slide">
+
+                <div id="carousel" class="carousel carousel-project slide">
                     <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="images/1.png" class="d-block w-100" alt="...">
@@ -110,14 +111,32 @@
                     <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+
+
             </div>
             
-            <button class="btn btn-secondary btn-lg mt-3">Apply</button>
+            <button class="btn btn-secondary btn-lg mt-3" id="applicationBtn">Apply</button>
         </div>
+
+        <div class="popupWindow hidePopupWindow" id="applicationWindow">
+            <h3>Application Form</h3>
+            <textarea name="applicationText" cols="30" rows="5"></textarea>
+            <button class="btn btn-secondary btn-lg mt-3" id="applyBtn">Apply</button>
+            <a class="mt-2" id="cancelApplication">Cancel</a>
+        </div>
+        
 
       </main>
 
 
+
+<script>
+    document.getElementById("cancelApplication").addEventListener("click", popup);
+    document.getElementById("applicationBtn").addEventListener("click", popup);
+    function popup(){
+        document.getElementById("applicationWindow").classList.toggle("hidePopupWindow")
+    }
+</script>
 
     <footer>
         <p>&copy; Teammate.</p>
