@@ -12,6 +12,19 @@ body{
 main{
     margin: 0 7%;
 }
+
+.divider{
+    border: dotted 0.8rem;
+    border-top: none;
+    width: 7%;
+    margin: 30px auto;
+    opacity: .1;
+}
+
+a{
+    cursor: pointer;
+}
+
 /* logo */
 .logoText{
     color: #ffffff;
@@ -20,22 +33,64 @@ main{
     color:#DAB16B;
 }
 
+
 /* Buttons */
-.btn-secondary{
-    background-color: #656ED3;  
+
+/* Primary Btn  */
+.btn-primary{
+    background-color: #656ED3 !important;  
     color: #fff;
+}
+.btn-primary:hover{
+    background-color: #535fdd !important;  
+    color: #fff;
+}
+.btn-primary:focus{
+    background-color: #656ED3 !important;  
+    color: #fff;
+}
+.btn-primary:visited{
+    background-color: #656ED3 !important;  
+    color: #fff;
+    opacity: 1;
+}
+
+/* secondary Btn  */
+.btn-secondary{
+    background-color: #9AD6D6 !important;  
+    color: black;
 }
 .btn-secondary:hover{
-    background-color: #656ED3;  
-    color: #fff;
-
-    opacity: .8;
+    background-color: #7ac5c5 !important;  
+    color: black;
 }
 .btn-secondary:focus{
-    background-color: #656ED3;  
-    color: #fff;
-    opacity: .9;
+    background-color: #9AD6D6 !important;  
+    color: black;
 }
+.btn-secondary:visited{
+    background-color: #9AD6D6 !important;  
+    opacity: 1;
+}
+
+/* Danger Btn  */
+.btn-danger{
+    background-color: #CF4951 !important;  
+    color: #fff;
+}
+.btn-danger:hover{
+    background-color: #b83740 !important;  
+    color: #fff;
+}
+.btn-danger:focus{
+    background-color: #CF4951 !important;  
+    color: #fff;
+}
+.btn-danger:visited{
+    background-color: #CF4951 !important;  
+    opacity: 1;
+}
+
 
 /* Navbar */
 .navbar{
@@ -183,11 +238,10 @@ main{
 }
 
 .popupWindow{
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.4) 5px 8px 24px;
     display: flex;
@@ -197,7 +251,7 @@ main{
     border-radius: 20px;
     text-align: center;
     opacity: 1;
-    top:10%;
+    top:30%;
     transition: .8s;
     z-index: 5;
 }
@@ -215,6 +269,53 @@ main{
 .popupWindow input{
     text-align: center;
 }
+
+#removePopupWindow img{
+    width: 100px;
+}
+
+#acceptPopupWindow img{
+    width: 100px;
+}
+
+.remove-message,.accept-message{
+    position: relative;
+    margin: auto;
+    top: -50px;
+    margin-bottom: 0;
+}
+
+.applicationCard{
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+    width: 80%;
+}
+
+.applicationCard h3{
+    color: #29245E;
+    font-weight: 700;
+}
+
+.applicationCard p{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 900px) {
+    .project{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .project-left-contaner{
+        width: 90%;
+    }
+    
+    .project-right-contaner{
+        width: 70%;
+    }
+
+  }
 
 /* Settings */
 

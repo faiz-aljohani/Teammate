@@ -27,7 +27,10 @@
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Teammate.</a>
+            <a class="navbar-brand" href="index.html">
+                <span class="logoText">Teammate</span>
+                <span class="logoEnd">.</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,12 +42,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="my_projects.html">My Projects</a>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="portfolio.html">Portfolio</a>
+                    </li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
@@ -52,7 +59,7 @@
                 </ul>       
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-light" type="submit">Search</button>
+                <button class="btn btn-light" type="submit"><img class="searchSymbol" src="/images/search-symbol.png"></button>
             </form>
             </div>
             </div>
@@ -115,33 +122,93 @@
 
             </div>
             
-            <button class="btn btn-secondary btn-lg mt-3" id="applicationBtn">Apply</button>
+            <button class="btn btn-primary btn-lg mt-3" id="applicationBtn">Apply</button>
         </div>
-
-        <div class="popupWindow hidePopupWindow" id="applicationWindow">
-            <h3>Application Form</h3>
-            <textarea name="applicationText" cols="30" rows="5"></textarea>
-            <button class="btn btn-secondary btn-lg mt-3" id="applyBtn">Apply</button>
-            <a class="mt-2" id="cancelApplication">Cancel</a>
-        </div>
-        
-
       </main>
 
+      <hr class="divider">
+
+      <div class="applicationsCards">
+        <div class="row">
+            <div class="col col-12 applicationCard m-2">
+                <div class="application-text-container">
+                    <h3>Emad</h3>
+                    <p>I can create a custom website that fits your specific needs and goals. Let's discuss your project and bring your vision to life. Contact me today to get started!</p>
+                </div>
+                <div class="application-buttons-container">
+                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
+                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
+                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                </div>
+            </div>
+            <div class="col col-12 applicationCard m-2">
+                <h3>Faiz</h3>
+                <p>Let me help you create a stunning website that reflects your brand and engages your audience. Contact me to learn more about my freelance web development services.</p>
+                <div class="application-buttons-container">
+                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
+                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
+                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                </div>
+            </div>
+            <div class="col col-12 applicationCard m-2">
+                <h3>Ahmed</h3>
+                <p>Need a website that stands out in today's competitive market? As a freelance web developer, I can help you achieve your online goals with a custom-designed website tailored to your specific needs. Contact me now to learn more about my services and how I can help bring your vision to life.</p>
+                <div class="application-buttons-container">
+                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
+                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
+                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                </div>
+            </div>
+            <div class="col col-12 applicationCard m-2">
+                <h3>Turki</h3>
+                <p>Need a website that stands out in today's competitive market? As a freelance web developer, I can help you achieve your online goals with a custom-designed website tailored to your specific needs. Contact me now to learn more about my services and how I can help bring your vision to life.</p>
+                <div class="application-buttons-container">
+                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
+                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
+                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<script>
-    document.getElementById("cancelApplication").addEventListener("click", popup);
-    document.getElementById("applicationBtn").addEventListener("click", popup);
-    function popup(){
-        document.getElementById("applicationWindow").classList.toggle("hidePopupWindow")
-    }
-</script>
+    <!-- popup window for Apply  -->
+    <div class="popupWindow hidePopupWindow" id="applicationWindow">
+        <h3>Application Form</h3>
+        <textarea name="applicationText" cols="30" rows="5"></textarea>
+        <button class="btn btn-primary btn-lg mt-3" id="applyBtn">Apply</button>
+        <a class="mt-2" id="cancelApplication">Cancel</a>
+        
+    </div>
+
+    <!-- Accept an Application popup  -->
+    <div class="popupWindow hidePopupWindow" id="acceptPopupWindow">
+        <div class="accept-message">
+            <img class="mb-2" src="images/accept.png">
+            <h3>Are You Sure?</h3>
+        </div>
+        <div class="sure-buttons-container">
+            <button class="btn btn-success btn-lg" id="acceptApplication">Accept</button>
+            <button class="btn btn-danger btn-lg" id="cancelAccepting">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Are you sure popup  -->
+    <div class="popupWindow hidePopupWindow" id="removePopupWindow">
+        <div class="remove-message">
+            <img class="mb-2" src="images/remove.png">
+            <h3>Are You Sure?</h3>
+        </div>
+        <div class="sure-buttons-container">
+            <button class="btn btn-danger btn-lg" id="RemoveApplication">Remove</button>
+            <button class="btn btn-primary btn-lg" id="cancelRemoving">Cancel</button>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; Teammate.</p>
     </footer>
 
-
+    <script src="Javascript/index.js"></script>
 </body>
 </html>
