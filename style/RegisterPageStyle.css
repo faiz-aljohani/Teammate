@@ -2,43 +2,58 @@
 body {
 	display: flex;
 	background-color: #EBEFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
 }
 
 aside{
-    position: relative;
+    display: flex;
+    justify-content: center;
     height: 100%;
     width: 55%;
 
-    /* position: relative; */
+}
 
+.my-form{
+    max-width: 22rem;
 }
 
 .container{
+    /* 8rem  9rem*/
+
+    margin-left: 4rem  ;
+
+    margin-top: 8rem;
+    margin-bottom: 8rem;
     height: 100%;
     width: 45%;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 10%;
+    
+    z-index: 2;
+    /* background-color: rgb(255, 255, 255,40%); */
+    
 
 }
 
 /* V *Need work w/ height &w */
 #desktop-pic {
     position: absolute;
-    left: 12.73%;
-    right:  45.39%;
-    top:  24.58vh;
-    bottom:  7.08vh;
+    /* left: 12.73px; */
+    /* right:  45.39px; */
+    
+    margin-left: 163px;
+    margin-top : 177px;
+    /* top:  24.58px; */
+    /* bottom:  7.08px; */
     z-index: 1;
 }
 
 #Rectangle7{
     position: absolute;
-    width: 49.6vw;
-    height: 52.4vh;
+    width: 635px;
+    height: 377px;
     background: #AFB3FF;
     border-radius: 105.53px;
     transform: rotate(-90deg);
@@ -46,8 +61,8 @@ aside{
 
 #Rectangle6{
     position: absolute;
-    width: 49.0vw;
-    height: 52.4vh;
+    width: 635px;
+    height: 370px;
     background: #656ED3;
     border-radius: 105.53px;
     transform: rotate(-97.17deg);
@@ -55,35 +70,8 @@ aside{
     
 }
 
-/* img{
-    height: 100px;
-    width: 100px;
-} */
 
-/* 
-
-
-.rectangle {
-	position: absolute;
-	width: 438px;
-	height: 720px;
-	left: 842px;
-	top: 0px;
-
-	background: #AFB3FF;
-}
-
-.img {
-	width: 438px;
-	height: 720px;
-	left: 842px;
-	top: 0px;
-	position: absolute;
-	
-
-}
-
-.container form input {
+#fields input {
 	padding: 10px;
 	margin-bottom: 10px;
 	width: 100%;
@@ -94,47 +82,51 @@ aside{
 
 }
 
-.container form input[type="submit"] {
+a {
+	color: #000;
+	text-decoration: none;
+	/* no underline */
+} 
+
+#form-header{
+
+    padding-left: 65px ;  
+}
+#register-btn{
+    box-sizing: border-box;
+
+    padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	border-radius: 1rem;
 	background-color: #656ED3;
 	color: #fff;
 	cursor: pointer;
 }
+#have-account{
+    padding-left: 65px ;  
+}
 
-a {
-	color: #000;
-	text-decoration: none;
-	no underline
-} */
+@media (max-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
 
+    body {
+       
+        display: block;
+    }
+    .container {
+        position:absolute;
+        z-index: 3;
+        background-color: white;
+        opacity: 0.2;
+
+    }
+
+}
 
 /* 
 
 
-Rectangle 7
 
-
-position: absolute;
-width: 635px;
-height: 377px;
-left: 165px;
-top: 536px;
-
-background: #AFB3FF;
-border-radius: 105.53px;
-transform: rotate(-90deg);
-
-Rectangle 6
-
-
-position: absolute;
-width: 635px;
-height: 377px;
-left: 180.26px;
-top: 510.09px;
-
-background: #656ED3;
-border-radius: 105.53px;
-transform: rotate(-97.17deg);
 
 Rectangle 10
 

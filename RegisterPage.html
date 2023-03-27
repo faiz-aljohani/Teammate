@@ -14,8 +14,9 @@
 		<img id="Rectangle7" src="/images/Rectangle7.png" alt="Rectangle">
 	</aside>
 	<div class="container">
-		<h1>Please Fill out form to Register!</h1>
+		<h3 id="form-header">Please Fill out form to Register!</h3>
 		<form class="my-form">
+			<div id="fields">
 			<label for="fullname">Full Name:</label>
 			<input type="text" id="fullname" name="fullname" required><br><br>
 			<label for="email">Email:</label>
@@ -24,9 +25,10 @@
 			<input type="password" id="password" name="password" required><br><br>
 			<label for="confirm-password">Confirm Password:</label>
 			<input type="password" id="confirm-password" name="confirm-password" required><br><br>
-			<input type="submit" value="Register">
+			</div>
+			<input id="register-btn" type="submit" value="Register">
 		</form>
-		<p>Yes, I have an account? <a href="loginPage.html">Login</a></p>
+		<p id="have-account">Yes, I have an account? <a href="loginPage.html">Login</a></p>
 	</div>
 </body>
 
