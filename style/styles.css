@@ -176,12 +176,44 @@ main{
     font-weight: 700;
 }
 
-
-
 .project img{
     width: 80%;
     aspect-ratio: 1/1;
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+}
+
+.popupWindow{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.4) 5px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    opacity: 1;
+    top:10%;
+    transition: .8s;
+    z-index: 5;
+}
+
+.hidePopupWindow{
+    top:-500px;
+    opacity: 0;
+}
+
+.popupWindow h3{
+    color: #29245E;
+    font-weight: 900;
+}
+
+.popupWindow input{
+    text-align: center;
 }
 
 /* Settings */
