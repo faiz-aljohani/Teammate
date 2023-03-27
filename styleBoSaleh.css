@@ -6,23 +6,46 @@ body {
 }
 
 .rectangle {
-	position: absolute;
-	width: 438px;
-	height: 720px;
-	left: 842px;
-	top: 0px;
+	position: fixed;
 
-	background: #AFB3FF;
-}
+	width: 40%; /* takes 25% of the page width */
+	height: 100%; /* takes 100% of the page height */
+	background-color: #AFB3FF; /* choose your desired color */
+	position: fixed; /* this will make the rectangle stay in place as you scroll */
+	top: 0; /* position at the top of the page */
+	right: 0; /* position on the right side of the page */
+  }
 
-.img {
-	width: 438px;
-	height: 720px;
-	left: 842px;
-	top: 0px;
-	position: absolute;
+.pic1 {
+
+	position: fixed;
+	width: 600px;
+	height: 590px;
+	left: 565px;
+	top: 37px;
+
 	
 
+}
+
+.rectangle2{
+	position: fixed;
+	width: 553px;
+	height: 130px;
+	left: -230px;
+	top: 655px;
+	
+	background: #AFB3FF;
+	border-radius: 105.53px;
+	transform: rotate(-41.1deg);
+}
+.container{
+	position: absolute;
+	width: 367px;
+	height: 332px;
+	left: 122px;
+	top: 177px;
+	
 }
 
 .container form input {
@@ -46,4 +69,17 @@ a {
 	color: #000;
 	text-decoration: none;
 	/* no underline */
+}
+
+
+
+@media  (max-width: 500px) {
+  
+	.pic1{
+		display: none ;
+	} .rectangle{
+		display: none ;
+	} .rectangle2{
+		display: none ;
+	}  
 }
