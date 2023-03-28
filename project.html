@@ -18,8 +18,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="floating-labels.css" rel="stylesheet">
     <!-- favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -142,7 +140,7 @@
                 <div class="application-buttons-container">
                     <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
                     <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
                 </div>
             </div>
             <div class="col col-12 applicationCard m-2">
@@ -151,7 +149,7 @@
                 <div class="application-buttons-container">
                     <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
                     <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
                 </div>
             </div>
             <div class="col col-12 applicationCard m-2">
@@ -160,7 +158,7 @@
                 <div class="application-buttons-container">
                     <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
                     <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
                 </div>
             </div>
             <div class="col col-12 applicationCard m-2">
@@ -169,7 +167,7 @@
                 <div class="application-buttons-container">
                     <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
                     <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1">Portfolio</button>
+                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
                 </div>
             </div>
         </div>
@@ -178,16 +176,21 @@
 
     <!-- popup window for Apply  -->
     <div class="popupWindow hidePopupWindow" id="applicationWindow">
-        <h3>Application Form</h3>
-        <textarea name="applicationText" cols="30" rows="5"></textarea>
-        <button class="btn btn-primary btn-lg mt-3" id="applyBtn">Apply</button>
-        <a class="mt-2" id="cancelApplication">Cancel</a>
-        
+        <div class="popup-message">
+            <img src="images/apply.png" alt="Application Icon">
+            <h3>Application Form</h3>
+        </div>
+        <div class="popup-content">
+            <textarea class="form-control" name="applicationText" cols="30" rows="5" maxlength="300"></textarea>
+            <button class="btn btn-primary btn-lg mt-3" id="applyBtn">Apply</button>
+            <a class="mt-2" id="cancelApplication">Cancel</a>
+        </div>
+
     </div>
 
     <!-- Accept an Application popup  -->
     <div class="popupWindow hidePopupWindow" id="acceptPopupWindow">
-        <div class="accept-message">
+        <div class="popup-message">
             <img class="mb-2" src="images/accept.png">
             <h3>Are You Sure?</h3>
         </div>
@@ -199,7 +202,7 @@
 
     <!-- Are you sure popup  -->
     <div class="popupWindow hidePopupWindow" id="removePopupWindow">
-        <div class="remove-message">
+        <div class="popup-message">
             <img class="mb-2" src="images/remove.png">
             <h3>Are You Sure?</h3>
         </div>
@@ -212,6 +215,15 @@
     <footer>
         <p>&copy; Teammate.</p>
     </footer>
+
+    <!-- <script>
+        document.getElementById("cancelApplication").addEventListener("click", popup);
+        document.getElementById("applicationBtn").addEventListener("click", popup);
+        function popup(){
+            document.getElementById("applicationWindow").classList.toggle("hidePopupWindow")
+        }
+
+    </script> -->
 
     <script src="Javascript/index.js"></script>
 </body>

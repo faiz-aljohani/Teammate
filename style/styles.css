@@ -248,10 +248,11 @@ a{
     flex-direction: column;
     width: 500px;
     padding: 20px;
+    padding-bottom: 0;
     border-radius: 20px;
     text-align: center;
     opacity: 1;
-    top:30%;
+    top:25%;
     transition: .8s;
     z-index: 5;
 }
@@ -267,22 +268,30 @@ a{
 }
 
 .popupWindow input{
-    text-align: center;
+    text-align: left;
 }
 
-#removePopupWindow img{
+.popupWindow img{
     width: 100px;
 }
 
-#acceptPopupWindow img{
-    width: 100px;
-}
-
-.remove-message,.accept-message{
+.popup-message{
     position: relative;
     margin: auto;
     top: -50px;
     margin-bottom: 0;
+}
+
+.popup-content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -50px;
+}
+
+.sure-buttons-container{
+    position: relative;
+    top: -30px;
 }
 
 .applicationCard{
@@ -302,6 +311,11 @@ a{
     font-weight: 700;
 }
 
+#addProjectPopupWindow{
+    height: 550px;
+}
+
+
 @media only screen and (max-width: 900px) {
     .project{
         flex-direction: column-reverse;
@@ -316,6 +330,32 @@ a{
     }
 
   }
+
+
+/* My Project Page  */
+
+.main-buttons{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.dropdown-menu{
+    text-align: center;
+    width: 200px;
+}
+.dropdown-menu .filter-options{
+    text-align: left;
+}
+
+.dropdown-menu .filter-options{
+    text-align: left;
+}
+
+textarea[name = projectDiscription]{
+    resize: none;
+}
+
 
 /* Settings */
 
@@ -371,6 +411,10 @@ footer{
     padding-top: 25px;
     text-align: center;
 }
+
+
+
+
 /* search symbol */
 .searchSymbol{
     width: 22px;
