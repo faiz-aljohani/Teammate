@@ -1,52 +1,52 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+
+body,*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box ;
+}
 body {
-	display: flex;
-	background-color: #EBEFFF;
+    box-sizing:border-box ;
+
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
+
+	display: flex;
+    column-gap: 2rem;
+
+
+    margin: 1rem;
+	background-color: #EBEFFF;
 }
 
+/* -------------------------- the left part  ------------------------ */
+
 aside{
+
     display: flex;
-    justify-content: center;
-    height: 100%;
+    /* justify-content: center; */
+    box-sizing:border-box ;
+
+    /* height: 100%; */
     width: 55%;
 
 }
-
-.my-form{
-    max-width: 22rem;
-}
-
-.container{
-    /* 8rem  9rem*/
-
-    margin-left: 4rem  ;
-
-    margin-top: 8rem;
-    margin-bottom: 8rem;
-    height: 100%;
-    width: 45%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    
-    z-index: 2;
-    /* background-color: rgb(255, 255, 255,40%); */
-    
-
-}
-
 /* V *Need work w/ height &w */
 #desktop-pic {
-    position: absolute;
-    /* left: 12.73px; */
-    /* right:  45.39px; */
-    
-    margin-left: 163px;
-    margin-top : 177px;
-    /* top:  24.58px; */
+    position: relative;
+
+    left: 110px;
+    right:  0;
+    top:  177px;
     /* bottom:  7.08px; */
+
+    max-width: 33.5rem;
+    max-height: 30rem;
+    /* left: 163px;
+    top : 177px; */
+
     z-index: 1;
 }
 
@@ -54,8 +54,11 @@ aside{
     position: absolute;
     width: 635px;
     height: 377px;
-    background: #AFB3FF;
+
     border-radius: 105.53px;
+
+
+    background: #AFB3FF;
     transform: rotate(-90deg);
 }
 
@@ -63,242 +66,130 @@ aside{
     position: absolute;
     width: 635px;
     height: 370px;
-    background: #656ED3;
+
     border-radius: 105.53px;
+
+
+    background: #656ED3;
     transform: rotate(-97.17deg);
 
-    
 }
 
 
-#fields input {
+/* -------------------------- the rigth part  ------------------------ */
+
+
+
+.container{
+    margin-top: 20vh ;
+    margin-bottom: 25vh ;
+
+    width: 45%;
+    display: grid;
+
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    gap: 1rem;
+    
+    z-index: 2;
+    /* background-color: rgb(255, 255, 255,40%); */
+
+    
+    
+}
+
+#form-header{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.my-form{
+    max-width: 22rem;
+}
+
+#form-fields input {
+    margin-top: 4px;
 	padding: 10px;
-	margin-bottom: 10px;
 	width: 100%;
 	border-radius: 1rem;
 	border: 1px solid #656ED3;
-	font-size: 16px;
 	background-color: #EBEFFF;
 
 }
 
+#form-register-btn{
+	padding: 10px;
+	width: 100%;
+    border:#AFB3FF solid 1px;
+	border-radius: 1rem;
+	background-color: #656ED3;
+
+	color: #fff;
+    font-size: 1.2rem;
+	cursor: pointer;
+}
+#i-have-account{
+    margin-left: 12%;
+}
+
+/* -------------------------------------------------------------- */
 a {
 	color: #000;
 	text-decoration: none;
-	/* no underline */
 } 
 
-#form-header{
 
-    padding-left: 65px ;  
-}
-#register-btn{
-    box-sizing: border-box;
-
-    padding: 10px;
-	margin-bottom: 10px;
-	width: 100%;
-	border-radius: 1rem;
-	background-color: #656ED3;
-	color: #fff;
-	cursor: pointer;
-}
-#have-account{
-    padding-left: 65px ;  
-}
-
-@media (max-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+ /* portrait tablets, portrait iPad, landscape e-readers */ 
+@media screen and (max-device-width:1100px)  {
 
     body {
-       
         display: block;
+        justify-content: center;
+        height: 90vh;
+        width: 90vw;
+        margin: auto;
+        padding: 10px;
     }
+    aside{
+        position: absolute;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+    
+    }
+    
     .container {
         position:absolute;
-        z-index: 3;
-        background-color: white;
-        opacity: 0.2;
+        display: grid;
+        grid-template-columns: 100%;
+
+        width: 90%;
+        padding: 1rem;
+
+        border-radius: 30px;
+
+       /* Add a transparency to the background using rgba value */
+        background: rgb(255, 255, 255,0.8);
+        /* Add a transparency to shadow */
+        box-shadow: 0 26px 42px rgba(0, 0, 0, 0.2);
 
     }
+
+    .my-form{
+        width: 65%;
+        max-width: none;
+        margin: auto;
+    }
+    .container > *{
+        max-width: none;
+        margin: auto;
+    }
+    #i-have-account{
+
+        margin-left: auto;  
+    }    
+
 
 }
 
-/* 
-
-
-
-
-Rectangle 10
-
-
-box-sizing: border-box;
-
-position: absolute;
-width: 367px;
-height: 34px;
-left: 756px;
-top: 284px;
-
-border: 1px solid #656ED3;
-border-radius: 50px;
-
-Rectangle 8
-
-
-box-sizing: border-box;
-
-position: absolute;
-width: 367px;
-height: 34px;
-left: 758px;
-top: 440px;
-
-border: 1px solid #656ED3;
-border-radius: 50px;
-
-Rectangle 3
-
-
-box-sizing: border-box;
-
-position: absolute;
-width: 367px;
-height: 34px;
-left: 758px;
-top: 364px;
-
-border: 1px solid #656ED3;
-border-radius: 50px;
-
-Rectangle 9
-
-
-box-sizing: border-box;
-
-position: absolute;
-width: 367px;
-height: 34px;
-left: 756px;
-top: 202px;
-
-border: 1px solid #656ED3;
-border-radius: 50px;
-
-Full name:
-
-
-position: absolute;
-width: 77px;
-height: 19px;
-left: 756px;
-top: 172px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-
-color: #000000;
-
-
-Please Fill out form to Register!
-
-
-position: absolute;
-width: 243px;
-height: 19px;
-left: 818px;
-top: 126px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 19px;
-
-color: #1A1A1A;
-
-Confirm Password:
-
-
-position: absolute;
-width: 143px;
-height: 19px;
-left: 760px;
-top: 410px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-
-color: #000000;
-
-Email:
-
-
-position: absolute;
-width: 45px;
-height: 19px;
-left: 758px;
-top: 254px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-
-color: #000000;
-
-
-Button 
-
-Register
-
-
-position: absolute;
-width: 64px;
-height: 19px;
-left: 910px;
-top: 504px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-
-color: #FFFFFF;
-
-
-Rectangle 4
-
-
-position: absolute;
-width: 365px;
-height: 34px;
-left: 760px;
-top: 497px;
-
-background: #656ED3;
-border-radius: 50px;
-
-Yes i have an account? Login
-
-
-position: absolute;
-width: 219px;
-height: 19px;
-left: 838px;
-top: 558px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-
-color: #000000; */
+ /*  for Phonea v  */ 

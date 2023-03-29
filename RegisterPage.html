@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="/style/RegisterPageStyle.css" />
 
-<head>
-	<link rel="stylesheet" href="/style/RegisterPageStyle.css">
+    <title>Registration Page</title>
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
+  </head>
 
-	<title>Registration Page</title>
-	<!-- favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="/images/site.webmanifest">
-</head>
+  <body>
+    <aside>
+      <img id="desktop-pic" src="/images/desktop.png" alt="desktop picture" />
+      <img id="Rectangle6" src="/images/Rectangle6.png" alt="Rectangle" />
+      <img id="Rectangle7" src="/images/Rectangle7.png" alt="Rectangle" />
+    </aside>
 
-<body>
-	<aside>
-		<img id="desktop-pic" src="/images/desktop.png" alt="desktop picture">
-		<img id="Rectangle6" src="/images/Rectangle6.png" alt="Rectangle">
-		<img id="Rectangle7" src="/images/Rectangle7.png" alt="Rectangle">
-	</aside>
-	<div class="container">
-		<h3 id="form-header">Please Fill out form to Register!</h3>
-		<form class="my-form">
-			<div id="fields">
-			<label for="fullname">Full Name:</label>
-			<input type="text" id="fullname" name="fullname" required><br><br>
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required><br><br>
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required><br><br>
-			<label for="confirm-password">Confirm Password:</label>
-			<input type="password" id="confirm-password" name="confirm-password" required><br><br>
-			</div>
-			<input id="register-btn" type="submit" value="Register">
-		</form>
-		<p id="have-account">Yes, I have an account? <a href="loginPage.html">Login</a></p>
-	</div>
-</body>
-
+    <div class="container">
+      <p id="form-header">Create a New Account</p>
+      <form class="my-form">
+        <div id="form-fields">
+          <label for="fullname">Full Name:</label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            required
+          /><br /><br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required /><br /><br />
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+          /><br /><br />
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+          /><br /><br />
+        </div>
+        <input id="form-register-btn" type="submit" value="Register" />
+      </form>
+      <p id="i-have-account">
+        <a href="loginPage.html"> Already have an account? <strong>Login</strong></a>
+      </p>
+    </div>
+  </body>
 </html>
