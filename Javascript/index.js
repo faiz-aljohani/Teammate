@@ -67,3 +67,44 @@ if(document.URL.includes("my_projects.html")){
     })
 }
 
+// =================== portfolio Page ======================
+if(document.URL.includes("portfolio.html")){
+    document.querySelector("#add-prev-project").addEventListener("click", () =>{
+        document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
+    })
+    document.querySelector("#cancelAddingPrevProject").addEventListener("click", () =>{
+        document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
+    })
+    let prevProjectForm = document.getElementById("addPrevProjectForm");
+    prevProjectForm.addEventListener("submit",function(event){
+        let title = document.getElementById("title").value;
+        let desc = document.getElementById("description").value;
+        let link = document.getElementById("link").value;
+        let skills = document.getElementById("skills").value;
+        let img = document.getElementById("chooseImg").value;
+        let date = document.getElementById("completeDate").value;
+        // let type = document.getElementById("type") find how to get this element
+        console.log(title, desc,link, skills,img, date);
+        let projectString = `<div class="row">
+        <div class="btn card col col-2 m-3 mt-5 mb-1">
+            <a class="card-btn" href="project.html">         
+                <div class="img-container">
+                    <img src="images/1.png" class="card-img-top" alt="...">
+                </div>        
+                <div class="card-body">
+                    <h5 class="card-title mb-3">${title}</h5>
+                    <p class="card-text">${desc}</p>
+                </div>
+
+                <div class="tags">
+                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">${skills}</span></a>
+                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">${skills}</span></a>
+                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">${skills}</span></a>
+                </div>
+            </a>
+        </div>
+
+    </div>`;
+        document.getElementById("Managed").innerHTML = projectString;
+    })
+}   

@@ -72,9 +72,62 @@
 
     <main>
         <!-- add previous project "button"  -->
-
+        <div class="main-buttons">
+        <button class="btn btn-primary me-1" id="add-prev-project">add previous projects</button>
+        <button class="btn btn-primary" id="edit-about-me">edit "About me"</button>
+        </div>
+        <!-- popup window for adding previous projects -->
+        <div class="popupWindow hidePopupWindow" id="addPrevProjectPopupWindow">
+            <!-- popup message -->
+            <div class="popup-message">message</div>
+            <!-- popup content -->
+            <div class="popup-content">
+                <form id="addPrevProjectForm">
+                    <div class="form-group row  mt-3">
+                        <label for="Title" class="col-sm-4 col-form-label" >Project Title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control"  placeholder="Project Title" id="title" required>
+                        </div>    
+                    </div>
+                    <textarea class="form-control mt-3" name="projectDiscription" id="description" cols="30" rows="5" placeholder="Project Description and your contribution" required></textarea>             
+                    <input type="text" class="form-control mt-3" name="projectLink" placeholder="project website, youtube video, etc..." id="link" required>
+                    <div class="form-group row  mt-3">
+                        <label for="skills" class="col-sm-4 col-form-label">Skills used</label>
+                        <div class="col-sm-8">
+                          <input id="skills" type="text" class="form-control" placeholder="Javascript, css, HTML" required>
+                        </div>    
+                    </div>    
+                    <div class="form-group row mt-3">
+                        <label for="chooseImg" class="col-sm-4 col-form-label">Add Images</label>
+                        <div class="col-sm-8">
+                            <input id="chooseImg" type="file" class="form-control" name='images[]' multiple accept="image/jpeg, image/png" required>
+                        </div>       
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label for="completeDate" class="col-sm-4 col-form-label">date completed</label>
+                        <div class="col-sm-8">
+                            <input id="completeDate" type="date" class="form-control" required>
+                        </div>  
+                    </div>
+                    <div>
+                        <input type="radio" id="choice1" name="type" value="managed" />
+                        <label for="contactChoice1">Managed</label>
+                  
+                        <input type="radio" id="choice2" name="type" value="collaborated" />
+                        <label for="contactChoice2">collaborated</label>
+                      </div>
+                    <div class="sure-buttsons-container mt-3">
+                        <button class="btn btn-primary btn-lg mb-2" id="addProject">Add</button>
+                    </div>
+                    <a class="" id="cancelAddingPrevProject">Cancel</a>
+                </form>
+            </div>
+        </div>
         <!-- previous projects will be below -->
-        <h1>projects managed</h1>
+        <h1 class="text-center">projects managed</h1>
+        <div id="Managed">
+            
+        </div>
         <div class="row">
             <div class="btn card col col-2 m-3 mt-5 mb-1">
                 <a class="card-btn" href="project.html">         
@@ -96,7 +149,10 @@
 
         </div>
         <hr class="divider">
-        <h1>projects collaborated on</h1>
+        <h1 class="text-center">projects collaborated on</h1>
+        <div id="collaborated">
+
+        </div>
         <div class="row">
             <div class="btn card col col-2 m-3 mt-5 mb-1">
                 <a class="card-btn" href="project.html">         
@@ -117,8 +173,12 @@
             </div>
         </div>
     </main>
+    
     <footer>
         <p>&copy; Teammate.</p>
     </footer>
+
+
+    <script src="Javascript/index.js"></script>
 </body>
 </html>
