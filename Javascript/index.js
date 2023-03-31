@@ -67,3 +67,45 @@ if(document.URL.includes("my_projects.html")){
     })
 }
 
+// =================== Register Page ======================
+
+function passwordValidation() {
+    const password = document.querySelector('input[name=password]');
+    const confirm = document.querySelector('input[name=confirm-password]');
+    if (confirm.value === password.value) {
+      confirm.setCustomValidity('');
+    } else {
+      confirm.setCustomValidity('Passwords do not match');
+    }
+  }
+
+  function showPassword() {
+    let x = document.querySelector('input[id=password]');
+    let y = document.querySelector('input[id=confirm-password]');
+
+    if (x.type === "password") {
+      x.type = "text";
+      y.type = "text"
+    } else {
+      x.type = "password";
+      y.type = "password"
+    }
+  }
+
+  function tmpToHomePage() {
+
+    let x = document.getElementById("full-name").value;
+    let y = document.getElementById("password").value;
+
+    var z= ( x=="admin" && y=="123456");
+    console.log(z)
+
+    if(x=="admin" && y=="123456"){
+        location.herf = "index.html";
+    }
+
+
+  }
+
+
+
