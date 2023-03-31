@@ -97,15 +97,16 @@ function passwordValidation() {
     let x = document.getElementById("full-name").value;
     let y = document.getElementById("password").value;
 
-    var z= ( x=="admin" && y=="123456");
+    let z= ( x=="admin" && y=="123456");
     console.log(z)
-    console.log("z")
 
 
     if(x=="admin" && y=="123456"){
-        location.herf = "index.html";
+        window.location.href = ("index.html");
     }
-
+    
+        // window.location.replace("RegisterPage.html");
+        // return false
 
   }
 
