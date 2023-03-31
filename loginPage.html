@@ -2,35 +2,41 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="styleBoSaleh.css">
+	<link rel="stylesheet" href="/style/styleBoSaleh.css">
+
 	<title>Login Page</title>
 
 	<!-- favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="/images/site.webmanifest">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	<link rel="manifest" href="/images/site.webmanifest">
 </head>
 <div class="rectangle"></div>
-<div class="rectangle2"></div>
 
 <body>
 
 	<div class="pic1">
 		<img src="images\pic1.png">
 	</div>
+	<div class="pic2">
+		<!-- Org size of the pic 225 * 163 -->
+		<img src="images\pic2.png" style="height: 450px; width: auto;">
 
+	</div>
 
-	<div class="container">
+	<div class="containerLogin">
 
-		<h1>Welcome Back!</h1>
-		<form class="my-form">
+		<form class="my-formlogin">
+			<h1 class="as">Welcome Back!</h1>
+
 			<label for="email">Email:</label>
 			<input type="email" id="email" name="email" required><br><br>
 			<label for="password">Password:</label>
 			<input type="password" id="password" name="password" required><br><br>
 			<input type="submit" value="Login">
+			<p class="as">Don't have an account? <a href="RegisterPage.html"><b>Register</b></a></p>
+
 		</form>
-		<p>Don't have an account? <a href="RegisterPage.html"><b>Register</b></a></p>
 	</div>
 </body>
 
