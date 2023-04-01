@@ -79,10 +79,13 @@
         <!-- popup window for adding previous projects -->
         <div class="popupWindow hidePopupWindow" id="addPrevProjectPopupWindow">
             <!-- popup message -->
-            <div class="popup-message">message</div>
+            <div class="popup-message">
+                <img src="images/project.png" alt="">
+                <h3>Add previous project</h3>
+            </div>
             <!-- popup content -->
             <div class="popup-content">
-                <form id="addPrevProjectForm">
+                <form  id="addPrevProjectForm">
                     <div class="form-group row  mt-3">
                         <label for="Title" class="col-sm-4 col-form-label" >Project Title</label>
                         <div class="col-sm-8">
@@ -90,7 +93,14 @@
                         </div>    
                     </div>
                     <textarea class="form-control mt-3" name="projectDiscription" id="description" cols="30" rows="5" placeholder="Project Description and your contribution" required></textarea>             
-                    <input type="text" class="form-control mt-3" name="projectLink" placeholder="project website, youtube video, etc..." id="link" required>
+                    
+                    <div class="form-group row  mt-3">
+                        <label for="link" class="col-sm-4 col-form-label" >Project link</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="projectLink" placeholder="project website,video, etc..." id="link" required>
+                        </div>    
+                    </div>
+                    
                     <div class="form-group row  mt-3">
                         <label for="skills" class="col-sm-4 col-form-label">Skills used</label>
                         <div class="col-sm-8">
@@ -104,7 +114,7 @@
                         </div>       
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="completeDate" class="col-sm-4 col-form-label">date completed</label>
+                        <label for="completeDate" class="col-sm-4 col-form-label">Date completed</label>
                         <div class="col-sm-8">
                             <input id="completeDate" type="date" class="form-control" required>
                         </div>  
@@ -125,18 +135,15 @@
         </div>
         <!-- previous projects will be below -->
         <h1 class="text-center">projects managed</h1>
-        <div id="Managed">
-            
-        </div>
         <div class="row">
             <div class="btn card col col-2 m-3 mt-5 mb-1">
-                <a class="card-btn" href="project.html">         
+                <a class="card-btn" href="prevProject.html">         
                     <div class="img-container">
-                        <img src="images/1.png" class="card-img-top" alt="...">
+                        <img src="images/laptop_12.jpg" class="card-img-top" alt="...">
                     </div>        
                     <div class="card-body">
-                        <h5 class="card-title mb-3">Card titl wd awdwadwd dwae</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title mb-3">web dev project</h5>
+                        <p class="card-text">e-commerce website for selling clothes and accesories online</p>
                     </div>
 
                     <div class="tags">
@@ -155,7 +162,7 @@
         </div>
         <div class="row">
             <div class="btn card col col-2 m-3 mt-5 mb-1">
-                <a class="card-btn" href="project.html">         
+                <a class="card-btn" href="prevProject.html">         
                 <div class="img-container">
                     <img src="images/4.png" class="card-img-top" alt="...">
                 </div>
