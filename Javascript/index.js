@@ -125,9 +125,10 @@ if(document.URL.includes("portfolio.html")){
 // fix below code
 if(document.URL.includes("prevProject.html")){
     document.querySelector("#add-teammate-btn").addEventListener("click",()=>{
-        document.querySelector("#addTeammatePopupWindow").classList.add("hidePopupWindow")
+        popup = document.querySelector("#addTeammatePopupWindow");
+        popup.classList.toggle("hidePopupWindow");
     })
     document.querySelector("#cancelAdding").addEventListener("click",()=>{
-        document.querySelector("#addTeammatePopupWindow").classList.remove("hidePopupWindow")
+        document.querySelector("#addTeammatePopupWindow").classList.toggle("hidePopupWindow")
     })
 }
