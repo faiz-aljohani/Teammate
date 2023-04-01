@@ -3,10 +3,10 @@
 </p>
 
 # phase 2
-In registerPage.html use the following to register succesfully:
-fullname:  admin
-Password: 123456
-Leave other fields blank
+In registerPage.html use the following to register succesfully: <br/>
+fullname:  admin<br/>
+Password: 123456<br/>
+Leave other fields blank<br/>
 
 ## navigating to different web pages
 The navbar is the main way to navigate between html pages.
