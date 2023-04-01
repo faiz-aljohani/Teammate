@@ -123,10 +123,11 @@ if(document.URL.includes("portfolio.html")){
 // =================== prevProject Page ======================
 // fix below code
 if(document.URL.includes("prevProject.html")){
+    alert()
     document.querySelector("#add-teammate-btn").addEventListener("click",()=>{
         popup = document.querySelector("#addTeammatePopupWindow");
         popup.classList.toggle("hidePopupWindow");
-    })
+        })
     document.querySelector("#cancelAdding").addEventListener("click",()=>{
         document.querySelector("#addTeammatePopupWindow").classList.toggle("hidePopupWindow")
     })
