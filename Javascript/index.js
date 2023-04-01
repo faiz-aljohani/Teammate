@@ -71,7 +71,8 @@ if(document.URL.includes("my_projects.html")){
 
 function passwordValidation() {
     const password = document.querySelector('input[name=password]');
-    const confirm = document.querySelector('input[name=confirm-password]');
+    const confirm = document.getElementById('confirm-password');
+    
     if (confirm.value === password.value) {
       confirm.setCustomValidity('');
     } else {
@@ -105,9 +106,6 @@ function passwordValidation() {
     if(x=="admin" && y=="123456"){
         window.location.href = ("index.html");
     }
-    
-        // window.location.replace("RegisterPage.html");
-        // return false
 
   }
 
