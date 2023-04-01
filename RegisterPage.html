@@ -2,7 +2,6 @@
 <html>
   <head>
     <link rel="stylesheet" href="style/styles.css" />
-    <link rel="stylesheet" href="/style/RegisterPageStyle.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -30,7 +29,7 @@
     <link rel="manifest" href="/images/site.webmanifest" />
   </head>
 
-  <body>
+  <body class="register-body">
     <header>
       <nav id="register-navbar">
         <div id="register-navbar-content">
@@ -45,7 +44,7 @@
     </header>
 
     <main id="register-main">
-      <aside>
+      <aside id="register-aside">
         <img id="desktop-pic" src="/images/desktop.png" alt="desktop picture" />
         <img id="Rectangle6" src="/images/Rectangle6.png" alt="Rectangle" />
         <img id="Rectangle7" src="/images/Rectangle7.png" alt="Rectangle" />
@@ -101,7 +100,7 @@
           <input id="form-register-btn" type="submit" value="Register" onclick="tmpToHomePage()" />
         </form>
         <p id="i-have-account">
-          <a href="loginPage.html">
+          <a id="register-a" href="loginPage.html">
             Already have an account? <strong>Login</strong></a
           >
         </p>

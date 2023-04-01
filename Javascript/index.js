@@ -92,6 +92,7 @@ function passwordValidation() {
     }
   }
 
+  //not ideal
   function tmpToHomePage() {
 
     let x = document.getElementById("full-name").value;
