@@ -109,8 +109,6 @@ function passwordValidation() {
 
   }
 
-
-
 // =================== portfolio Page ======================
 if(document.URL.includes("portfolio.html")){
     document.querySelector("#add-prev-project").addEventListener("click", () =>{
@@ -123,7 +121,6 @@ if(document.URL.includes("portfolio.html")){
 // =================== prevProject Page ======================
 // fix below code
 if(document.URL.includes("prevProject.html")){
-    alert()
     document.querySelector("#add-teammate-btn").addEventListener("click",()=>{
         popup = document.querySelector("#addTeammatePopupWindow");
         popup.classList.toggle("hidePopupWindow");
