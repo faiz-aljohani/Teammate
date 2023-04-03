@@ -679,7 +679,7 @@ footer{
 .pic1 img{
     position: absolute;
     right: 2%;
-	width: 45%;
+	width: 1000px;
 }
 
 .pic2 {
@@ -728,7 +728,7 @@ a {
 /* ------------------------- */
 
 /* portrait tablets, portrait iPad, landscape e-readers */
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1600px) {
 
     .register-body {
         display: block;
@@ -753,7 +753,7 @@ a {
         margin-right: auto;
         left: 0;
         right: 0;
-        width: 80%;
+        width: 70%;
         padding: 1rem;
         border-radius: 30px;
         /* Add a transparency to the background using rgba value */
@@ -789,7 +789,7 @@ a {
 	.containerLogin {
 		position: fixed;
 		grid-template-columns: 100%;
-		width: 80%;
+		width: 700px;
 		padding: 1rem;
 		border-radius: 30px;
 		background: rgb(250, 249, 246, 0.9);
@@ -810,13 +810,10 @@ a {
 		padding: 10px;
 	}
 
-	.pic1 {
+	/* .pic1 {
 		display: none;
-	}
+	} */
 
-	.pic2 {
-		visibility: hidden;
-	}
 
 	.as {
 		text-align: center;
@@ -824,6 +821,7 @@ a {
 	}
 
 }
+
 
 /*  for Phonea v  */
 @media screen and (max-width: 641px) and (max-device-width: 641px) {
