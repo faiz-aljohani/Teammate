@@ -129,3 +129,23 @@ if(document.URL.includes("prevProject.html")){
         document.querySelector("#addTeammatePopupWindow").classList.toggle("hidePopupWindow")
     })
 }
+
+// =================== Login Page ======================
+
+function tmpToHomePage() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+  
+    if (email === 'admin@admin.com' && password === '123456') {
+      window.location.href = 'index.html';
+    } else {
+      alert('Incorrect email or password');
+    }
+  }
+  
+  const loginForm = document.getElementById('login-form');
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    tmpToHomePage();
+  });
+
