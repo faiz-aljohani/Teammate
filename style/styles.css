@@ -642,6 +642,104 @@ footer{
     padding: 3px 0 0px 5px;
 }
 
+/* ----------------- */
+/* log in page  */
+.bodylogin {
+	min-height: 100dvh;
+	min-width: 100dvw;
+	background-color: #EBEFFF;
+}
+
+.my-formlogin {
+	position: relative;
+	width: 150%;
+	height: auto;
+	max-width: none;
+	
+}
+#form-login-btn {
+	margin: 5px;
+    padding: 10px;
+    width: 100%;
+    border: #AFB3FF solid 1px;
+    border-radius: 1rem;
+    background-color: #656ED3;
+
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.as {
+	text-align: center;
+	padding: 30px;
+}
+
+.rectangle {
+	position: fixed;
+	width: 35%;
+	height: 100%;
+	background-color: #AFB3FF;
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+.pic1 {
+
+	position: fixed;
+	width: 600px;
+	height: 590px;
+	left: 565px;
+	top: 37px;
+	margin-left: 15%;
+	margin-top: 5%;
+
+}
+
+.pic2 {
+	position: fixed;
+	width: 553px;
+	height: 130px;
+	left: -8%;
+	top: 75%;
+
+	background: #AFB3FF;
+	border-radius: 100px;
+	transform: rotate(320deg);
+}
+
+.containerLogin {
+	position: fixed;
+	margin: 15%;
+
+}
+
+.containerLogin form input {
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	border-radius: 1rem;
+	border: 1px solid #656ED3;
+	font-size: 16px;
+	background-color: #EBEFFF;
+
+}
+
+
+.containerLogin form input[type="submit"] {
+	background-color: #656ED3;
+	color: #fff;
+	cursor: pointer;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+	/* no underline */
+}
+
+
+/* ------------------------- */
 
 /* portrait tablets, portrait iPad, landscape e-readers */
 @media screen and (max-width:1000px) {
@@ -696,7 +794,52 @@ footer{
 
         margin-left: auto;
     }
+    .bodylogin {
+		display: block;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		margin: auto;
+		align-self: center;
+	}
 
+	.containerLogin {
+		position: fixed;
+		grid-template-columns: 100%;
+		width: 80%;
+		padding: 1rem;
+		border-radius: 30px;
+		background: rgb(250, 249, 246, 0.9);
+		box-shadow: 0 26px 42px rgba(0, 0, 0, 0.2);
+		align-items: center;
+	}
+
+	.my-formlogin {
+		width: 80%;
+		max-width: none;
+		align-items: center;
+		padding: 10px;
+	}
+
+	.containerLogin>* {
+		position: relative;
+		margin: auto;
+		padding: 10px;
+	}
+
+	.pic1 {
+		position: sticky;
+		margin-right: 50%;
+	}
+
+	.pic2 {
+		visibility: hidden;
+	}
+
+	.as {
+		text-align: center;
+		padding: 30px;
+	}
 
 }
 
@@ -723,7 +866,13 @@ footer{
     #desktop-pic {
         display: none;
     }
+    .pic2 {
+		visibility: hidden;
+	}
+    .pic1 {
+        visibility: hidden;
 
+	}
 
 }
 
