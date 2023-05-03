@@ -1,5 +1,5 @@
 // =================== Project Page ======================
-if(document.URL.includes("project.html")){
+if(document.URL.includes("projects" && !document.URL.includes("my-projects"))){
 
     // Application form popup window (Apply Button)
     document.querySelector("#cancelApplication").addEventListener("click", popup);
@@ -45,7 +45,7 @@ if(document.URL.includes("project.html")){
 }
 
 // =================== Setting Page ======================
-if(document.URL.includes("settings.html")){
+if(document.URL.includes("settings")){
     document.querySelector("#cancelChangingPassword").addEventListener("click", changePasswordPopup);
     document.querySelector("#changePassowrdBtn").addEventListener("click", changePasswordPopup);
     function changePasswordPopup(){
@@ -57,7 +57,7 @@ if(document.URL.includes("settings.html")){
 
 // =================== My Project Page ======================
 
-if(document.URL.includes("my_projects.html")){
+if(document.URL.includes("my-projects")){
     document.querySelector("#add-project-btn").addEventListener("click", () =>{
         document.querySelector("#addProjectPopupWindow").classList.toggle("hidePopupWindow")
     })
@@ -143,9 +143,9 @@ function tmpToHomePage() {
     }
   }
   
-  const loginForm = document.getElementById('login-form');
-  loginForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    tmpToHomePage();
-  });
+  // const loginForm = document.getElementById('login-form');
+  // loginForm.addEventListener('submit', (event) => {
+  //   event.preventDefault();
+  //   tmpToHomePage();
+  // });
 

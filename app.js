@@ -14,6 +14,26 @@ app.use(express.static('public'))
 const { log } = require('console');
 
 
+
+
+
+app.get("/", (req,res) => {
+  res.render("index",{})
+})
+
+app.get("/my-projects", (req,res) => {
+  res.render("my_projects",{})
+})
+
+app.get("/settings", (req,res) => {
+  res.render("settings",{})
+})
+
+app.get("/portfolio", (req,res) => {
+  res.render("portfolio",{})
+})
+
+
 const requestListener = (req,res)=>{
 
     const { method } = req;
@@ -37,9 +57,7 @@ const handlePostRequest = (req, res)=>{
     }
 }
 
-app.get("/", (req,res) => {
-  res.render("index",{})
-})
+
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');
@@ -63,12 +81,3 @@ app.listen(3000 || process.env.PORT, () => {
 // console.log('here')
 // register.registerUser('1','0')
 
-// ---------------------------------------------------------- I think we need to get certificate 1st 
-// Create a service (the app object is just a callback).
-// var app = express();
-// Create an HTTPS service identical to the HTTP service.
-// https.createServer(options, app).listen(443);
-// var options = {
-//   key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
-//   cert: fs.readFileSync('test/fixtures/keys/agent2-cert.cert')
-// };
