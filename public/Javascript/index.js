@@ -110,7 +110,7 @@ function passwordValidation() {
   }
 
 // =================== portfolio Page ======================
-if(document.URL.includes("portfolio.html")){
+if(document.URL.includes("portfolio")){
     document.querySelector("#add-prev-project").addEventListener("click", () =>{
         document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
     })
