@@ -18,47 +18,47 @@
             </div>
             <!-- popup content -->
             <div class="popup-content">
-                <form  id="addPrevProjectForm">
+                <form  id="addPrevProjectForm" action="/addPrevProject" method="post">
                     <div class="form-group row  mt-3">
                         <label for="Title" class="col-sm-4 col-form-label" >Project Title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control"  placeholder="Project Title" id="title" required>
+                            <input type="text" class="form-control"  placeholder="title" id="title" required>
                         </div>    
                     </div>
-                    <textarea class="form-control mt-3" name="projectDiscription" id="description" cols="30" rows="5" placeholder="Project Description and your contribution" required></textarea>             
+                    <textarea class="form-control mt-3" name="description" id="description" cols="30" rows="5" placeholder="Project Description and your contribution" required></textarea>             
                     
-                    <div class="form-group row  mt-3">
+                    <!-- <div class="form-group row  mt-3">
                         <label for="link" class="col-sm-4 col-form-label" >Project link</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="projectLink" placeholder="project website,video, etc..." id="link" required>
+                            <input type="text" class="form-control" name="link" placeholder="project website,video, etc..." id="link" required>
                         </div>    
-                    </div>
+                    </div> -->
                     
                     <div class="form-group row  mt-3">
                         <label for="skills" class="col-sm-4 col-form-label">Skills used</label>
                         <div class="col-sm-8">
-                          <input id="skills" type="text" class="form-control" placeholder="Javascript, css, HTML" required>
+                          <input name="skills" id="skills" type="text" class="form-control" placeholder="Javascript, css, HTML" required>
                         </div>    
                     </div>    
                     <div class="form-group row mt-3">
                         <label for="chooseImg" class="col-sm-4 col-form-label">Add Images</label>
                         <div class="col-sm-8">
-                            <input id="chooseImg" type="file" class="form-control" name='images[]' multiple accept="image/jpeg, image/png" required>
+                            <input id="chooseImg" type="file" class="form-control" name='images' multiple accept="image/jpeg, image/png" required>
                         </div>       
                     </div>
-                    <div class="form-group row mt-3">
+                    <!-- <div class="form-group row mt-3">
                         <label for="completeDate" class="col-sm-4 col-form-label">Date completed</label>
                         <div class="col-sm-8">
                             <input id="completeDate" type="date" class="form-control" required>
                         </div>  
-                    </div>
-                    <div>
-                        <input type="radio" id="choice1" name="type" value="managed" />
-                        <label for="contactChoice1">Managed</label>
+                    </div> -->
+                    <!-- <div>
+                        <input type="radio" id="choice1" name="established" value="0" />
+                        <label for="contactChoice1">Established</label>
                   
                         <input type="radio" id="choice2" name="type" value="collaborated" />
                         <label for="contactChoice2">collaborated</label>
-                      </div>
+                      </div> -->
                     <div class="sure-buttsons-container mt-3">
                         <button class="btn btn-primary btn-lg mb-2" id="addProject">Add</button>
                     </div>

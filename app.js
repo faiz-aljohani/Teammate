@@ -1,11 +1,14 @@
 const express = require('express');
+
 const app = express();
 app.use(express.static('public'))
+
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
 const https = require('https');
 const http = require('http');
-const register = require('./register.js')
+const register = require('./register.js');
+const projects = require('./projects.js');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
@@ -32,7 +35,9 @@ app.get("/settings", (req,res) => {
 app.get("/portfolio", (req,res) => {
   res.render("portfolio",{})
 })
-
+app.post("/addPrevProject", async (req,res) =>{
+  res.render('portfolio.ejs',{ projects: addPrevProject()/* function running mongodb query */, msg: 'The project has been added' })
+})
 
 const requestListener = (req,res)=>{
 
