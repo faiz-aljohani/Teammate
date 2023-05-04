@@ -93,21 +93,21 @@ function passwordValidation() {
     }
   }
 
-  //not ideal
-  function tmpToHomePage() {
+//   //not ideal
+//   function tmpToHomePage() {
 
-    let x = document.getElementById("full-name").value;
-    let y = document.getElementById("password").value;
+//     let x = document.getElementById("full-name").value;
+//     let y = document.getElementById("password").value;
 
-    let z= ( x=="admin" && y=="123456");
-    console.log(z)
+//     let z= ( x=="admin" && y=="123456");
+//     console.log(z)
 
 
-    if(x=="admin" && y=="123456"){
-        window.location.href = ("index.html");
-    }
+//     if(x=="admin" && y=="123456"){
+//         window.location.href = ("index.html");
+//     }
 
-  }
+//   }
 
 // =================== portfolio Page ======================
 if(document.URL.includes("portfolio")){
@@ -132,16 +132,16 @@ if(document.URL.includes("prevProject.html")){
 
 // =================== Login Page ======================
 
-function tmpToHomePage() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+// function tmpToHomePage() {
+//     const email = document.getElementById('email').value;
+//     const password = document.getElementById('password').value;
   
-    if (email === 'admin@admin.com' && password === '123456') {
-      window.location.href = 'index.html';
-    } else {
-      alert('Incorrect email or password');
-    }
-  }
+//     if (email === 'admin@admin.com' && password === '123456') {
+//       window.location.href = 'index.html';
+//     } else {
+//       alert('Incorrect email or password');
+//     }
+//   }
   
   // const loginForm = document.getElementById('login-form');
   // loginForm.addEventListener('submit', (event) => {

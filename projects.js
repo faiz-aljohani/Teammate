@@ -34,9 +34,9 @@ router.get("/portfolio.html", async (req,res) =>{
     }
 })
 
-db.projects.insertOne({
-    title: "Javascript Project",
-    description: "Simple javascript calculator project",
-    skills: ["JS","HTML","CSS"],
-    established: 0
-});
+// db.projects.insertOne({
+//     title: "Javascript Project",
+//     description: "Simple javascript calculator project",
+//     skills: ["JS","HTML","CSS"],
+//     established: 0
+// });

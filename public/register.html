@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style/styles.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Registration Page</title>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="../image/png"
+      sizes="16x16"
+      href="../images/favicon-16x16.png"
+    />
+    <!-- *** -->
+    <!-- <link rel="manifest" href="../images/site.webmanifest" /> -->
+  </head>
+
+  <body class="register-body">
+    <main id="register-main">
+      <aside id="register-aside">
+        <img id="desktop-pic" src="../images/desktop.png" alt="desktop picture" />
+        <img id="Rectangle6" src="../images/Rectangle6.png" alt="Rectangle" />
+        <img id="Rectangle7" src="../images/Rectangle7.png" alt="Rectangle" />
+      </aside>
+
+      <div class="container">
+        <p id="form-header">Create a New Account</p>
+        <form class="my-form" action="/register/new" method="POST" >
+          <div id="form-fields">
+            <label for="full-name">Full Name:</label>
+            <input
+              type="text"
+              id="full-name"
+              name="full-name"
+              minlength="4"
+              maxlength="30"
+              pattern="^[a-zA-Z ]+"
+              required
+            /><br /><br />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required /><br /><br />
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange="passwordValidation()"
+              required
+            /><br /><br />
+            <label for="confirm-password">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="password"
+              onChange="passwordValidation()"
+              required
+            />
+
+            <div id="show-password">
+              <input
+                id="show-password-checkbox"
+                type="checkbox"
+                onclick="showPassword()"
+              />
+              <label id="show-password-label" for="show-password-checkbox"
+                >Show Password</label
+              >
+            </div>
+
+          </div>
+          <br/>
+          <input id="form-register-btn" type="submit" value="Register" onclick="tmpToHomePage()" />
+        </form>
+        <p id="i-have-account">
+          <a id="register-a" href="loginPage.html">
+            Already have an account? <strong>Login</strong></a
+          >
+        </p>
+      </div>
+    </main>
+  </body>
+
+  <script src="../Javascript/index.js"></script>
+</html>

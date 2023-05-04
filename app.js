@@ -7,16 +7,19 @@ const bodyParser = require("body-parser")
 const ejs = require("ejs")
 const https = require('https');
 const http = require('http');
-const register = require('./register.js');
+
+const registerRouter = require('./routes/register');
 const projects = require('./projects.js');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'))
+app.use("/register",registerRouter)
+app.use(express.urlencoded({extended:true}))
 
 const { log } = require('console');
 
-
+//--------------------------------
 
 
 
@@ -39,30 +42,6 @@ app.post("/addPrevProject", async (req,res) =>{
   res.render('portfolio.ejs',{ projects: addPrevProject()/* function running mongodb query */, msg: 'The project has been added' })
 })
 
-const requestListener = (req,res)=>{
-
-    const { method } = req;
-   
-    switch(method) {
-      case 'POST':
-        return handlePostRequest(req, res);
-      default:
-        throw new Error(`Unsupported request method: ${method}`);
-    }
-
-}
-
-const handlePostRequest = (req, res)=>{
-
-    const { pathname } = new URL(req.url);
-   
-    //routing the registering req. from client 
-    if (pathname === '/register') {
-      return register.registerUser(req, res);
-    }
-}
-
-
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');
@@ -70,19 +49,3 @@ app.listen(3000 || process.env.PORT, () => {
 
 
 //-------------------------------------------------------
-
-// const server = http.createServer(requestListener)
-// const host = 'localhost';
-// const port = 8000;
-
-// server.listen(port, host, () => {
-// const { address, port } = server.address();
-// console.log(`Server is listening on: http://${address}:${port}`);
-// })
-
-
-
-
-// console.log('here')
-// register.registerUser('1','0')
-
