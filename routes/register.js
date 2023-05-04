@@ -35,7 +35,10 @@ let registerForm ;
 
 router.get('/', (req,res)=>{
     console.log('GET req. in register route')
+    res.render("RegisterPage",{})
+
 })
+
 router.post('/new', (req,res)=>{
 
     console.log('>req. for registering a new user')
