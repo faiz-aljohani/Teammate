@@ -35,6 +35,12 @@ app.get("/settings", (req,res) => {
   res.render("settings",{})
 })
 
+app.get("/login", (req,res) => {
+  res.render("loginPage",{})
+})
+
+
+
 app.get("/portfolio", (req,res) => {
   res.render("portfolio",{})
 })
