@@ -4,11 +4,12 @@ const router = express.Router()
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 module.exports = router;
+let registerForm ; 
 
 const uri = "mongodb+srv://shalahe30:Tr123456t@teammatedb.oxmk3de.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const DB = new MongoClient(uri, {
+const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -19,20 +20,34 @@ const DB = new MongoClient(uri, {
 async function runDB() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await DB.connect();
+    await client.connect();
     // Send a ping to confirm a successful connection 
-    await DB.db("admin").command({ ping: 1 });
+    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+
+    const database = client.db("Teammate");
+    const usersCollection = database.collection("users");
+
+    // create a document to insert
+    const doc = {
+      user: "Test4",
+      pwd: "123456",
+    }
+
+    const result = await usersCollection.insertOne(doc);
+    console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
+
+
   } finally {
     // Ensures that the client will close when you finish/error
-    await DB.close();
+    await client.close();
   }
 }
 
-runDB().catch(console.dir);
 
-let registerForm ; 
-
+//----------------------------------Client Req.
 router.get('/', (req,res)=>{
     console.log('GET req. in register route')
     res.render("RegisterPage",{})
@@ -49,18 +64,15 @@ router.post('/new', (req,res)=>{
         res.statusMessage = "Something wrong with the (registerForm)"
         res.status(500).end()
     }
+
+    //know assign user & pwd
     //valid input NOW create newUser in DB
-    DBres = DB.createUser({
-        user: "Test100",
-        pwd: "123456",
-        roles: [
-            "dbAdminAnyDatabase"
-        ]
-    })
-    console.log(DBres)
+    runDB().catch(console.dir);
+
+
+
     res.send("Ok");
     
-    // res.render()
 })
 
 //----------------------------------------Func.
