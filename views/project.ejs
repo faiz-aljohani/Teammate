@@ -7,21 +7,21 @@
         <div class="project-left-contaner">
             <div class="p-text-container">
                 <h1>Title</h1>
-                <p class="p-text">Project Title</p>
+                <p class="p-text"><%= project.title %></p>
             </div>
     
             <div class="p-text-container mt-3 mb-3">
                 <h1>discription</h1>
-                <p class="p-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="p-text"><%= project.description %></p>
 
             </div>
     
             <div class="p-text-container">
                 <h1>Skills Needed</h1>
                 <ul class="p-text">
-                    <li>HTML</li>
-                    <li>Java Script</li>
-                    <li>CSS</li>
+                    <% project.skills.forEach(skill => { %>
+                    <li><%= skill %></li>
+                    <% }) %>
                 </ul>
 
 
@@ -30,20 +30,24 @@
 
         <div class="project-right-contaner">
             <div class="project-images">
-                <!-- <img src="images/1.png" alt=""> -->
                         <!-- Carousel -->
 
                 <div id="carousel" class="carousel carousel-project slide">
                     <div class="carousel-inner">
+                    
+
                     <div class="carousel-item active">
-                        <img src="images/1.png" class="d-block w-100" alt="...">
+                        <img src="../<%= project.img.split(",")[0] %>" class="d-block w-100" alt="...">
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/2.webp" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/3.jpeg" class="d-block w-100" alt="...">
-                    </div>
+
+                    <% for(let i = 1; i < project.img.split(",").length; i++){ %>
+
+                        <div class="carousel-item">
+                            <img src="../<%= project.img.split(",")[0] %>" class="d-block w-100" alt="...">
+                        </div>
+                        <% } %>
+
+
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,7 +115,7 @@
     <!-- popup window for Apply  -->
     <div class="popupWindow hidePopupWindow" id="applicationWindow">
         <div class="popup-message">
-            <img src="images/apply.png" alt="Application Icon">
+            <!-- <img src="images/apply.png" alt="Application Icon"> -->
             <h3>Application Form</h3>
         </div>
         <div class="popup-content">
@@ -125,7 +129,7 @@
     <!-- Accept an Application popup  -->
     <div class="popupWindow hidePopupWindow" id="acceptPopupWindow">
         <div class="popup-message">
-            <img class="mb-2" src="images/accept.png">
+            <!-- <img class="mb-2" src="images/accept.png"> -->
             <h3>Are You Sure?</h3>
         </div>
         <div class="sure-buttons-container">
@@ -137,7 +141,7 @@
     <!-- Are you sure popup  -->
     <div class="popupWindow hidePopupWindow" id="removePopupWindow">
         <div class="popup-message">
-            <img class="mb-2" src="images/remove.png">
+            <img class="mb-2" src="../images/remove.png">
             <h3>Are You Sure?</h3>
         </div>
         <div class="sure-buttons-container">
@@ -146,4 +150,4 @@
         </div>
     </div>
 
-<%- include("partials/footer") -%>
+    <%- include("partials/footer") -%>

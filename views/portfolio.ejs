@@ -52,13 +52,10 @@
                             <input id="completeDate" type="date" class="form-control" required>
                         </div>  
                     </div> -->
-                    <!-- <div>
-                        <input type="radio" id="choice1" name="established" value="0" />
-                        <label for="contactChoice1">Established</label>
-                  
-                        <input type="radio" id="choice2" name="type" value="collaborated" />
-                        <label for="contactChoice2">collaborated</label>
-                      </div> -->
+                    <div>
+                        <label for="contactChoice1">completed?</label>
+                        <input type="checbox" name="completed" value="true" />
+                      </div>
                     <div class="sure-buttsons-container mt-3">
                         <button class="btn btn-primary btn-lg mb-2" id="addProject">Add</button>
                     </div>
@@ -67,50 +64,32 @@
             </div>
         </div>
         <!-- previous projects will be below -->
-        <h1 class="text-center">projects managed</h1>
-        <div class="row">
-            <div class="btn card col col-2 m-3 mt-5 mb-1">
-                <a class="card-btn" href="prevProject.html">         
-                    <div class="img-container">
-                        <img src="images/laptop_12.jpg" class="card-img-top" alt="...">
-                    </div>        
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">web dev project</h5>
-                        <p class="card-text">e-commerce website for selling clothes and accesories online</p>
+        <h1 class="text-center">Projects Portfolio</h1>
+        
+            <% for(i in projects){ %>
+                <div class="row">
+                    <div class="btn card col col-2 m-3 mt-5 mb-1">       
+                            <div class="img-container">
+                                <img src="../<%= projects[i].img.split(",")[0]%>" class="card-img-top" alt="...">
+                            </div>        
+                            <div class="card-body">
+                                <h5 class="card-title mb-3"><%= projects[i].title %> </h5>
+                                <p class="card-text"><%= projects[i].description %></p>
+                            </div>
+
+                            <div class="tags">
+                                
+                                <% for (j in projects[i].skills ){ %>
+                                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
+                                <%}%>
+                                <!-- <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
+                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a> -->
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="tags">
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#JS</span></a>
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-        <hr class="divider">
-        <h1 class="text-center">projects collaborated on</h1>
-        <div id="collaborated">
-
-        </div>
-        <div class="row">
-            <div class="btn card col col-2 m-3 mt-5 mb-1">
-                <a class="card-btn" href="prevProject.html">         
-                <div class="img-container">
-                    <img src="images/4.png" class="card-img-top" alt="...">
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-
-                <div class="tags">
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#JS</span></a>
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
-                </div>
-            </a>
-            </div>
-        </div>
+            <%}%>
+        
     </main>
 <%- include("partials/footer") -%>
