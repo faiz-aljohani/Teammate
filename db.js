@@ -4,12 +4,14 @@ const connectionParms = {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
-const uri = 'mongodb+srv://emad:123@teammatedb.oxmk3de.mongodb.net/Teammate?retryWrites=true&w=majority' 
-mongoose.connect(uri, connectionParms)
+const connect = ()=>{
+ mongoose.connect('mongodb+srv://emad:123@teammatedb.oxmk3de.mongodb.net/Teammate?retryWrites=true&w=majority', connectionParms)
 .then(()=>{
     console.log("Connected Successfully");
 })
 .catch((err) => {
     console.log(err);
 })
+}
 
+module.exports = connect;

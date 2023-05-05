@@ -70,7 +70,7 @@ if(document.URL.includes("my-projects")){
 // =================== Register Page ======================
 
 function passwordValidation() {
-    const password = document.querySelector('input[name=password]');
+    const password = document.getElementById('password');
     const confirm = document.getElementById('confirm-password');
     
     if (confirm.value === password.value) {

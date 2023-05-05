@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style/styles.css" />
+    <link rel="stylesheet" href="../style/styles.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -18,28 +18,29 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="images/favicon-32x32.png"
+      href="../images/favicon-32x32.png"
     />
     <link
       rel="icon"
-      type="image/png"
+      type="../image/png"
       sizes="16x16"
-      href="images/favicon-16x16.png"
+      href="../images/favicon-16x16.png"
     />
-    <link rel="manifest" href="/images/site.webmanifest" />
+    <!-- *** -->
+    <!-- <link rel="manifest" href="../images/site.webmanifest" /> -->
   </head>
 
   <body class="register-body">
     <main id="register-main">
       <aside id="register-aside">
-        <img id="desktop-pic" src="/images/desktop.png" alt="desktop picture" />
-        <img id="Rectangle6" src="/images/Rectangle6.png" alt="Rectangle" />
-        <img id="Rectangle7" src="/images/Rectangle7.png" alt="Rectangle" />
+        <img id="desktop-pic" src="../images/desktop.png" alt="desktop picture" />
+        <img id="Rectangle6" src="../images/Rectangle6.png" alt="Rectangle" />
+        <img id="Rectangle7" src="../images/Rectangle7.png" alt="Rectangle" />
       </aside>
 
       <div class="container">
         <p id="form-header">Create a New Account</p>
-        <form class="my-form" >
+        <form class="my-form" action="/register/new" method="POST" >
           <div id="form-fields">
             <label for="full-name">Full Name:</label>
             <input
@@ -65,9 +66,9 @@
             <input
               type="password"
               id="confirm-password"
-              name="password"
+              name="confirm-password"
               onChange="passwordValidation()"
-              required
+              required 
             />
 
             <div id="show-password">
@@ -94,5 +95,5 @@
     </main>
   </body>
 
-  <script src="Javascript/index.js"></script>
+  <script src="../Javascript/index.js"></script>
 </html>

@@ -9,12 +9,15 @@ const https = require('https');
 const http = require('http');
 
 const registerRouter = require('./routes/register');
+const loginRouter = require('./routes/login');
+
 const portfolioRouter = require('./routes/portfolio');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'))
-app.use("/register",registerRouter)
+
+
 app.use(express.urlencoded({extended:true}))
 
 const { log } = require('console');
@@ -41,6 +44,9 @@ app.get("/login", (req,res) => {
 
 app.use("/portfolio",portfolioRouter)
 
+app.use("/register",registerRouter)
+
+app.use("/login",loginRouter)
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');
