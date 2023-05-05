@@ -4,18 +4,23 @@ const router = express.Router()
 module.exports = router;
 
 module.exports = router;
-router.get("/", async (req,res) => {
-    let projectsList2;
+
+router.get("/:id", async (req,res) => {
+
+
+    let project;
     const query = {
-        established: false,
-        // completed: false
+        _id: req.params.id,
     }
+    
     await projects.find(query)
         .then(function(projectsList) {
-            projectsList2 = projectsList;
+            project = projectsList[0];
+            console.log(projectsList);
         })
         .catch(function (err) {
             console.log(err);
     });
-    res.render("index",{projectsList: projectsList2})
-})
+
+    res.render("project", {project: project});
+})    

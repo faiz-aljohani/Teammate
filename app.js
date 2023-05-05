@@ -43,7 +43,7 @@ app.use("/portfolio",portfolioRouter)
 app.use("/register",registerRouter)
 app.use("/login",loginRouter)
 app.use("/my-projects",myProjectsRouter)
-app.use("/projects/:id",projectRouter)
+app.use("/projects",projectRouter)
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');

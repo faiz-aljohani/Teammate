@@ -60,7 +60,9 @@ router.post("/addProject", upload.array("images") , async (req,res) => {
         img: imgs,
         skills: skills,
         teammates: [],
-        established: false
+        established: false,
+        completed: false,
+        applications: []
       })
     
       newProject.save()

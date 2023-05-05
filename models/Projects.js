@@ -1,5 +1,16 @@
 const mongoose = require("mongoose");
 
+const application = new mongoose.Schema({
+    userID:  {
+        type: String,
+        required: true,
+    },
+    message:  {
+        type: String,
+        required: true,
+    }
+})
+
 const ProjectSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -16,7 +27,8 @@ const ProjectSchema = new mongoose.Schema({
         ref: "users"
     }], // should define UserSchema
     established: Boolean,
-    completed: Boolean
+    completed: Boolean,  
+    applications: [application]
 })
 
 const ProjectModel = mongoose.model("projects", ProjectSchema);
