@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
 
@@ -59,8 +60,7 @@ router.post("/addProject", upload.array("images") , async (req,res) => {
         img: imgs,
         skills: skills,
         teammates: [],
-        established: false,
-        completed: false //if true it will be in the portfolio page
+        established: false
       })
     
       newProject.save()

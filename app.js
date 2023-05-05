@@ -13,6 +13,7 @@ const loginRouter = require('./routes/login');
 const myProjectsRouter = require('./routes/my_projects');
 const portfolioRouter = require('./routes/portfolio');
 const homeRouter = require('./routes/home');
+const projectRouter = require('./routes/project');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
@@ -42,6 +43,7 @@ app.use("/portfolio",portfolioRouter)
 app.use("/register",registerRouter)
 app.use("/login",loginRouter)
 app.use("/my-projects",myProjectsRouter)
+app.use("/projects/:id",projectRouter)
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');
