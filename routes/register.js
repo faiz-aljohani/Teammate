@@ -4,7 +4,7 @@ const router = express.Router()
 const { error } = require('console');
 
 const database = require("../db");
-const User = require("../User");
+const User = require("../models/User");
 
 //To connect
 database.connect();
