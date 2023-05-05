@@ -5,14 +5,11 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Description: {
+    description: {
         type: String,
         required: true,
     },
-    img: {
-        data: Buffer,
-        contentType: String
-    },
+    img: [String],
     skills: [String],
     teammates:[{
         type: mongoose.Schema.Types.ObjectId,
@@ -23,4 +20,4 @@ const ProjectSchema = new mongoose.Schema({
 
 const ProjectModel = mongoose.model("projects", ProjectSchema);
 
-module.exports = { ProjectModel };
+module.exports = ProjectModel;

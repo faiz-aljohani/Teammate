@@ -29,19 +29,19 @@
             </div>    
 
             <div class="popup-content">
-                <form action="">
-                    <input type="text" class="form-control mt-3" placeholder="Project Title" required>
-                    <textarea class="form-control mt-3" name="projectDiscription" id="" cols="30" rows="5" placeholder="Project Description" required></textarea>             
+                <form action="my-projects/addProject" method="post" enctype="multipart/form-data">
+                    <input type="text" class="form-control mt-3" name="title" placeholder="Project Title" required>
+                    <textarea class="form-control mt-3" name="projectDescription" id="" cols="30" rows="5" placeholder="Project Description" required></textarea>             
                     <div class="form-group row  mt-3">
                         <label for="skills" class="col-sm-4 col-form-label">Skills Needed</label>
                         <div class="col-sm-8">
-                          <input id="skills" type="text" class="form-control" placeholder="Javascript, css, HTML" required>
+                          <input id="skills" type="text" class="form-control" name="skills" placeholder="Javascript, css, HTML" required>
                         </div>    
                     </div>    
                     <div class="form-group row mt-3">
                         <label for="chooseImg" class="col-sm-4 col-form-label">Add Images</label>
                         <div class="col-sm-8">
-                            <input id="chooseImg" type="file" class="form-control" name='images[]' multiple accept="image/jpeg, image/png" required>
+                            <input id="chooseImg" type="file" class="form-control" name='images' multiple accept="image/jpeg, image/png" required>
                         </div>       
                     </div>       
                     <div class="sure-buttsons-container mt-3">

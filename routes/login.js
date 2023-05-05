@@ -3,10 +3,10 @@ const express = require('express')
 const router = express.Router()
 const { error } = require('console');
 
-const connect = require("../db");
+const database = require("../db");
 const User = require("../models/User");
 
-connect();
+database.connect();
 module.exports = router;
 let loginForm ; 
 
