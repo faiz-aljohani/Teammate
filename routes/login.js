@@ -1,25 +1,27 @@
 const http  =  require('http');
 const express = require('express')
 const router = express.Router()
+
 const { error } = require('console');
+const database = require("../db");
+const User = require("../models/User");
 
-const connect = require("../db");
-const User = require("../User");
-
-connect();
+// database.connect();
 module.exports = router;
 let loginForm ; 
-
 
 //----------------------------------Client Req.
 router.get('/', (req,res)=>{
     console.log('GET req. in login route')
-    res.render("loginPage",{})
+    console.log("is active: " + isSessionActive(req))
+
+    // res.render("loginPage",{})
 })
 
 router.post('/logging', async (req,res)=>{
 
     console.log('>> req. for login a user')
+    console.log("is active: " + isSessionActive(req))
 
     // let email = req.params.email 
 
@@ -28,13 +30,17 @@ router.post('/logging', async (req,res)=>{
     //valid input NOW create newUser in DB
     try{
 
+      //To connect
+      await database.connect();
 
-      loginUser(loginForm);
+      const userID = await loginUser(loginForm);
+      
+      if(!isSessionActive(req)){
+        await createSession(req,res,userID);
+      }
 
-      //** 
-      console.log(">>logging sccess")
+      console.log(">>login success")
       res.redirect("/")
-
       }
 
     catch (e){
@@ -42,8 +48,11 @@ router.post('/logging', async (req,res)=>{
       res.statusMessage = "Something wrong with the (loginForm)"
       res.status(500).end()
     }    
+    finally{
+      // To disconnect
+      // database.disconnect();
+    }
 })
-
 
 //----------------------------------------Func.
 
@@ -52,15 +61,44 @@ const loginUser = async (loginForm)=>{
   const email = loginForm['email'];
   const pwd = loginForm["password"]
 
-  //req.params.id //same name we call it 
-  // ----------------------------
   // try to create new user
   const loggingUser = await User.where("email").equals(email).where('pwd').equals(pwd)
 
-  if(loggingUser.length == 0) throw new Error("email OR passward is npt correct")
+  if(loggingUser.length == 0) throw new Error("email OR passward is not correct")
   
-  //log the result
+  //log the result----------
+  // console.log(loggingUser)
+  //------------------------
+
+  const userID  = loggingUser[0]['_id'].toString();
+  return userID;
 
 }
 
+const createSession = async (req,res,userID)=>{
+
+  console.log('>> start createSession()')
+  
+  //log s/ vars----------------
+  // const reqUserID  = await req.session.userID;
+  // const UserID = userID;
+  // console.log(reqUserID)
+   //  ^ if the session still active this will have the userID if not it will be undifend 
+  //  console.log(UserID)
+  // console.log(req)
+  //-------------------------
+
+  req.session.userID = userID
+  req.session.save();
+
+
+  //-------------------------
+  //to log the result V
+  // console.log(req.session.userID)
+  // >> { userID: '645423108f811aee90ecf429' }
+  //-------------------------
+}
+isSessionActive = (req)=>{
+  return typeof req.session.userID === "string";
+}
 

@@ -7,6 +7,11 @@ const bodyParser = require("body-parser")
 const ejs = require("ejs")
 const https = require('https');
 const http = require('http');
+const MongoStore = require("connect-mongo");
+const session = require("express-session");
+const database = require("./db");
+
+
 
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
@@ -14,11 +19,25 @@ const loginRouter = require('./routes/login');
 const portfolioRouter = require('./routes/portfolio');
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded());
+// app.use(bodyParser.urlencoded());
 app.use(express.static('public'))
 
 
 app.use(express.urlencoded({extended:true}))
+
+app.use(session({
+  secret: 'on4xm@k3defa29mo%al',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'strict',
+    maxAge: null
+  },
+  store: MongoStore.create({ 
+    mongoUrl: 'mongodb+srv://emad:123@teammatedb.oxmk3de.mongodb.net/Teammate?retryWrites=true&w=majority',
+    autoRemove: 'native' 
+})
+}))
 
 const { log } = require('console');
 
@@ -47,6 +66,8 @@ app.use("/portfolio",portfolioRouter)
 app.use("/register",registerRouter)
 
 app.use("/login",loginRouter)
+
+
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');

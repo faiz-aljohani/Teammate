@@ -4,13 +4,7 @@ const router = express.Router()
 const { error } = require('console');
 
 const database = require("../db");
-const User = require("../User");
-
-//To connect
-database.connect();
-
-// To disconnect
-// database.disconnect();
+const User = require("../models/User");
 
 module.exports = router;
 let registerForm ; 
@@ -30,13 +24,16 @@ router.post('/new', async (req,res)=>{
     //valid input NOW create newUser in DB
     try{
 
+      //To connect
+      database.connect();
+
       const existsBefore = await existsBeforeInDB(registerForm);
       if(existsBefore)throw error("same user exist in DB");
 
       registerNewUser(registerForm);
 
       //** 
-      res.redirect("/")
+      res.redirect("/login")
 
       }
 
@@ -44,7 +41,11 @@ router.post('/new', async (req,res)=>{
       console.log("error at regiater route POST /new: ");
       res.statusMessage = "Something wrong with the (registerForm)"
       res.status(500).end()
-    }    
+    }
+    finally{      
+      // To disconnect
+      database.disconnect();
+    }   
 })
 
 
