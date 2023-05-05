@@ -15,14 +15,10 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname))
     },
 })
-
 const upload = multer({storage: storage});
-
 const database = require("../db.js");
 const project = require("../models/Projects.js");
 const router = express.Router()
-
-
 
 module.exports = router;
 database.connect();
