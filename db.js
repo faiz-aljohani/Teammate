@@ -7,7 +7,7 @@ const connectionParms = {
 
 // To connect for the database
 exports.connect = ()=>{
- mongoose.connect('mongodb+srv://emad:123@teammatedb.oxmk3de.mongodb.net/Teammate?retryWrites=true&w=majority', connectionParms)
+ mongoose.connect('mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/Teammate?retryWrites=true&w=majority', connectionParms)
 .then(()=>{
     console.log("Connected Successfully");
 })

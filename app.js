@@ -22,8 +22,8 @@ app.use(express.urlencoded({extended:true}))
 
 const { log } = require('console');
 
+const database = require('./db');
 //--------------------------------
-
 
 
 app.get("/", (req,res) => {
@@ -50,6 +50,7 @@ app.use("/login",loginRouter)
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');
+
 })
 
 
