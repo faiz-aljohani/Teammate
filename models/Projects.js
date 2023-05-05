@@ -15,7 +15,8 @@ const ProjectSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
     }], // should define UserSchema
-    established: Boolean
+    established: Boolean,
+    completed: Boolean
 })
 
 const ProjectModel = mongoose.model("projects", ProjectSchema);
