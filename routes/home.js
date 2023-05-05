@@ -9,25 +9,20 @@ module.exports = router;
 
 module.exports = router;
 
-router.get("/", (req,res) => {
-  console.log('GET req. in Home route') 
-  aa();
-//   console.log(projects.find());
-  res.render("index",{})
+router.get("/", async (req,res) => {
+
+    let projectsList2;
+    await projects.find({})
+        .then(function(projectsList) {
+            projectsList2 = projectsList;
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+    res.render("index",{projectsList: projectsList2})
+
+
 })
 
-const aa = () => {
-    projects.find({})
-    .then(function(persons) {
-        // console.log(persons);
-        persons.forEach((person) => {
-            console.log(person);
-        })
-        
-        })
-    .catch(function (err) {
-        console.log(err);
-});
-}
 
     

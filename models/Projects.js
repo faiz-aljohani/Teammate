@@ -9,7 +9,7 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    img: [String],
+    img: String,
     skills: [String],
     teammates:[{
         type: mongoose.Schema.Types.ObjectId,
