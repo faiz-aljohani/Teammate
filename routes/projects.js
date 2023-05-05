@@ -1,7 +1,43 @@
-const mongoose =  require("mongoose");
+const database = require("../db.js");
+const project = require("../models/Projects.js");
 
-mongoose.connect("mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/Teammate",{useNewUrlParser: true})
-const ProjectModel = require("../models/Projects").ProjectModel;
+database.connect();
+
+const p = project.create({
+    title: "First Project",
+    Description: "This is the first project",
+    skills: ["JS", "CSS", "HTML"],
+    teammates:[],
+    established: false
+  })
+
+  p.save();
+
+database.disconnect();
+
+//   title: {
+//     type: String,
+//     required: true,
+// },
+// Description: {
+//     type: String,
+//     required: true,
+// },
+// // img: {
+// //     data: Buffer,
+// //     contentType: String
+// // },
+// skills: [String],
+// teammates:[{
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "users"
+// }], // should define UserSchema
+// established: Boolean
+
+
+
+// mongoose.connect("mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/Teammate",{useNewUrlParser: true})
+// const ProjectModel = require("../models/Projects").ProjectModel;
 
 // const calcProject = new ProjectModel({
 //     title: "Calculator project",
