@@ -4,7 +4,9 @@ const connectionParms = {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
-const connect = ()=>{
+
+// To connect for the database
+exports.connect = ()=>{
  mongoose.connect('mongodb+srv://emad:123@teammatedb.oxmk3de.mongodb.net/Teammate?retryWrites=true&w=majority', connectionParms)
 .then(()=>{
     console.log("Connected Successfully");
@@ -14,4 +16,11 @@ const connect = ()=>{
 })
 }
 
-module.exports = connect;
+// To disconnect for the database
+exports.disconnect = ()=>{
+    mongoose.disconnect().then(()=>{
+        console.log("disconnected Successfully");
+    }).catch((err) => {
+        console.log(err);
+    })
+}
