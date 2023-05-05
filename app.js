@@ -28,9 +28,6 @@ const database = require('./db');
 //--------------------------------
 
 
-// app.get("/", (req,res) => {
-//   res.render("index",{})
-// })
 
 app.get("/settings", (req,res) => {
   res.render("settings",{})
