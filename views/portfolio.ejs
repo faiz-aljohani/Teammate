@@ -65,32 +65,31 @@
         </div>
         <!-- previous projects will be below -->
         <h1 class="text-center">Projects Portfolio</h1>
-        <div class="row">
+        
             <% for(i in projects){ %>
-            
-                <div class="btn card col col-2 m-3 mt-5 mb-1">
-                    <a class="card-btn" href="prevProject.html">         
-                        <div class="img-container">
-                            <img src="<%= projects[i].img[0] %>" class="card-img-top" alt="...">
-                        </div>        
-                        <div class="card-body">
-                            <h5 class="card-title mb-3"><%= projects[i].title %> </h5>
-                            <p class="card-text"><%= projects[i].description %></p>
-                        </div>
+                <div class="row">
+                    <div class="btn card col col-2 m-3 mt-5 mb-1">       
+                            <div class="img-container">
+                                <img src="../<%= projects[i].img.split(",")[0]%>" class="card-img-top" alt="...">
+                            </div>        
+                            <div class="card-body">
+                                <h5 class="card-title mb-3"><%= projects[i].title %> </h5>
+                                <p class="card-text"><%= projects[i].description %></p>
+                            </div>
 
-                        <div class="tags">
-                            
-                            <% for (j in projects[i].skills ){ %>
-                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
-                            <%}%>
-                            <!-- <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a> -->
-                        </div>
-                    </a>
+                            <div class="tags">
+                                
+                                <% for (j in projects[i].skills ){ %>
+                                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
+                                <%}%>
+                                <!-- <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
+                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a> -->
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
-
-            
             <%}%>
-        </div>
+        
     </main>
 <%- include("partials/footer") -%>

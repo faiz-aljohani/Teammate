@@ -60,7 +60,7 @@
                 <div class="btn card col col-2 m-3 mt-5 mb-1">
                     <a class="card-btn" href="project.html/<%= projects[i]._id.toString() %>">         
                         <div class="img-container">
-                            <img src="<% projects[i] %>" class="card-img-top" alt="...">
+                            <img src="../<%= projects[i].img.split(",")[0]%>" class="card-img-top" alt="...">
                         </div>        
                         <div class="card-body">
                             <h5 class="card-title mb-3">projects</h5>

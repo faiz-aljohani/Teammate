@@ -26,7 +26,7 @@ database.connect();
 router.get('/', async (req,res)=>{
     console.log('GET req. in my_projects route')
     await database.connect();
-    const Result = await ProjectModel.find({/* users: USER ID HERE */})//TODO: change this from finding all projects to only getting projects with the desired user
+    const Result = await project.find({/* users: USER ID HERE */})//TODO: change this from finding all projects to only getting projects with the desired user
     res.render("my_projects",{projects: Result})
 })
 
