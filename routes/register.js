@@ -14,8 +14,7 @@ let registerForm ;
 //----------------------------------Client Req.
 router.get('/', (req,res)=>{
     console.log('GET req. in register route')
-    res.render("",{})
-
+    res.render("RegisterPage.ejs",{})
 })
 
 router.post('/new', async (req,res)=>{

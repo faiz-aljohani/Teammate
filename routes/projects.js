@@ -1,54 +1,55 @@
-// const mongoose =  require("mongoose");
+const mongoose =  require("mongoose");
 
-// mongoose.connect("mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/test",{useNewUrlParser: true})
+mongoose.connect("mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/test",{useNewUrlParser: true})
 
-// const ProjectSchema = new mongoose.Schema({
-//     title: {
-//         type: String,
-//         required: true,
-//     },
-//     Description: {
-//         type: String,
-//         required: true,
-//     },
-//     img: {
-//         data: Buffer,
-//         contentType: String
-//     },
-//     skills: [String],
-//     // teammates:[userSchema], // should define UserSchema
-//     established: Boolean
-// })
 
-// const ProjectModel = mongoose.model("projects",ProjectSchema);
+const ProjectSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    Description: {
+        type: String,
+        required: true,
+    },
+    img: {
+        data: Buffer,
+        contentType: String
+    },
+    skills: [String],
+    // teammates:[userSchema], // should define UserSchema
+    established: Boolean
+})
 
-// const calcProject = new ProjectModel({
-//     title: "Calculator project",
-//     Description: "calculator using javascript css and html",
-//     skills: ["JS","CSS","HTML"],
-//     Established: 0
-// })
-// calcProject.save();
-// // mongoose.disconnect();
+const ProjectModel = mongoose.model("projects",ProjectSchema);
 
-// // const express = require('express');
-// // const http  =  require('http');
-// // const { MongoClient } = require('mongodb');
-// // const client = new MongoClient('mongodb://127.0.0.1:27017/');
+const calcProject = new ProjectModel({
+    title: "Calculator project",
+    Description: "calculator using javascript css and html",
+    skills: ["JS","CSS","HTML"],
+    Established: 0
+})
+calcProject.save();
+// mongoose.disconnect();
 
-// // const router = express.Router();
+// const express = require('express');
+// const http  =  require('http');
+// const { MongoClient } = require('mongodb');
+// const client = new MongoClient('mongodb://127.0.0.1:27017/');
 
-// // router.get("/portfolio.html", async (req,res) =>{
-// //     try{
+// const router = express.Router();
+
+// router.get("/portfolio.html", async (req,res) =>{
+//     try{
         
-// //     }catch(err){
-// //         res.json(err);
-// //     }
-// // })
+//     }catch(err){
+//         res.json(err);
+//     }
+// })
 
-// // db.projects.insertOne({
-// //     title: "Javascript Project",
-// //     description: "Simple javascript calculator project",
-// //     skills: ["JS","HTML","CSS"],
-// //     established: 0
-// // });
+// db.projects.insertOne({
+//     title: "Javascript Project",
+//     description: "Simple javascript calculator project",
+//     skills: ["JS","HTML","CSS"],
+//     established: 0
+// });
