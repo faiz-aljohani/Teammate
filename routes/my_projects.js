@@ -23,9 +23,11 @@ const router = express.Router()
 module.exports = router;
 database.connect();
 
-router.get('/', (req,res)=>{
+router.get('/', async (req,res)=>{
     console.log('GET req. in my_projects route')
-    res.render("my_projects",{})
+    await database.connect();
+    const Result = await ProjectModel.find({/* users: USER ID HERE */})//TODO: change this from finding all projects to only getting projects with the desired user
+    res.render("my_projects",{projects: Result})
 })
 
 router.post("/addProject", upload.array("images") , async (req,res) => {
@@ -57,7 +59,8 @@ router.post("/addProject", upload.array("images") , async (req,res) => {
         img: imgs,
         skills: skills,
         teammates: [],
-        established: false
+        established: false,
+        completed: false //if true it will be in the portfolio page
       })
     
       newProject.save()
