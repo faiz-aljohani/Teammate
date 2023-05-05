@@ -1,36 +1,28 @@
 const mongoose =  require("mongoose");
 
-mongoose.connect("mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/test",{useNewUrlParser: true})
+mongoose.connect("mongodb+srv://faiz:Tr123456t@teammatedb.oxmk3de.mongodb.net/Teammate",{useNewUrlParser: true})
+const ProjectModel = require("../models/Projects").ProjectModel;
 
-const ProjectSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    Description: {
-        type: String,
-        required: true,
-    },
-    img: {
-        data: Buffer,
-        contentType: String
-    },
-    skills: [String],
-    // teammates:[userSchema], // should define UserSchema
-    established: Boolean
-})
-
-const ProjectModel = mongoose.model("projects",ProjectSchema);
-
-const calcProject = new ProjectModel({
-    title: "Calculator project",
-    Description: "calculator using javascript css and html",
-    skills: ["JS","CSS","HTML"],
-    Established: 0
-})
-calcProject.save();
-mongoose.disconnect();
-
+// const calcProject = new ProjectModel({
+//     title: "Calculator project",
+//     Description: "calculator using javascript css and html",
+//     skills: ["JS","CSS","HTML"],
+//     Established: 0
+// })
+// calcProject.save();
+// mongoose.disconnect();
+// ProjectModel.find({title: "Calculator project"}).then( (data) =>{
+//     data = data[0]
+//     console.log(data.title)
+//     console.log(data)
+//     console.log("-------------------------")
+//     console.log(data.skills[0])
+// })
+// .catch((err)=>{
+//     console.log(err)
+//     console.log(err)
+// });
+// console.log("code finished running")
 // const express = require('express');
 // const http  =  require('http');
 // const { MongoClient } = require('mongodb');

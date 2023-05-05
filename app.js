@@ -9,7 +9,7 @@ const https = require('https');
 const http = require('http');
 
 const registerRouter = require('./routes/register');
-const projects = require('./projects.js');
+const portfolioRouter = require('./routes/portfolio');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
@@ -39,14 +39,7 @@ app.get("/login", (req,res) => {
   res.render("loginPage",{})
 })
 
-
-
-app.get("/portfolio", (req,res) => {
-  res.render("portfolio",{})
-})
-app.post("/addPrevProject", async (req,res) =>{
-  res.render('portfolio.ejs',{ projects: addPrevProject()/* function running mongodb query */, msg: 'The project has been added' })
-})
+app.use("/portfolio",portfolioRouter)
 
 
 app.listen(3000 || process.env.PORT, () => {
