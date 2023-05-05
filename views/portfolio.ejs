@@ -68,12 +68,13 @@
         </div>
         <!-- previous projects will be below -->
         <h1 class="text-center">Projects Portfolio</h1>
-        <% for(i in projects){ %>
-            <div class="row">
+        <div class="row">
+            <% for(i in projects){ %>
+            
                 <div class="btn card col col-2 m-3 mt-5 mb-1">
                     <a class="card-btn" href="prevProject.html">         
                         <div class="img-container">
-                            <img src="images/laptop_12.jpg" class="card-img-top" alt="...">
+                            <img src="<%= projects[i].img[0] %>" class="card-img-top" alt="...">
                         </div>        
                         <div class="card-body">
                             <h5 class="card-title mb-3"><%= projects[i].title %> </h5>
@@ -91,7 +92,8 @@
                     </a>
                 </div>
 
-            </div>
-        <%}%>
+            
+            <%}%>
+        </div>
     </main>
 <%- include("partials/footer") -%>
