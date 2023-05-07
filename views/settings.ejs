@@ -1,25 +1,12 @@
 <%- include("partials/header") -%>
 
-    <% if(flag == 1) { %>
-        <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
-            <strong>Saved!</strong> You have changed your information successfully.
+    <% if(alert != null) {%>
+        <div class="alert alert-<%= alert.type %> alert-dismissible fade show m-3" role="alert">
+            <strong><%= alert.title %></strong> <%= alert.message %>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <% } %>
 
-    <% if(flag == 2) { %>
-        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
-            <strong>Error!</strong> Something Went Wrong, Please Try Again Later.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      <% } %>
-
-      <% if(flag == 3) { %>
-        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
-            <strong>Error!</strong> The Email is used before.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      <% } %>
 
     <form class="settings-container form-signin" action="/settings" method="POST">
         <div class="settings-header">

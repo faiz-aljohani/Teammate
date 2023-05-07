@@ -23,7 +23,7 @@ router.get("/", async (req,res) => {
         res.render("settings", {
             name: fullName,
             email: email,
-            flag: 0 // Flag 0 means no alerts
+            alert: null
         })
     }
 })
@@ -63,7 +63,13 @@ router.post("/", async (req,res) => {
         res.render("settings", {
             name: fullName,
             email: email,
-            flag: 1 // Flag 1 means alert for success
+            flag: 1, // Flag 1 means alert for success
+            alert: {
+                type: "success",
+                title: "Saved!",
+                message: " You have changed your information successfully."
+            }
+
         })
 
       }).catch((err) => {
@@ -71,13 +77,21 @@ router.post("/", async (req,res) => {
             res.render("settings", {
                 name: fullName,
                 email: email,
-                flag: 3 // Flag 3 means alert for email dublication
+                alert: {
+                    type: "danger",
+                    title: "Error!",
+                    message: " The Email is used before."
+                }
             })
         }else{
             res.render("settings", {
                 name: fullName,
                 email: email,
-                flag: 2 // Flag 2 means alert for error
+                alert: {
+                    type: "danger",
+                    title: "Error!",
+                    message: " Something Went Wrong, Please Try Again Later."
+                }
             })
         }
       });
