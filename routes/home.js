@@ -9,7 +9,7 @@ router.get("/", async (req,res) => {
         let projectsList2;
         const query = {
             established: false,
-            // completed: false
+            completed: false
         }
         await projects.find(query)
             .then(function(projectsList) {
