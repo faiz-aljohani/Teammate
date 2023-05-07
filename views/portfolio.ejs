@@ -13,16 +13,16 @@
         <div class="popupWindow hidePopupWindow" id="addPrevProjectPopupWindow">
             <!-- popup message -->
             <div class="popup-message">
-                <img src="images/project.png" alt="">
+                <img src="../images/project.png" alt="project-icon">
                 <h3>Add previous project</h3>
             </div>
             <!-- popup content -->
             <div class="popup-content">
-                <form  id="addPrevProjectForm" action="/addPrevProject" method="post">
+                <form  id="addPrevProjectForm" action="portfolio" method="post">
                     <div class="form-group row  mt-3">
                         <label for="Title" class="col-sm-4 col-form-label" >Project Title</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control"  placeholder="title" id="title" required>
+                            <input type="text" name="title" class="form-control"  placeholder="title" id="title" required>
                         </div>    
                     </div>
                     <textarea class="form-control mt-3" name="description" id="description" cols="30" rows="5" placeholder="Project Description and your contribution" required></textarea>             
@@ -52,10 +52,10 @@
                             <input id="completeDate" type="date" class="form-control" required>
                         </div>  
                     </div> -->
-                    <div>
+                    <!-- <div>
                         <label for="contactChoice1">completed?</label>
                         <input type="checbox" name="completed" value="true" />
-                      </div>
+                      </div> -->
                     <div class="sure-buttsons-container mt-3">
                         <button class="btn btn-primary btn-lg mb-2" id="addProject">Add</button>
                     </div>
@@ -68,26 +68,31 @@
         
             <% for(i in projects){ %>
                 <div class="row">
-                    <div class="btn card col col-2 m-3 mt-5 mb-1">       
-                            <div class="img-container">
-                                <img src="../<%= projects[i].img.split(",")[0]%>" class="card-img-top" alt="...">
-                            </div>        
-                            <div class="card-body">
-                                <h5 class="card-title mb-3"><%= projects[i].title %> </h5>
-                                <p class="card-text"><%= projects[i].description %></p>
+                    <div class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
+                        <div class="row g-0">
+                            <div class="col-6 col-md-5">
+                                <img src="../<%= projects[i].img.split(",")[0]%>" class="img-fluid rounded-start" alt=""> <!--../images/1683297321022.jpeg-->
                             </div>
-
-                            <div class="tags">
-                                
-                                <% for (j in projects[i].skills ){ %>
-                                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
-                                <%}%>
-                                <!-- <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a> -->
+                            <div class="col-6 col-md-7">
+                                <div class="card-body d-flex flex-column"> 
+                                    <div class="h-100">
+                                        <h1 class="card-title mb-3"><%= projects[i].title %> </h1>
+                                        <p class="card-text">
+                                            <%= projects[i].description %>
+                                        </p>
+                                        <div class="tags">
+                            
+                                            <% for (j in projects[i].skills ){ %>
+                                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
+                                            <%}%>
+                                            <!-- <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
+                                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a> -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
-
                 </div>
             <%}%>
         

@@ -135,7 +135,19 @@ a{
     transition: .8s;
 
 }
-
+.portfolio-card{
+    width: 1000px;
+}
+.portfolio-card .card-title{
+    font-size: 3rem;
+    padding-left: 1rem;
+    text-align: left;
+}
+.portfolio-card .card-text{
+    /* font-size: 3rem; */
+    padding-left: 1rem;
+    text-align: left;
+}
 .card:hover{
     transform: scale(1.04);
     transition-timing-function: ease-in-out;
