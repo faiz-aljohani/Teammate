@@ -5,7 +5,7 @@
         <div class="main-buttons">
             <button class="btn btn-primary me-3" id="add-project-btn">Add Project</button>
 
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 Filter
                 </a>
@@ -18,22 +18,18 @@
 
                     <li><button class="btn btn-primary btn-sm mt-3" id="changePassword">Filter</button></li>
                 </ul>
-          </div>
+          </div> -->
         </div>
 
             <!-- Add Project popup  -->
         <div class="popupWindow hidePopupWindow" id="addProjectPopupWindow">
             <div class="popup-message">
-<<<<<<< HEAD
-                <img class="mb-2" src="../public/images/add.png">
-=======
                 <img class="mb-2" src="../images/add.png">
->>>>>>> 310b8a3051948c324b6f0b5245f30a568d216d2a
                 <h3>Add new Project</h3>
             </div>    
 
             <div class="popup-content">
-                <form action="my-projects/addProject" method="post" enctype="multipart/form-data">
+                <form action="my-projects" method="post" enctype="multipart/form-data">
                     <input type="text" class="form-control mt-3" name="title" placeholder="Project Title" required>
                     <textarea class="form-control mt-3" name="projectDescription" id="" cols="30" rows="5" placeholder="Project Description" required></textarea>             
                     <div class="form-group row  mt-3">
@@ -60,65 +56,38 @@
 
 
         <div class="row">
-            <% for( i in projects ) { %>
+            <% projectsList.forEach(project => {%>
 
+   
                 <div class="btn card col col-2 m-3 mt-5 mb-1">
-                    <a class="card-btn" href="project.html">         
-                    <div class="img-container">
-                        <img src="../images/1683297321022.jpeg" class="card-img-top" alt="...">
-                    </div>                
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-    
-                    <div class="tags">
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#JS</span></a>
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
-                    </div>
-                </a>
+                    <a class="card-btn" href="projects/<%=project._id.toString()%>">         
+                        <div class="img-container">
+                            <img src="../<%= project.img.split(",")[0] %>" class="card-img-top" alt="...">
+                        </div>        
+                        <div class="card-body">
+                            <h5 class="card-title mb-3"><%= project.title %></h5>
+                            <p class="card-text"><%= project.description %></p>
+                        </div>
+            
+                        <div class="tags">
+        
+        
+        
+                            <% let i = 1 %>
+                            <% project.skills.forEach(skill => {%>
+                                <% if(i <= 3) { %>
+                                <a href=""><span class="tag tag-firestore tag-md me-2 mb-2">#<%=skill.replace(" ", "")%></span></a>
+                                <% } %>
+                                <% i++ %>
+                            <%}); %>
+        
+        
+        
+                        </div>
+                    </a>
                 </div>
+            <%  }) %>
 
-            <% } %>
-
-<!-- 
-
-            <div class="btn card col col-2 m-3 mt-5 mb-1">
-                <a class="card-btn" href="project.html">         
-                <div class="img-container">
-                    <img src="images/2.webp" class="card-img-top" alt="...">
-                </div>                
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-
-                <div class="tags">
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#JS</span></a>
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
-                </div>
-            </a>
-            </div>
-
-            <div class="btn card col col-2 m-3 mt-5 mb-1">
-                <a class="card-btn" href="project.html">         
-                <div class="img-container">
-                    <img src="images/2.webp" class="card-img-top" alt="...">
-                </div>                
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-
-                <div class="tags">
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#JS</span></a>
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                    <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
-                </div>
-            </a>
-            </div> -->
 
             
          

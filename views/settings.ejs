@@ -1,20 +1,39 @@
 <%- include("partials/header") -%>
 
-      </header>
+    <% if(flag == 1) { %>
+        <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+            <strong>Saved!</strong> You have changed your information successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
 
+    <% if(flag == 2) { %>
+        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+            <strong>Error!</strong> Something Went Wrong, Please Try Again Later.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
 
-    <form class="settings-container form-signin">
+      <% if(flag == 3) { %>
+        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+            <strong>Error!</strong> The Email is used before.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
+
+    <form class="settings-container form-signin" action="/settings" method="POST">
         <div class="settings-header">
-            <img class="settings-img mb-3" src="images/man.png" alt="">
+            <img class="settings-img mb-3" src="../images/man.png" alt="">
             <h3>Settings</h3>
         </div>
+
         <div class="settings-body">
             <div class="form-label-group">
-                <input type="text" id="name" class="form-control" value="<%= name %>" placeholder="Full Name" required autofocus>
+                <input type="text" id="name" name="fullName" class="form-control" value="<%= name %>" placeholder="Full Name" required autofocus>
             </div>
 
             <div class="form-label-group  mt-3">
-                <input type="email" id="inputEmail" class="form-control"  value="<%= email %>" placeholder="Email address" required>
+                <input type="email" id="inputEmail" name="email" class="form-control"  value="<%= email %>" placeholder="Email address" required>
             </div>
     
             <div>
@@ -24,6 +43,7 @@
             <a class="change-password-lnk" id="changePassowrdBtn">Change Password</a>
         </div>
 
+    </form>
 
         <div class="popupWindow hidePopupWindow" id="changePasswordWindow">
             <div class="popup-message">
@@ -46,5 +66,4 @@
             
         </div>
 
-    </form>
 <%- include("partials/footer") -%>

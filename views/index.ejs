@@ -40,9 +40,19 @@
                 </div>
     
                 <div class="tags">
+
+
+
+                    <% let i = 1 %>
                     <% project.skills.forEach(skill => {%>
-                        <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= skill %></span></a>
+                        <% if(i <= 3) { %>
+                        <a href=""><span class="tag tag-firestore tag-md me-2 mb-2">#<%=skill.replace(" ", "")%></span></a>
+                        <% } %>
+                        <% i++ %>
                     <%}); %>
+
+
+
                 </div>
             </a>
         </div>

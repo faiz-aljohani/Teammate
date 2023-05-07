@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
-
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
 
@@ -17,25 +16,25 @@ const storage = multer.diskStorage({
     },
 })
 const upload = multer({storage: storage});
-const database = require("../db.js");
 const project = require("../models/Projects.js");
 const router = express.Router()
 
 module.exports = router;
-database.connect();
+
+let userID;
 
 router.get('/', async (req,res)=>{
     if(!isSessionActive(req))
         res.redirect("/login");
     else{
-        console.log('GET req. in my_projects route')
-        await database.connect();
-        const Result = await project.find({/* users: USER ID HERE */})//TODO: change this from finding all projects to only getting projects with the desired user
-        res.render("my_projects",{projects: Result})
+        userID = req.session.userID;
+        console.log('GET req. in my_projects route ' + req.session.userID)
+        const Result = await project.find({userID: userID})//TODO: change this from finding all projects to only getting projects with the desired user
+        res.render("my_projects",{projectsList: Result})
     }
 })
 
-router.post("/addProject", upload.array("images") , async (req,res) => {
+router.post("/", upload.array("images") , async (req,res) => {
     const addProjectForm = req.body;
 
     // Just to work with multiple files
@@ -59,6 +58,7 @@ router.post("/addProject", upload.array("images") , async (req,res) => {
     const images = addProjectForm.images;
 
     const newProject = new project({
+        userID: userID,
         title: title,
         description: description,
         img: imgs,

@@ -10,8 +10,7 @@ const http = require('http');
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
 const database = require("./db");
-
-
+database.connect();
 
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
@@ -27,7 +26,6 @@ app.set('view engine', 'ejs');
 // app.use(bodyParser.urlencoded());
 app.use(express.static('public'))
 app.use("/images",express.static('images'))
-
 
 app.use(express.urlencoded({extended:true}))
 

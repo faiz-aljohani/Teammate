@@ -12,6 +12,10 @@ const application = new mongoose.Schema({
 })
 
 const ProjectSchema = new mongoose.Schema({
+    userID: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
