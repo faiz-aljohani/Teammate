@@ -19,6 +19,9 @@ const myProjectsRouter = require('./routes/my_projects');
 const portfolioRouter = require('./routes/portfolio');
 const homeRouter = require('./routes/home');
 const projectRouter = require('./routes/project');
+const settingRouter = require('./routes/settings');
+const logoutRouter = require('./routes/logout');
+
 
 app.set('view engine', 'ejs');
 // app.use(bodyParser.urlencoded());
@@ -44,20 +47,16 @@ app.use(session({
 
 const { log } = require('console');
 
-const database = require('./db');
 //--------------------------------
 
-
-
-app.get("/settings", (req,res) => {
-  res.render("settings",{})
-})
 
 app.get("/login", (req,res) => {
   res.render("loginPage",{})
 })
 
 app.use("/", homeRouter)
+app.use("/settings", settingRouter)
+app.use("/logout", logoutRouter)
 app.use("/portfolio",portfolioRouter)
 app.use("/register",registerRouter)
 app.use("/login",loginRouter)

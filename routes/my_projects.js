@@ -25,10 +25,14 @@ module.exports = router;
 database.connect();
 
 router.get('/', async (req,res)=>{
-    console.log('GET req. in my_projects route')
-    await database.connect();
-    const Result = await project.find({/* users: USER ID HERE */})//TODO: change this from finding all projects to only getting projects with the desired user
-    res.render("my_projects",{projects: Result})
+    if(!isSessionActive(req))
+        res.redirect("/login");
+    else{
+        console.log('GET req. in my_projects route')
+        await database.connect();
+        const Result = await project.find({/* users: USER ID HERE */})//TODO: change this from finding all projects to only getting projects with the desired user
+        res.render("my_projects",{projects: Result})
+    }
 })
 
 router.post("/addProject", upload.array("images") , async (req,res) => {

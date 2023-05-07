@@ -1,5 +1,5 @@
 // =================== Project Page ======================
-if(document.URL.includes("projects" && !document.URL.includes("my-projects"))){
+if(document.URL.includes("/projects/")){
 
     // Application form popup window (Apply Button)
     document.querySelector("#cancelApplication").addEventListener("click", popup);
