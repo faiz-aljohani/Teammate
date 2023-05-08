@@ -437,7 +437,7 @@ footer{
 }
 
 
-/* Registor Page  */
+/* Registor Page  -------------------------------------------------- */
 
 
 .register-body{
@@ -456,7 +456,6 @@ footer{
     z-index: 1;
     display: flex;
     align-items: center;
-
 
     background-color: #656ED3;
     width: 100%;
@@ -545,7 +544,6 @@ footer{
     margin-top: 20vh;
     margin-bottom: 25vh;
 
-    width: 45%;
     display: grid;
 
     grid-template-columns: 100%;
@@ -553,6 +551,18 @@ footer{
     gap: 1rem;
 
     z-index: 2;
+
+    /* position: absolute; */
+    /* margin-left: auto; */
+    margin-right: 10%; 
+
+    padding: 1rem;
+    border-radius: 30px;
+    /* Add a transparency to the background using rgba value */
+    background: rgb(250, 249, 246, 0.9);
+    /* Add a transparency to shadow */
+    box-shadow: 0 26px 42px rgba(0, 0, 0, 0.2);
+    
 
 
 
@@ -646,8 +656,44 @@ footer{
     padding: 3px 0 0px 5px;
 }
 
-/* ----------------- */
-/* log in page  */
+/* register page waning boxes*/
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+.warn_box {
+    color: #ffffff;
+    background-color: #FF8080;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius:.5em;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:12px;
+   width: 100%;
+}
+
+.info_box {
+    color: #ffffff;
+    background-color: #79CFE0;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius:.5em;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:12px;
+   width: 100%;
+}
+
+.success_box {
+    color: #ffffff;
+    background-color: #7DDF7C;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius:.5em;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:12px;
+   width: 100%;
+}
+
+/*  login page   ----------------------------- */
+
 .bodylogin {
 	min-height: 100dvh;
 	min-width: 100dvw;
@@ -737,10 +783,10 @@ a {
 }
 
 
-/* ------------------------- */
+/* ---------------------------------------------------------------------- */
 
 /* portrait tablets, portrait iPad, landscape e-readers */
-@media screen and (max-width:1600px) {
+@media screen and (max-width:780px) {
 
     .register-body {
         display: block;
@@ -835,14 +881,27 @@ a {
 }
 
 
-/*  for Phonea v  */
-@media screen and (max-width: 641px) and (max-device-width: 641px) {
+ /* for Phonea v  */
+/* and (max-device-width: 641px) */
+@media screen and (max-width: 641px)  {
+
+
+    #form-header{
+        font-size: 1.2rem;
+    }
+    #i-have-account {
+        font-size: 0.8rem;
+    }
+    .container{
+        width: 85%;
+    }
 
     /* V trick for ios */
     .register-body {
         position: fixed;
         height: 100%;
         width: 100%;
+        font-size: 1rem;
     }
 
     #register-main {

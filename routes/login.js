@@ -7,7 +7,7 @@ const database = require("../db");
 const User = require("../models/User");
 
 // database.connect();
-module.exports = router;
+loginRouter = router;
 let loginForm ; 
 
 //----------------------------------Client Req.
@@ -15,7 +15,6 @@ router.get('/', (req,res)=>{
     console.log('GET req. in login route')
     console.log("is active: " + isSessionActive(req))
 
-    // res.render("loginPage",{})
 })
 
 router.post('/logging', async (req,res)=>{
@@ -44,9 +43,11 @@ router.post('/logging', async (req,res)=>{
       }
 
     catch (e){
-      console.log("error at login route POST /new: ");
-      res.statusMessage = "Something wrong with the (loginForm)"
-      res.status(500).end()
+      console.log("error at login route POST /logging: ");
+      console.log(e)
+
+
+      res.render("login",{err:"Email or Password is Incorrect."})
     }    
     finally{
       // To disconnect
@@ -101,4 +102,8 @@ const createSession = async (req,res,userID)=>{
 isSessionActive = (req)=>{
   return typeof req.session.userID === "string";
 }
-
+module.exports = {
+  loginRouter,
+  createSession,
+  isSessionActive,
+};

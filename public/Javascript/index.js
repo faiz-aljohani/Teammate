@@ -73,10 +73,16 @@ function passwordValidation() {
     const password = document.getElementById('password');
     const confirm = document.getElementById('confirm-password');
     
-    if (confirm.value === password.value) {
+    // Allow Minimum eight characters, at least one letter and one number:
+    let pattern =/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    console.log(pattern.test(password.value))
+    if ((confirm.value === password.value) && pattern.test(password.value)) {
       confirm.setCustomValidity('');
-    } else {
+    } else if(confirm.value !== password.value) {
       confirm.setCustomValidity('Passwords do not match');
+    }else{
+        confirm.setCustomValidity('Minimum eight characters, at least one letter and one number');
     }
   }
 

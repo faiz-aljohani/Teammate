@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../style/styles.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,6 +41,7 @@
 
       <div class="container">
         <p id="form-header">Create a New Account</p>
+
         <form class="my-form" action="/register/new" method="POST" >
           <div id="form-fields">
             <label for="full-name">Full Name:</label>
@@ -60,6 +62,7 @@
               id="password"
               name="password"
               onChange="passwordValidation()"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"              "
               required
             /><br /><br />
             <label for="confirm-password">Confirm Password:</label>
@@ -67,6 +70,7 @@
               type="password"
               id="confirm-password"
               name="confirm-password"
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"              "
               onChange="passwordValidation()"
               required 
             />
@@ -83,11 +87,23 @@
             </div>
 
           </div>
-          <br/>
+          <!-- <br/> -->
+          <% if (err) { %>
+            <div class="warn_box">
+               <p>
+                <i class="material-icons" style="font-size:16px">error_outline</i>
+                  <%= err %>
+              </p>
+            </div>
+        
+        <% } %>
           <input id="form-register-btn" type="submit" value="Register" onclick="tmpToHomePage()" />
         </form>
+
+
+
         <p id="i-have-account">
-          <a id="register-a" href="loginPage.html">
+          <a id="register-a" href="/login">
             Already have an account? <strong>Login</strong></a
           >
         </p>

@@ -13,7 +13,7 @@ const database = require("./db");
 database.connect();
 
 const registerRouter = require('./routes/register');
-const loginRouter = require('./routes/login');
+const {loginRouter} = require('./routes/login');
 const myProjectsRouter = require('./routes/my_projects');
 const portfolioRouter = require('./routes/portfolio');
 const homeRouter = require('./routes/home');
@@ -49,7 +49,7 @@ const { log } = require('console');
 
 
 app.get("/login", (req,res) => {
-  res.render("loginPage",{})
+  res.render("login",{})
 })
 
 app.use("/", homeRouter)
