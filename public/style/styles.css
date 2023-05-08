@@ -138,15 +138,20 @@ a{
 .portfolio-card{
     width: 1000px;
 }
-.portfolio-card .card-title{
-    font-size: 3rem;
+.portfolio-card-title {
+    margin-top: 5rem;
+    font-size: 2rem;
     padding-left: 1rem;
     text-align: left;
 }
-.portfolio-card .card-text{
+.portfolio-card-text{
     /* font-size: 3rem; */
     padding-left: 1rem;
     text-align: left;
+}
+.portfolio-card-tag{
+    justify-content: space-evenly;
+    padding: 0 5rem;
 }
 .card:hover{
     transform: scale(1.04);
