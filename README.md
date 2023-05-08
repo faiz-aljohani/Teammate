@@ -2,6 +2,16 @@
   <img src="https://user-images.githubusercontent.com/71136270/229296385-d010c129-6556-4587-adeb-e783369c15bd.png" alt="Teammate website logo"/>
 </p>
 
+# how to run
+- the main script is index.js
+- run `npm i` to install the dependencies
+- run `npm run devStart` 
+
+# login info:
+- Note (you can register at runtime and perform operations on that account)
+<br>One user you can try is:
+- faiz@gmail.com
+- 123
 # phase 2
 In registerPage.html use the following to register succesfully: <br/>
 fullname:  admin<br/>
