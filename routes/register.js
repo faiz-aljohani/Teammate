@@ -18,7 +18,7 @@ let registerForm ;
 //----------------------------------Client Req.
 router.get('/', (req,res)=>{
     console.log('GET req. in register route')
-    res.render("register",{err:''})
+    res.render("register",{error:"",info:"Minimum eight characters, at least one letter and one number"})
 })
 
 router.post('/new', async (req,res)=>{
@@ -29,9 +29,8 @@ router.post('/new', async (req,res)=>{
     //valid input NOW create newUser in DB
     try{
 
-      //To connect
+      // To connect
       database.connect();
-      console.log(database)
 
       const existsBefore = await existsBeforeInDB(registerForm);
       if(existsBefore)throw error("same user exist in DB");
@@ -42,9 +41,10 @@ router.post('/new', async (req,res)=>{
       if(!isSessionActive(req)){
         await createSession(req,res,userID);
       }
-      //** 
+      // ** 
       res.redirect("/")
 
+      // res.send({ok:"ok"});
       }
 
     catch (e){
@@ -54,7 +54,7 @@ router.post('/new', async (req,res)=>{
       // req.session['error'] = "This Email is Already Registered.";
       // res.locals.error = req.session.error;
 
-      res.render("register",{err:"This Email is Already Registered."})
+      res.render("register",{error:"This Email is Already Registered.",info:""})
 
     }
     finally{      

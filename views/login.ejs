@@ -32,11 +32,20 @@
 				<input id="show-password-checkbox" type="checkbox" onclick="showPassword()" />
 				<label id="show-password-label" for="show-password-checkbox">Show Password</label>
 			</div>
-			<% if (err) { %>
+			<% if (info) { %>
+				<div class="info_box">
+				   <p>
+					<i class="material-icons" style="font-size:16px">error_outline</i>
+					  <%= info %>
+				  </p>
+				</div>
+			
+			<% } %>
+			<% if (error) { %>
 				<div class="warn_box">
 				   <p>
 					<i class="material-icons" style="font-size:16px">error_outline</i>
-					  <%= err %>
+					  <%= error %>
 				  </p>
 				</div>
 			

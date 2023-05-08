@@ -88,16 +88,25 @@
 
           </div>
           <!-- <br/> -->
-          <% if (err) { %>
-            <div class="warn_box">
+          <% if (info) { %>
+            <div class="info_box">
                <p>
-                <i class="material-icons" style="font-size:16px">error_outline</i>
-                  <%= err %>
+              <i class="material-icons" style="font-size:16px">error_outline</i>
+                <%= info %>
               </p>
             </div>
-        
-        <% } %>
-          <input id="form-register-btn" type="submit" value="Register" onclick="tmpToHomePage()" />
+          
+          <% } %>
+          <% if (error) { %>
+            <div class="warn_box">
+               <p>
+              <i class="material-icons" style="font-size:16px">error_outline</i>
+                <%= error %>
+              </p>
+            </div>
+          
+          <% } %>
+          <input id="form-register-btn" type="submit" value="Register" />
         </form>
 
 

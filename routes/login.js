@@ -47,7 +47,7 @@ router.post('/logging', async (req,res)=>{
       console.log(e)
 
 
-      res.render("login",{err:"Email or Password is Incorrect."})
+      res.render("login",{error:"Email or Password is Incorrect.",info:""})
     }    
     finally{
       // To disconnect

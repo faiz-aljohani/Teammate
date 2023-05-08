@@ -75,8 +75,11 @@ function passwordValidation() {
     
     // Allow Minimum eight characters, at least one letter and one number:
     let pattern =/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
+    
+console.log(password.checkValidity())
     console.log(pattern.test(password.value))
+    console.log((confirm.value === password.value) && pattern.test(password.value))
+    console.log(confirm.value !== password.value)
     if ((confirm.value === password.value) && pattern.test(password.value)) {
       confirm.setCustomValidity('');
     } else if(confirm.value !== password.value) {

@@ -49,7 +49,7 @@ const { log } = require('console');
 
 
 app.get("/login", (req,res) => {
-  res.render("login",{})
+  res.render("login",{error:"",info:""})
 })
 
 app.use("/", homeRouter)
