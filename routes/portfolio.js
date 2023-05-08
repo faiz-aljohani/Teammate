@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const ProjectModel = require("../models/Projects.js");
+const UserModel = require("../models/User.js")
 // const database = require("../db");
 const app = express();
 const bodyParser = require("body-parser")
@@ -29,11 +30,27 @@ router.get("/", async (req,res) => {
     else{
         console.log('GET req. in portfolio route')
         userID = req.session.userID;
-        const Result = await ProjectModel.find({userID: userID, completed: true})//TODO: change this from finding all projects to only getting projects with the desired user
+        const Result = await ProjectModel.find({userID: userID, completed: true})
         
-        res.render("portfolio",{projects: Result}) 
+        res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID}) 
     }
 
+})
+router.get("/:id",async (req, res)=>{
+    if(!isSessionActive(req))
+        res.redirect("/login");
+    else{
+        const ownerID = req.params.id;
+        const Result = await ProjectModel.find({userID: ownerID, completed: true});
+        
+        
+        userID = req.session.userID; // the current user
+        const ownerFirstName = await UserModel.findOne({_id: ownerID});
+        // console.log(ownerFirstName);
+        // console.log(ownerFirstName.firstName);
+        res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, ownerFirstName: ownerFirstName.capitalize()}) ;
+    }
+    
 })
 router.post("/",upload.array("images"), async (req,res) =>{
     const addPrevProjectForm = req.body;
