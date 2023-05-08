@@ -1,5 +1,6 @@
 const express = require('express')
 const projects = require("../models/Projects.js");
+const users = require("../models/User.js");
 const router = express.Router()
 module.exports = router;
 
@@ -22,8 +23,9 @@ router.get("/:id", async (req,res) => {
             .catch(function (err) {
                 console.log(err);
         });
-    
-        res.render("project", {project: project});
+        const userList = await users.find({})
+        // console.log(userList)
+        res.render("project", {project: project, userList: userList });
     }
 
 

@@ -70,6 +70,21 @@
 
       <div class="applicationsCards">
         <div class="row">
+            <% userList.forEach(user => { %>
+                <div class="col col-12 applicationCard m-2">
+                    <div class="application-text-container">
+                        <h3><%= user.firstName %></h3>
+                        <p>I can create a custom website that fits your specific needs and goals. Let's discuss your project and bring your vision to life. Contact me today to get started!</p>
+                    </div>
+                    <div class="application-buttons-container">
+                        <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
+                        <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
+                        
+                        <a class="btn btn-secondary btn-sm mt-1 portfolioBtn" href="../portfolio/<%= user._id %>">Portfolio</a>
+                        <!-- <a href="http:" class="btn btn-primary">Go to Google</a> -->
+                    </div>
+                </div>
+            <% }) %>
             <div class="col col-12 applicationCard m-2">
                 <div class="application-text-container">
                     <h3>Emad</h3>

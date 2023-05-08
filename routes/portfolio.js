@@ -31,8 +31,12 @@ router.get("/", async (req,res) => {
         console.log('GET req. in portfolio route')
         userID = req.session.userID;
         const Result = await ProjectModel.find({userID: userID, completed: true})
-        
-        res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID}) 
+        try{
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+        }catch(error){
+            console.log("you did somethign wrong!")
+            // console.log(error)
+        }
     }
 
 })
@@ -41,16 +45,33 @@ router.get("/:id",async (req, res)=>{
         res.redirect("/login");
     else{
         const ownerID = req.params.id;
+        console.log(ownerID)
         const Result = await ProjectModel.find({userID: ownerID, completed: true});
         
         
         userID = req.session.userID; // the current user
-        const ownerFirstName = await UserModel.findOne({_id: ownerID});
-        // console.log(ownerFirstName);
-        // console.log(ownerFirstName.firstName);
-        res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, ownerFirstName: ownerFirstName.capitalize()}) ;
+        let user;
+        await UserModel.find({_id: ownerID})
+        .then(function(userList) {
+            user = userList[0];
+            console.log(userList);
+        })
+        .catch(function (err) {
+            // console.log(err);
+            console.log("invalid user: user was not found in the database")
+            res.redirect("/portfolio");
+            return;
+        });
+        if (user != null){
+            let ownerFirstName = user.firstName;
+            //Capitalize the first letter
+            ownerFirstName = 
+            ownerFirstName.charAt(0).toUpperCase()
+                + ownerFirstName.slice(1);
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, ownerFirstName: ownerFirstName}) ;
+        }
+        
     }
-    
 })
 router.post("/",upload.array("images"), async (req,res) =>{
     const addPrevProjectForm = req.body;
