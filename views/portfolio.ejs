@@ -5,14 +5,19 @@
 
     <main>
         <!-- add previous project "button"  -->
-        <% if (viewerID == ownerID) { %>
-            <div class="main-buttons">
-            <button class="btn btn-primary me-1" id="add-prev-project">add previous projects</button>
-            <button class="btn btn-primary" id="edit-about-me">edit "About me"</button>
-            </div>
-        <% } %>
+        <div class="main-buttons">
+            <form class="d-flex" id="form1" method="post" action="/portfolio/searchPortfolio">
+                <input class="form-control me-2" name="searchQuery"type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light" type="submit"><img class="searchSymbol" src="/images/search-symbol.png"></button>
+            </form>
+            <% if (viewerID == ownerID) { %>
+                
+                <button class="btn btn-primary me-1" id="add-prev-project">add previous projects</button>
+                <button class="btn btn-primary" id="edit-about-me">edit "About me"</button>
+                
+            <% } %>
         
-        
+        </div>
         <!-- popup window for adding previous projects -->
         <div class="popupWindow hidePopupWindow" id="addPrevProjectPopupWindow">
             <!-- popup message -->

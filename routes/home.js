@@ -23,3 +23,29 @@ router.get("/", async (req,res) => {
         res.render("index",{projectsList: projectsList2})
     }
 })
+router.post("/searchHome", async (req,res)=>{
+    const form = req.body;
+
+    const regex = new RegExp(`${form.searchQuery}`,"i");
+    const query = {
+        established: false,
+        completed: false,
+        $or: [ 
+            { title: {$regex: regex} }, 
+            {description: {$regex: regex}}, 
+            {skills: {$regex: regex}} 
+        ]
+       
+    }
+    let projectsFound;
+    // let projectsFromDesc;
+    // let projectsFromSkills;
+    await projects.find(query)
+        .then(function(projectsList) {
+            projectsFound = projectsList;
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+    res.render("index",{projectsList: projectsFound})
+});
