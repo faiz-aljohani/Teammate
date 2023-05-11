@@ -31,8 +31,14 @@ const ProjectSchema = new mongoose.Schema({
     img: String,
     skills: [String],
     teammates:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users"
+        userID:  {
+            type: String,
+            required: true,
+        },
+        userName: {
+            type: String,
+            required: true,
+        },
     }], // should define UserSchema
     established: Boolean,
     completed: Boolean,  

@@ -91,7 +91,17 @@
 
       <div class="applicationsCards">
         <div class="row">
+
+            <% let isTeammate = false; %>
+
             <% applications.forEach(application => { %>
+                <% project.teammates.forEach(member => {%>
+                    <% if(member.userID == application.userID){ %>
+                    <% isTeammate = true; %>
+                    <% }}) %>
+
+
+
                 <div class="col col-12 applicationCard m-2">
                     <div class="application-text-container">
 
@@ -101,12 +111,28 @@
                             <h3>Empty Name ==> user id: <%= application.userID %></h3>
                         <% } %>
 
+                        <% if(isTeammate){ %>
+                            <img class="teammate-img" src="../images/accept.png" alt="">
+                            <% } %>
+
                         <p><%= application.message %></p>
                     </div>
                     <div class="application-buttons-container">
-                        <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
-                        <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                        
+                        <% if(projectOwner && projectOwner._id == userID){ %>
+                            <% if(!isTeammate) {%>
+                                <form style="display: inline;" action="/projects/<%= project._id %>/accept/<%= application.userID %>" method="POST">
+                                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
+                                </form>
+                                <form style="display: inline;" action="/projects/<%= project._id %>/remove/<%= application.userID %>" method="POST">
+                                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>   
+                                </form>
+                            <% } else {%>
+                                <form style="display: inline;" action="/projects/<%= project._id %>/kick/<%= application.userID %>" method="POST">
+                                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Kick</button>   
+                                </form>
+                             <% }} %>
+
+
                         <a class="btn btn-secondary btn-sm mt-1 portfolioBtn" href="/portfolio/<%= application.userID %>">Portfolio</a>
                         <!-- <a href="http:" class="btn btn-primary">Go to Google</a> -->
                     </div>
@@ -124,12 +150,11 @@
             </div>
             <div class="sure-buttons-container">
                 <form action="/projects/<%= project._id %>/remove" method="POST">
-                    <button type="submit"class="btn btn-danger btn-lg" id="RemoveApplication">Remove</button>
-                    <button type="button" class="btn btn-primary btn-lg" onclick="removeProject()" id="cancelRemoving">Cancel</button>
+                    <button type="submit"class="btn btn-danger btn-lg" >Remove</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="removeProject()">Cancel</button>
                 </form>
             </div>
         </div>
-
             <!-- Establishing a project popup  -->
     <div class="popupWindow hidePopupWindow" id="establishProjectPopupWindow">
         <div class="popup-message">
@@ -138,8 +163,8 @@
         </div>
         <div class="sure-buttons-container">
             <form action="/projects/<%= project._id %>/establish" method="POST">
-                <button type="submit" class="btn btn-success btn-lg" id="acceptApplication">Accept</button>
-                <button type="button" class="btn btn-danger btn-lg" id="cancelAccepting" onclick="establishProject()">Cancel</button>
+                <button type="submit" class="btn btn-success btn-lg">Establish</button>
+                <button type="button" class="btn btn-danger btn-lg" onclick="establishProject()">Cancel</button>
             </form>
 
         </div>

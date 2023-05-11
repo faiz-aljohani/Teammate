@@ -262,6 +262,13 @@ a{
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
 }
 
+.teammate-img{
+    width: 50px; 
+    position: relative; 
+    float: right; 
+    margin-top: auto;
+}
+
 .popupWindow{
     position: fixed;
     top: 50%;
@@ -324,6 +331,9 @@ a{
     padding: 20px;
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .applicationCard h3{
