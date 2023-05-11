@@ -1,230 +1,196 @@
-/* General styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Reset default margin and padding */
+
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   }
-  
+  /* Apply a gradient background to the body */
   body {
-    font-family: 'Montserrat', sans-serif;
-    color: #333;
-    background-color: #EBEFFF;
-    font-size: 16px;
+  background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   }
   
-  a {
-    text-decoration: none;
-  }
-  
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-  }
-  
-  /* Header */
+  /* Style the header */
   header {
-    background-color: #29245E;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 50px 20px;
+  text-align: center;
   }
   
   header h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
-  }
-  
-  header p {
-    font-size: 20px;
-    margin-bottom: 20px;
-    line-height: 1.5;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333;
   }
   
   .subheading {
-    font-size: 1em;
-    color: #ffffff;
-    margin-top: 2em;
-    margin-bottom: 0em;
-    text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: #777;
   }
   
-  .subheading::after {
-    content: '';
-    display: block;
-    height: 3px;
-    background-color: #29245E;
-    width: 50%;
-    margin: 1em auto;
+  .header-img {
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 2rem;
+  animation: fade-in 10s ease-in-out;
   }
   
-  /* Features section */
-  /* Feature Cards */
+  /* Define the keyframes for the header image animation */
+  @keyframes fade-in {
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+  }
+  }
+  
+  /* Add animation to header text */
+  header h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  animation: slide-in 20s ease-in-out;
+  }
+  
+  /* Define the keyframes for the header text animation */
+  @keyframes slide-in {
+  0% {
+  transform: translateY(-50%);
+  opacity: 0;
+  }
+  100% {
+  transform: translateY(0);
+  opacity: 1;
+  }
+  }
+  
+  /* Style the feature section */
+  .features {
+  background: #fff;
+  padding: 50px;
+  margin: 50px auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.4);
+  animation: move-cards 5s ease-in-out forwards;
+  border-radius: 10px;
+
+  }
+  
+  /* Define the keyframes for the feature section animation */
+  @keyframes move-cards {
+  0% {
+  transform: translateY(-200%);
+  opacity: 0;
+  }
+  100% {
+  transform: translateY(0);
+  opacity: 1;
+  }
+  }
+  
+  .features h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  }
+  
   .feature-cards {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 3rem auto;
   }
-  
   .feature-card {
-    background-color: #f5f5f5;
+    width: 300px;
+    height:auto;
+    margin: 45px;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    width: 250px;
-    height: 250px;
-    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
   }
   
   .feature-card:hover {
-    transform: scale(1.15);
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
   }
   
-  .feature-card__icon {
-    color: #0077cc;
-    margin-bottom: 20px;
+  .feature-card img {
+    object-fit: cover;
+   
   }
   
-   .features {
-    background-color: #EBEFFF;
-    padding: 2em;
-    text-align: left;
-    font-size:  1.1em;
-  }
-  
-  .features ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
- 
-  
-  /*  */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  
-  /* Login button */
-  .login-btn {
-    display: block;
-    margin: 50px auto 0;
-    padding: 20px 40px;
-    background-color: #29245E;
-    color: #fff;
-    border-radius: 30px;
+  .feature-card h3 {
+    margin: 20px;
     font-size: 24px;
-    text-align: center;
-    transition: background-color 0.3s ease-in-out;
+    font-weight: 600;
+  }
+  
+  .feature-card p {
+    margin: 20px;
+    font-size: 26px;
+    line-height: 1.5;
+  }
+  
+  .feature-card button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
   }
   
   .login-btn:hover {
-    background-color: #656ED3;
-    color: #29245E;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #29245E;
+    background-color: #444;
+  } 
+  .login-btn {    
+    height: fit-content;
+    width: auto;
+    text-decoration: none;
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 50px;
     color: #fff;
-    padding: 20px;
-    text-align: center;
+    background-color: hsl(199, 73%, 44%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
   }
   
-  footer p {
-    font-size: 14px;
-    margin-bottom: 0;
+  .feature-card button:hover {
+    background-color: #444;
   }
-  
-  header,
-  .features,
-  footer {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 4s ease-out forwards;
+  /* Add animation to feature icons */
+.icon {
+  animation: pulse 2s infinite;
+  margin-top: 30px;
   }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  header,
-  .features,
-  footer {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 4s ease-out forwards;
-  }
-  
-  .features ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2em;
-  }
-  
-  .features li {
-    width: calc(33.33% - 1em);
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 2em;
-    margin-bottom: 2em;
-    position: relative;
-  }
-  
-  .features li:before {
-    position: absolute;
-    top: -0.5em;
-    left: -0.5em;
-    content: "";
-    width: 1em;
-    height: 1em;
-    background-color: #29245e;
-    border-radius: 50%;
-  }
-  
-  .features li .fa {
-    position: absolute;
-    top: 1em;
-    left: 1em;
-    font-size: 3em;
-    color: #29245e;
-  }
-  
-  .features li h3 {
-    font-size: 1.5em;
-    margin-bottom: 1em;
-    color: #29245e;
-  }
-  
-  .features li p {
-    font-size: 1.1em;
-    line-height: 1.5;
-    color: #777;
-  }
-  
+
+  /* Define the keyframes for the animation */
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.2);
+}
+100% {
+transform: scale(1);
+}
+}
+
