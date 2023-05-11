@@ -2,10 +2,26 @@
 
       </header>
 
+      <% if(alert) {%>
+        <div class="alert alert-<%= alert.type %> alert-dismissible fade show m-3" role="alert">
+            <strong><%= alert.title %></strong> <%= alert.message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+
+
       <main class="project">
 
         <div class="project-left-contaner">
+
+            <% if(projectOwner){ %>
             <div class="p-text-container">
+                <h1>Project Owner</h1>
+                <p class="p-text"><a href="/portfolio/<%= projectOwner._id %>"><%= projectOwner.firstName + " " + projectOwner.lastName%></a></p>
+            </div>
+            <% } %>
+
+            <div class="p-text-container mt-3 mb-3">
                 <h1>Title</h1>
                 <p class="p-text"><%= project.title %></p>
             </div>
@@ -13,7 +29,6 @@
             <div class="p-text-container mt-3 mb-3">
                 <h1>discription</h1>
                 <p class="p-text"><%= project.description %></p>
-
             </div>
     
             <div class="p-text-container">
@@ -43,7 +58,7 @@
                     <% for(let i = 1; i < project.img.split(",").length; i++){ %>
 
                         <div class="carousel-item">
-                            <img src="../<%= project.img.split(",")[0] %>" class="d-block w-100" alt="...">
+                            <img src="../<%= project.img.split(",")[i] %>" class="d-block w-100" alt="...">
                         </div>
                         <% } %>
 
@@ -62,7 +77,13 @@
 
             </div>
             
-            <button class="btn btn-primary btn-lg mt-3" id="applicationBtn">Apply</button>
+            <% if(projectOwner && projectOwner._id == userID){ %>
+                <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Establish</button>
+                <button class="btn btn-danger btn-lg mt-3" id="removeProject" onclick="removeProject()">Remove Project</button>
+            <% }else{ %>
+                <button class="btn btn-primary btn-lg mt-3" id="applicationBtn">Apply</button>
+            <% } %>
+
         </div>
       </main>
 
@@ -70,62 +91,59 @@
 
       <div class="applicationsCards">
         <div class="row">
-            <% userList.forEach(user => { %>
+            <% applications.forEach(application => { %>
                 <div class="col col-12 applicationCard m-2">
                     <div class="application-text-container">
-                        <h3><%= user.firstName %></h3>
-                        <p>I can create a custom website that fits your specific needs and goals. Let's discuss your project and bring your vision to life. Contact me today to get started!</p>
+
+                        <% if(application.userName){ %>
+                            <h3><%= application.userName %></h3>
+                        <% }else{ %>
+                            <h3>Empty Name ==> user id: <%= application.userID %></h3>
+                        <% } %>
+
+                        <p><%= application.message %></p>
                     </div>
                     <div class="application-buttons-container">
                         <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
                         <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
                         
-                        <a class="btn btn-secondary btn-sm mt-1 portfolioBtn" href="../portfolio/<%= user._id %>">Portfolio</a>
+                        <a class="btn btn-secondary btn-sm mt-1 portfolioBtn" href="/portfolio/<%= application.userID %>">Portfolio</a>
                         <!-- <a href="http:" class="btn btn-primary">Go to Google</a> -->
                     </div>
                 </div>
             <% }) %>
-            <div class="col col-12 applicationCard m-2">
-                <div class="application-text-container">
-                    <h3>Emad</h3>
-                    <p>I can create a custom website that fits your specific needs and goals. Let's discuss your project and bring your vision to life. Contact me today to get started!</p>
-                </div>
-                <div class="application-buttons-container">
-                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
-                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
-                </div>
-            </div>
-            <div class="col col-12 applicationCard m-2">
-                <h3>Faiz</h3>
-                <p>Let me help you create a stunning website that reflects your brand and engages your audience. Contact me to learn more about my freelance web development services.</p>
-                <div class="application-buttons-container">
-                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
-                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
-                </div>
-            </div>
-            <div class="col col-12 applicationCard m-2">
-                <h3>Ahmed</h3>
-                <p>Need a website that stands out in today's competitive market? As a freelance web developer, I can help you achieve your online goals with a custom-designed website tailored to your specific needs. Contact me now to learn more about my services and how I can help bring your vision to life.</p>
-                <div class="application-buttons-container">
-                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
-                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
-                </div>
-            </div>
-            <div class="col col-12 applicationCard m-2">
-                <h3>Turki</h3>
-                <p>Need a website that stands out in today's competitive market? As a freelance web developer, I can help you achieve your online goals with a custom-designed website tailored to your specific needs. Contact me now to learn more about my services and how I can help bring your vision to life.</p>
-                <div class="application-buttons-container">
-                    <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
-                    <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>
-                    <button class="btn btn-secondary btn-sm mt-1 portfolioBtn">Portfolio</button>
-                </div>
-            </div>
+
         </div>
     </div>
 
+        <!-- Pupup for removing a project  -->
+        <div class="popupWindow hidePopupWindow" id="removeProjectPopupWindow">
+            <div class="popup-message">
+                <img class="mb-2" src="../images/remove.png">
+                <h3>Are You Sure?</h3>
+            </div>
+            <div class="sure-buttons-container">
+                <form action="/projects/<%= project._id %>/remove" method="POST">
+                    <button type="submit"class="btn btn-danger btn-lg" id="RemoveApplication">Remove</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="removeProject()" id="cancelRemoving">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+            <!-- Establishing a project popup  -->
+    <div class="popupWindow hidePopupWindow" id="establishProjectPopupWindow">
+        <div class="popup-message">
+            <img class="mb-2" src="../images/accept.png">
+            <h3>Are You Sure?</h3>
+        </div>
+        <div class="sure-buttons-container">
+            <form action="/projects/<%= project._id %>/establish" method="POST">
+                <button type="submit" class="btn btn-success btn-lg" id="acceptApplication">Accept</button>
+                <button type="button" class="btn btn-danger btn-lg" id="cancelAccepting" onclick="establishProject()">Cancel</button>
+            </form>
+
+        </div>
+    </div>
 
     <!-- popup window for Apply  -->
     <div class="popupWindow hidePopupWindow" id="applicationWindow">
@@ -134,11 +152,13 @@
             <h3>Application Form</h3>
         </div>
         <div class="popup-content">
-            <textarea class="form-control" name="applicationText" cols="30" rows="5" maxlength="300"></textarea>
-            <button class="btn btn-primary btn-lg mt-3" id="applyBtn">Apply</button>
+            <form action="/projects/<%= project._id %>" method="POST">
+                <textarea name="applicationMessage" class="form-control" name="applicationText" cols="30" rows="5" maxlength="300"></textarea>
+                <button type="submit" class="btn btn-primary btn-lg mt-3" id="applyBtn">Apply</button>
+            </form>
             <a class="mt-2" id="cancelApplication">Cancel</a>
-        </div>
 
+        </div>
     </div>
 
     <!-- Accept an Application popup  -->

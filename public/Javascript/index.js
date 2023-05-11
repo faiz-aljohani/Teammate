@@ -20,6 +20,9 @@ if(document.URL.includes("/projects/")){
     }
 
 
+      // // Removing  project Popup window (Remove Button)
+      // let removeProject = document.querySelector("#removeProject").addEventListener("click", removePopup)
+
     // Removing An application Popup window (Remove Button)
     let removeButtons = document.getElementsByClassName("removeBtn") //Multible Elements
     document.querySelector("#cancelRemoving").addEventListener("click", removePopup);
@@ -42,6 +45,14 @@ if(document.URL.includes("/projects/")){
     
 
 
+}
+
+function removeProject(){
+    document.querySelector("#removeProjectPopupWindow").classList.toggle("hidePopupWindow") 
+}
+
+function establishProject(){
+  document.querySelector("#establishProjectPopupWindow").classList.toggle("hidePopupWindow") 
 }
 
 // =================== Setting Page ======================
