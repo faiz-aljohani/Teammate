@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 module.exports = router;
 const users = require("../models/User.js");
-
+const { route } = require('./register.js');
+let alert = null;
 
 router.get("/", async (req,res) => {
     if(!isSessionActive(req))
@@ -23,8 +24,9 @@ router.get("/", async (req,res) => {
         res.render("settings", {
             name: fullName,
             email: email,
-            alert: null
+            alert: alert
         })
+        alert = null;
     }
 })
 
@@ -95,5 +97,34 @@ router.post("/", async (req,res) => {
             })
         }
       });
+
+})
+
+router.post("/changePassword", async (req,res)=>{
+    let oldPassword = req.body.oldPassword;
+    let newPassword = req.body.newPassword;
+    let userID = req.session.userID;
+
+    await users.findOne({_id: userID}).then(user => {
+        if(user.pwd == oldPassword){
+
+            user.updateOne({pwd: newPassword}).then(() => {
+                alert = {
+                    type: "success",
+                    title: "Saved!",
+                    message: " You have changed your password successfully."
+                }
+                res.redirect("/settings")
+            })
+
+        }else{
+            alert = {
+                type: "danger",
+                title: "Error!",
+                message: " Old Password is not correct!"
+            }
+            res.redirect("/settings")
+        }
+    })
 
 })

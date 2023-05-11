@@ -64,6 +64,17 @@ if(document.URL.includes("settings")){
     }
 }
 
+function changePasswordValidation(){
+    let newPassword = document.querySelector("#newPassword").value;
+    let confirmNewPassword = document.querySelector("#confirmNewPassword").value;
+
+    if(newPassword != confirmNewPassword){
+      alert("new Passworn and confirm password must be the same")
+      return false;
+    } return true;
+
+}
+
 
 
 // =================== My Project Page ======================
