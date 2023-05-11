@@ -1,5 +1,13 @@
 <%- include("partials/header") -%>
 
+
+<% if(alert) {%>
+    <div class="alert alert-<%= alert.type %> alert-dismissible fade show m-3" role="alert">
+        <strong><%= alert.title %></strong> <%= alert.message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
 <!-- Carousel -->
     <div id="carousel" class="carousel carousel-home slide">
     <div class="carousel-inner">

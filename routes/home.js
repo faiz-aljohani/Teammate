@@ -20,7 +20,7 @@ router.get("/", async (req,res) => {
             .catch(function (err) {
                 console.log(err);
         });
-        res.render("index",{projectsList: projectsList2})
+        res.render("index",{projectsList: projectsList2, alert: null})
     }
 })
 router.post("/searchHome", async (req,res)=>{
