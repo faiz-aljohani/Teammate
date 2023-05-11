@@ -109,6 +109,7 @@ a{
 
 /* Carousel */
 .carousel-home{
+    max-width: 1200px;
     width: 70%;
     margin: auto;
     margin-top: 40px;

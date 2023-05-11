@@ -9,6 +9,7 @@
 <% } %>
 
 <!-- Carousel -->
+<% if(carousel) {%>
     <div id="carousel" class="carousel carousel-home slide">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -28,12 +29,14 @@
         <span class="visually-hidden">Next</span>
     </button>
     </div>
+    <% }%>
+
 </header>
 <div class="main-buttons">
-    <form class="d-flex" id="form1" method="post" action="/searchHome">
+    <!-- <form class="d-flex" id="form1" method="post" action="/searchHome">
         <input class="form-control me-2" name="searchQuery"type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-light" type="submit"><img class="searchSymbol" src="/images/search-symbol.png"></button>
-    </form>
+    </form> -->
 </div>
 <main>
 <div class="row">
