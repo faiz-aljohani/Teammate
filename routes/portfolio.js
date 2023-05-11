@@ -110,5 +110,29 @@ function addPrevProject(addPrevProjectForm, imgs){
     console.log(newProject)
     newProject.save()
 }
+router.post("/searchPortfolio", async (req,res)=>{
+    const form = req.body;
 
+    userID = req.session.userID; 
+
+    const regex = new RegExp(`${form.searchQuery}`,"i");
+    const query = {
+        userID: userID,
+        completed: true,
+        $or: [ 
+            { title: {$regex: regex} }, 
+            {description: {$regex: regex}}, 
+            {skills: {$regex: regex}} 
+        ]
+    }
+    let projectsFound;
+    await ProjectModel.find(query)
+        .then(function(projectsList) {
+            projectsFound = projectsList;
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+    res.render("portfolio",{projects: projectsFound, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+});
 module.exports = router;
