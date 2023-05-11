@@ -1,6 +1,6 @@
 /* Reset default margin and padding */
 
-{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -36,7 +36,7 @@
   height: auto;
   border-radius: 50%;
   margin-top: 2rem;
-  animation: fade-in 10s ease-in-out;
+  animation: fade-in 1s ease-in-out;
   }
   
   /* Define the keyframes for the header image animation */
@@ -55,7 +55,7 @@
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: #333;
-  animation: slide-in 20s ease-in-out;
+  animation: slide-in 5s ease-in-out;
   }
   
   /* Define the keyframes for the header text animation */
@@ -75,7 +75,7 @@
   background: #fff;
   padding: 50px;
   margin: 50px auto;
-  max-width: 800px;
+  max-width: fit-content;
   text-align: center;
   box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.4);
   animation: move-cards 5s ease-in-out forwards;
@@ -104,13 +104,13 @@
   
   .feature-cards {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: column;
   justify-content: space-between;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 3rem auto;
   }
   .feature-card {
-    width: 300px;
+    width: 500px;
     height:auto;
     margin: 45px;
     background-color: #fff;
@@ -194,3 +194,72 @@ transform: scale(1);
 }
 }
 
+@media screen and (max-width: 768px) {
+header h1 {
+font-size: 2rem;
+}
+.subheading {
+font-size: 1rem;
+}
+.header-img {
+width: 60%;
+}
+header h2 {
+font-size: 1.5rem;
+}
+.features {
+padding: 30px;
+}
+.feature-cards {
+flex-direction: column;
+max-width: 100%;
+margin: 0 auto;
+}
+.feature-card {
+width: 90%;
+margin: 30px auto;
+}
+.feature-card h3 {
+font-size: 20px;
+}
+.feature-card p {
+font-size: 18px;
+}
+.feature-card button {
+font-size: 14px;
+padding: 8px 16px;
+}
+.login-btn {
+font-size: 30px;
+padding: 15px 30px;
+}
+}
+
+@media screen and (max-width: 576px) {
+header h1 {
+font-size: 1.5rem;
+}
+.header-img {
+width: 50%;
+}
+header h2 {
+font-size: 1.2rem;
+}
+.features {
+padding: 20px;
+}
+.feature-card h3 {
+font-size: 18px;
+}
+.feature-card p {
+font-size: 16px;
+}
+.feature-card button {
+font-size: 12px;
+padding: 6px 12px;
+}
+.login-btn {
+font-size: 24px;
+padding: 12px 24px;
+}
+}
