@@ -47,5 +47,5 @@ router.post("/searchHome", async (req,res)=>{
         .catch(function (err) {
             console.log(err);
     });
-    res.render("index",{projectsList: projectsFound})
+    res.render("index",{projectsList: projectsFound, alert: null})
 });
