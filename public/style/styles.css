@@ -1040,3 +1040,21 @@ a {
     background-color: #EBEFFF;
     padding-right: 50px;
 }
+/*find-users page*/
+.userCard{
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.userCard h3{
+    color: #29245E;
+    font-weight: 700;
+}
+.userCard p{
+    font-size: 1rem;
+    font-weight: 700;
+}

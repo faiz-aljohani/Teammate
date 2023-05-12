@@ -30,7 +30,13 @@ router.get("/", async (req,res) => {
     else{
         console.log('GET req. in portfolio route')
         userID = req.session.userID;
-        const Result = await ProjectModel.find({userID: userID, completed: true})
+        const Result = await ProjectModel.find({
+                completed: true,
+                $or: [ 
+                {userID: userID,},
+                {"teammates.userID": userID} // checks if the user is a teammate of any project
+                ]
+        })
         try{
             res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: ""})
         }catch(error){
