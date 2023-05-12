@@ -20,6 +20,9 @@ if(document.URL.includes("/projects/")){
     }
 
 
+      // // Removing  project Popup window (Remove Button)
+      // let removeProject = document.querySelector("#removeProject").addEventListener("click", removePopup)
+
     // Removing An application Popup window (Remove Button)
     let removeButtons = document.getElementsByClassName("removeBtn") //Multible Elements
     document.querySelector("#cancelRemoving").addEventListener("click", removePopup);
@@ -44,6 +47,14 @@ if(document.URL.includes("/projects/")){
 
 }
 
+function removeProject(){
+    document.querySelector("#removeProjectPopupWindow").classList.toggle("hidePopupWindow") 
+}
+
+function establishProject(){
+  document.querySelector("#establishProjectPopupWindow").classList.toggle("hidePopupWindow") 
+}
+
 // =================== Setting Page ======================
 if(document.URL.includes("settings")){
     document.querySelector("#cancelChangingPassword").addEventListener("click", changePasswordPopup);
@@ -51,6 +62,17 @@ if(document.URL.includes("settings")){
     function changePasswordPopup(){
         document.querySelector("#changePasswordWindow").classList.toggle("hidePopupWindow")
     }
+}
+
+function changePasswordValidation(){
+    let newPassword = document.querySelector("#newPassword").value;
+    let confirmNewPassword = document.querySelector("#confirmNewPassword").value;
+
+    if(newPassword != confirmNewPassword){
+      alert("new Passworn and confirm password must be the same")
+      return false;
+    } return true;
+
 }
 
 
@@ -158,3 +180,27 @@ if(document.URL.includes("prevProject.html")){
   //   tmpToHomePage();
   // });
 
+
+
+  // Get the form element
+const form1 = document.querySelector('#form1');
+
+// Add an event listener for the submit event
+form1.addEventListener('submit', function(event) {
+//   event.preventDefault(); // prevent form submission
+  filterProjects();
+});
+
+// Search function
+function filterProjects() {
+  const searchTerm = document.getElementById('search').value.toLowerCase(); // convert search term to lowercase
+  const projects = document.querySelectorAll('.project'); // get all project elements
+  projects.forEach(function(project) {
+    const title = project.querySelector('.title').textContent.toLowerCase(); // get project title
+    if (title.includes(searchTerm)) {
+      project.classList.remove('hidden'); // show project if it matches search term
+    } else {
+      project.classList.add('hidden'); // hide project if it does not match search term
+    }
+  });
+}

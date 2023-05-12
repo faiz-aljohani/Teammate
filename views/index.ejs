@@ -1,5 +1,13 @@
 <%- include("partials/header") -%>
 
+
+<% if(alert) {%>
+    <div class="alert alert-<%= alert.type %> alert-dismissible fade show m-3" role="alert">
+        <strong><%= alert.title %></strong> <%= alert.message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
 <!-- Carousel -->
     <div id="carousel" class="carousel carousel-home slide">
     <div class="carousel-inner">
@@ -21,15 +29,19 @@
     </button>
     </div>
 </header>
-
-
+<div class="main-buttons">
+    <form class="d-flex" id="form1" method="post" action="/searchHome">
+        <input class="form-control me-2" name="searchQuery"type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-light" type="submit"><img class="searchSymbol" src="/images/search-symbol.png"></button>
+    </form>
+</div>
 <main>
 <div class="row">
 
     <% projectsList.forEach(project => {%>
 
    
-        <div class="btn card col col-2 m-3 mt-5 mb-1">
+        <div class="btn card col col-2 m-3 mt-5 mb-1 project">
             <a class="card-btn" href="projects/<%=project._id.toString()%>">         
                 <div class="img-container">
                     <img src="../<%= project.img.split(",")[0] %>" class="card-img-top" alt="...">

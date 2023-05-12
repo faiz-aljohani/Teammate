@@ -71,3 +71,27 @@ router.post("/", upload.array("images") , async (req,res) => {
     
       newProject.save()
   }
+router.post("/searchMyProjects", async (req,res)=>{
+    const form = req.body;
+
+    userID = req.session.userID; 
+
+    const regex = new RegExp(`${form.searchQuery}`,"i");
+    const query = {
+        userID: userID,
+        $or: [ 
+            { title: {$regex: regex} }, 
+            {description: {$regex: regex}}, 
+            {skills: {$regex: regex}} 
+        ]
+    }
+    let projectsFound;
+    await project.find(query)
+        .then(function(projectsList) {
+            projectsFound = projectsList;
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+    res.render("my_projects",{projectsList: projectsFound})
+});

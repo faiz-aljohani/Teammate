@@ -5,6 +5,10 @@
     box-sizing: border-box;
 
 }
+/* TO hide the unsearched projects */
+.hidden{
+    display: none; 
+}
 
 body{
     font-family: 'Montserrat', sans-serif;
@@ -138,15 +142,20 @@ a{
 .portfolio-card{
     width: 1000px;
 }
-.portfolio-card .card-title{
-    font-size: 3rem;
+.portfolio-card-title {
+    margin-top: 5rem;
+    font-size: 2rem;
     padding-left: 1rem;
     text-align: left;
 }
-.portfolio-card .card-text{
+.portfolio-card-text{
     /* font-size: 3rem; */
     padding-left: 1rem;
     text-align: left;
+}
+.portfolio-card-tag{
+    justify-content: space-evenly;
+    padding: 0 5rem;
 }
 .card:hover{
     transform: scale(1.04);
@@ -253,6 +262,13 @@ a{
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
 }
 
+.teammate-img{
+    width: 50px; 
+    position: relative; 
+    float: right; 
+    margin-top: auto;
+}
+
 .popupWindow{
     position: fixed;
     top: 50%;
@@ -315,6 +331,9 @@ a{
     padding: 20px;
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .applicationCard h3{

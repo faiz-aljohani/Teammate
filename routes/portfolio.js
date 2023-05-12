@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const ProjectModel = require("../models/Projects.js");
+const UserModel = require("../models/User.js")
 // const database = require("../db");
 const app = express();
 const bodyParser = require("body-parser")
@@ -29,11 +30,48 @@ router.get("/", async (req,res) => {
     else{
         console.log('GET req. in portfolio route')
         userID = req.session.userID;
-        const Result = await ProjectModel.find({userID: userID, completed: true})//TODO: change this from finding all projects to only getting projects with the desired user
-        
-        res.render("portfolio",{projects: Result}) 
+        const Result = await ProjectModel.find({userID: userID, completed: true})
+        try{
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+        }catch(error){
+            console.log("you did somethign wrong!")
+            // console.log(error)
+        }
     }
 
+})
+router.get("/:id",async (req, res)=>{
+    if(!isSessionActive(req))
+        res.redirect("/login");
+    else{
+        const ownerID = req.params.id;
+        console.log(ownerID)
+        const Result = await ProjectModel.find({userID: ownerID, completed: true});
+        
+        
+        userID = req.session.userID; // the current user
+        let user;
+        await UserModel.find({_id: ownerID})
+        .then(function(userList) {
+            user = userList[0];
+            console.log(userList);
+        })
+        .catch(function (err) {
+            // console.log(err);
+            console.log("invalid user: user was not found in the database")
+            res.redirect("/portfolio");
+            return;
+        });
+        if (user != null){
+            let ownerFirstName = user.firstName;
+            //Capitalize the first letter
+            ownerFirstName = 
+            ownerFirstName.charAt(0).toUpperCase()
+                + ownerFirstName.slice(1);
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, ownerFirstName: ownerFirstName}) ;
+        }
+        
+    }
 })
 router.post("/",upload.array("images"), async (req,res) =>{
     const addPrevProjectForm = req.body;
@@ -72,5 +110,29 @@ function addPrevProject(addPrevProjectForm, imgs){
     console.log(newProject)
     newProject.save()
 }
+router.post("/searchPortfolio", async (req,res)=>{
+    const form = req.body;
 
+    userID = req.session.userID; 
+
+    const regex = new RegExp(`${form.searchQuery}`,"i");
+    const query = {
+        userID: userID,
+        completed: true,
+        $or: [ 
+            { title: {$regex: regex} }, 
+            {description: {$regex: regex}}, 
+            {skills: {$regex: regex}} 
+        ]
+    }
+    let projectsFound;
+    await ProjectModel.find(query)
+        .then(function(projectsList) {
+            projectsFound = projectsList;
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+    res.render("portfolio",{projects: projectsFound, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+});
 module.exports = router;
