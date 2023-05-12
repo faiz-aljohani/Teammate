@@ -85,7 +85,7 @@ console.log(password.checkValidity())
     } else if(confirm.value !== password.value) {
       confirm.setCustomValidity('Passwords do not match');
     }else{
-        confirm.setCustomValidity('Minimum eight characters, at least one letter and one number');
+      confirm.setCustomValidity('Minimum eight characters, at least one letter and one number');
     }
   }
 
