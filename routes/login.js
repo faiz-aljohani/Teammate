@@ -62,16 +62,19 @@ const loginUser = async (loginForm)=>{
   const email = loginForm['email'];
   const pwd = loginForm["password"]
 
-  // try to create new user
-  const loggingUser = await User.where("email").equals(email).where('pwd').equals(pwd)
+  const loggingUser = await User.findOne({ email: email })
 
-  if(loggingUser.length == 0) throw new Error("email OR passward is not correct")
+  console.log(loggingUser)
+  // console.log(loggingUser)
+  // console.log(loggingUser)
+
+  if( !loggingUser.validatePassword(pwd) || loggingUser.length == 0) throw new Error("email OR passward is not correct")
   
   //log the result----------
   // console.log(loggingUser)
   //------------------------
 
-  const userID  = loggingUser[0]['_id'].toString();
+  const userID  = loggingUser['_id'].toString();
   return userID;
 
 }

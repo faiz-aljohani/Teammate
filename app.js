@@ -1,7 +1,9 @@
 const express = require('express');
 
 const app = express();
-app.use(express.static('public'))
+// app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'));
+// console.log(__dirname)
 
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
