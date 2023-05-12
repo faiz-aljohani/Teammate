@@ -13,6 +13,9 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background-color: #EBEFFF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 main{
@@ -440,12 +443,14 @@ textarea[name = projectDiscription]{
 }
 
 footer{
+
     height: 70px;
     background-color: #29245E;
-    margin-top: 100px;
+    margin-top: auto;
     color: #EBEFFF;
     padding-top: 25px;
     text-align: center;
+    font-size: 1.2rem;    
 }
 
 
