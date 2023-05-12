@@ -1,6 +1,7 @@
 const express = require('express')
 const projects = require("../models/Projects.js");
 const users = require("../models/User.js");
+const chats = require("../models/Chat.js");
 const router = express.Router()
 module.exports = router;
 let project
@@ -26,11 +27,38 @@ router.get("/:id", async (req,res) => {
                 console.log(err);
         });
 
-        console.log(project.teammates);
-        
         projectOwner = await users.find({_id: project.userID})
-        res.render("project", {project: project, applications: project.applications, projectOwner: projectOwner[0],userID: userID, alert: alert});
-        alert = null;
+
+        if(project.established){
+
+
+
+            await chats.findOne({projectID: project._id}).then(async (chat) => {
+                if(chat == null){
+
+                    const newChat = await chats.create({
+                        projectID: project._id,
+                        chatHistory: []
+                      })
+                    
+                      await newChat.save().then(c => {
+                        chat = c;
+                      })                    
+                }
+                res.render("chat", {project: project, chat: chat, userID: userID});
+
+            })
+
+            
+
+
+
+        }else{
+            res.render("project", {project: project, applications: project.applications, projectOwner: projectOwner[0],userID: userID, alert: alert});
+            alert = null;
+        }
+        
+
     }
 })    
 
@@ -306,4 +334,42 @@ router.post("/:projectID/remove/:applicationUserID", async (req,res)=>{
 
         
     }
+})
+
+router.post("/:projectID/send", async (req,res) => {
+    const projectID = req.params.projectID;
+    const userID = req.session.userID;
+    const message = req.body.chatText;
+
+    let userName;
+    await users.find({_id : userID}).then((users) => {
+        userName = users[0].firstName + " " + users[0].lastName;
+    })
+
+    let chatHistory = []
+    await chats.findOne({projectID: projectID}).then(result => {
+        chatHistory = result.chatHistory;
+    })
+
+
+    chatHistory.push({
+        userID: userID,
+        userName: userName,
+        message: message
+    })
+
+
+
+    chats.findOneAndUpdate({projectID: projectID}, {chatHistory: chatHistory}, {new: true})
+    .then(result => {
+        res.redirect("/projects/" + projectID)
+    }).catch(err => {
+        alert = {
+            type: "danger",
+            title: "Error!",
+            message: " Please try again later."
+        }
+        res.redirect("/projects/" + projectID)
+    });
+    
 })
