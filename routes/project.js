@@ -39,7 +39,7 @@ router.get("/:id", async (req,res) => {
                 }
             })
 
-            if(isTeammate || userID == project.userID){
+            if(!project.completed && (isTeammate || userID == project.userID)){
 
                 await chats.findOne({projectID: project._id}).then(async (chat) => {
                     if(chat == null){
@@ -163,6 +163,59 @@ router.post("/:projectID/establish", async (req,res)=>{
                 message: " You have successfully established the project"
             }
             res.redirect("/projects/" + projectID)
+        }).catch(err => {
+            alert = {
+                type: "danger",
+                title: "Error!",
+                message: " Please try again later."
+            }
+            res.redirect("/projects/" + projectID)
+        });
+    }
+})
+
+router.post("/:projectID/stop", async (req,res)=>{
+    const userID = req.session.userID;
+    const projectID = req.params.projectID;
+
+    if(project.userID != userID){
+        res.redirect("/projects/" + projectID)
+    }else{
+        projects.findOneAndUpdate({_id: projectID}, {established: false}, {new: true})
+        .then(result => {
+
+            chats.findOneAndDelete({projectID: projectID}).then(() => {
+                alert = {
+                    type: "success",
+                    title: "Established!",
+                    message: " You have successfully stoped the project"
+                }
+                res.redirect("/projects/" + projectID)
+            })
+
+
+        
+        }).catch(err => {
+            alert = {
+                type: "danger",
+                title: "Error!",
+                message: " Please try again later."
+            }
+            res.redirect("/projects/" + projectID)
+        });
+    }
+})
+
+router.post("/:projectID/complete", async (req,res)=>{
+    const userID = req.session.userID;
+    const projectID = req.params.projectID;
+
+    if(project.userID != userID){
+        res.redirect("/projects/" + projectID)
+    }else{
+        projects.findOneAndUpdate({_id: projectID}, {completed: true}, {new: true})
+        .then(result => {
+            res.redirect("/portfolio")
         }).catch(err => {
             alert = {
                 type: "danger",
@@ -385,3 +438,43 @@ router.post("/:projectID/send", async (req,res) => {
     });
     
 })
+
+
+// router.put("/:projectID/send", async (req,res) => {
+
+//     const projectID = req.params.projectID;
+//     const userID = req.session.userID;
+//     const message = req.body.chatText;
+
+//     let userName;
+//     await users.find({_id : userID}).then((users) => {
+//         userName = users[0].firstName + " " + users[0].lastName;
+//     })
+
+//     let chatHistory = []
+//     await chats.findOne({projectID: projectID}).then(result => {
+//         chatHistory = result.chatHistory;
+//     })
+
+
+//     chatHistory.push({
+//         userID: userID,
+//         userName: userName,
+//         message: message
+//     })
+
+
+
+//     chats.findOneAndUpdate({projectID: projectID}, {chatHistory: chatHistory}, {new: true})
+//     .then(result => {
+//         res.redirect("/projects/" + projectID)
+//     }).catch(err => {
+//         alert = {
+//             type: "danger",
+//             title: "Error!",
+//             message: " Please try again later."
+//         }
+//         res.redirect("/projects/" + projectID)
+//     });
+    
+// })

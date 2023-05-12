@@ -39,6 +39,11 @@
                     <button type="submit" class="btn chat-btn btn-primary">Send</button>
             </form>
 
+            <!-- <form class="message-form">
+                <input class="form-control chat-input me-2" name="chatText" type="text" required placeholder="Message">
+                <button type="button" class="btn chat-btn btn-primary" onclick="sendMessage()">Send</button>
+        </form> -->
+
             </div>
         </div>
 
@@ -52,6 +57,19 @@
 
       </main>
 
+      <!-- Popup for stopping the project -->
+      <div class="popupWindow hidePopupWindow" id="stopProjectPopupWindow">
+        <div class="popup-message">
+            <img class="mb-2" src="../images/remove.png">
+            <h3>Are You Sure?</h3>
+        </div>
+        <div class="sure-buttons-container">
+            <form action="/projects/<%= project._id %>/stop" method="POST">
+                <button type="submit"class="btn btn-danger btn-lg" >Stop</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="stopProject()">Cancel</button>
+            </form>
+        </div>
+    </div>
 
       <div class="popupWindow hidePopupWindow" id="completePopupWindow">
         <div class="popup-message">
@@ -59,9 +77,9 @@
             <h3>Are You Sure?</h3>
         </div>
         <div class="sure-buttons-container">
-            <form action="" method="POST">
-                <button type="submit" class="btn btn-success btn-lg" id="acceptApplication">Complete</button>
-                <button type="button" class="btn btn-danger btn-lg" id="cancelAccepting" onclick="completeProject()">Cancel</button>
+            <form style="display: inline;" class="message-form" action="/projects/<%= project._id %>/complete" method="POST">
+                <button type="submit" class="btn btn-success btn-lg">Complete</button>
+                <button type="button" class="btn btn-danger btn-lg" onclick="completeProject()">Cancel</button>
             </form>
         </div>
     </div>
