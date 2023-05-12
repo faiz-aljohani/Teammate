@@ -720,9 +720,8 @@ footer{
 /*  login page   ----------------------------- */
 
 .bodylogin {
-	min-height: 100dvh;
-	min-width: 100dvw;
-	background-color: #EBEFFF;
+    min-height: 100dvh;
+    min-width: 100dvw;
 }
 
 .my-formlogin {
