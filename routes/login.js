@@ -15,32 +15,43 @@ router.get('/', (req,res)=>{
     console.log('GET req. in login route')
     console.log("is active: " + isSessionActive(req))
 
+    if(isSessionActive(req)){
+      res.redirect("/")
+    }else{
+      res.render("login",{error:"",info:""})
+    }
+
+    // res.send({t:"ok"})
+
 })
 
 router.post('/logging', async (req,res)=>{
-
     console.log('>> req. for login a user')
-    console.log("is active: " + isSessionActive(req))
+    // console.log("is active: " + isSessionActive(req))
 
     // let email = req.params.email 
 
     loginForm = req.body;
     
     //valid input NOW create newUser in DB
-    try{
+  try{
 
-      //To connect
-      await database.connect();
+    //To connect
+    await database.connect();
 
-      const userID = await loginUser(loginForm);
-      
-      if(!isSessionActive(req)){
-        await createSession(req,res,userID);
-      }
+    const userID = await loginUser(loginForm);
+    
+    // console.log("is active: " + isSessionActive(req))
 
-      console.log(">>login success")
-      res.redirect("/")
-      }
+    if(!isSessionActive(req)){
+      await createSession(req,res,userID);
+    }
+
+    res.redirect("/")
+    
+    // console.log("is active: " + isSessionActive(req))
+    console.log(">>login success")
+    }
 
     catch (e){
       console.log("error at login route POST /logging: ");
@@ -64,7 +75,7 @@ const loginUser = async (loginForm)=>{
 
   const loggingUser = await User.findOne({ email: email })
 
-  console.log(loggingUser)
+  // console.log(loggingUser)
   // console.log(loggingUser)
   // console.log(loggingUser)
 
@@ -80,7 +91,6 @@ const loginUser = async (loginForm)=>{
 }
 
 const createSession = async (req,res,userID)=>{
-
   console.log('>> start createSession()')
   
   //log s/ vars----------------
@@ -103,7 +113,11 @@ const createSession = async (req,res,userID)=>{
   //-------------------------
 }
 isSessionActive = (req)=>{
-  return typeof req.session.userID === "string";
+  //bcz express-session give you a plane cookie after you delete the cookie in logout 
+  // I diff. between our cookie and plane cookie  by userID
+  console.log("session:")
+  console.log(req.session)
+  return req.session !== undefined && req.session.userID !== undefined ;
 }
 module.exports = {
   loginRouter,
