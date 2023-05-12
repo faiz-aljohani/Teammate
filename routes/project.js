@@ -31,23 +31,35 @@ router.get("/:id", async (req,res) => {
 
         if(project.established){
 
-
-
-            await chats.findOne({projectID: project._id}).then(async (chat) => {
-                if(chat == null){
-
-                    const newChat = await chats.create({
-                        projectID: project._id,
-                        chatHistory: []
-                      })
-                    
-                      await newChat.save().then(c => {
-                        chat = c;
-                      })                    
+            let isTeammate = false;
+            await project.teammates.forEach(teammate => {
+                if(teammate.userID == userID){
+                    isTeammate = true;
+                    return;
                 }
-                res.render("chat", {project: project, chat: chat, userID: userID});
-
             })
+
+            if(isTeammate || userID == project.userID){
+
+                await chats.findOne({projectID: project._id}).then(async (chat) => {
+                    if(chat == null){
+    
+                        const newChat = await chats.create({
+                            projectID: project._id,
+                            chatHistory: []
+                          })
+                        
+                          await newChat.save().then(c => {
+                            chat = c;
+                          })                    
+                    }
+                    res.render("chat", {project: project, chat: chat, userID: userID});
+                })
+    
+                
+            }else{
+                res.redirect("/")
+            }
 
             
 

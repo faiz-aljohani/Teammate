@@ -81,7 +81,7 @@
                 <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Establish</button>
                 <button class="btn btn-danger btn-lg mt-3" id="removeProject" onclick="removeProject()">Remove Project</button>
             <% }else{ %>
-                <button class="btn btn-primary btn-lg mt-3" id="applicationBtn">Apply</button>
+                <button class="btn btn-primary btn-lg mt-3" onclick="applyPopup()">Apply</button>
             <% } %>
 
         </div>
@@ -123,7 +123,7 @@
                                 <form style="display: inline;" action="/projects/<%= project._id %>/accept/<%= application.userID %>" method="POST">
                                     <button class="btn btn-primary btn-sm mt-1 acceptBtn">Accept</button>
                                 </form>
-                                <form style="display: inline;" action="/projects/<%= project._id %>/remove/<%= application.userID %>" method="POST">
+                                <form style="display: inline;" action="/projects/<%= project._id %>/remove/<%= application.userID %>" method="POST" onsubmit="return confirm('Are you sure to remove this application?')">
                                     <button class="btn btn-danger btn-sm mt-1 removeBtn">Remove</button>   
                                 </form>
                             <% } else {%>
@@ -181,33 +181,11 @@
                 <textarea name="applicationMessage" class="form-control" name="applicationText" cols="30" rows="5" maxlength="300"></textarea>
                 <button type="submit" class="btn btn-primary btn-lg mt-3" id="applyBtn">Apply</button>
             </form>
-            <a class="mt-2" id="cancelApplication">Cancel</a>
+            <a class="mt-2" onclick="applyPopup()">Cancel</a>
 
         </div>
     </div>
 
-    <!-- Accept an Application popup  -->
-    <div class="popupWindow hidePopupWindow" id="acceptPopupWindow">
-        <div class="popup-message">
-            <img class="mb-2" src="../images/accept.png">
-            <h3>Are You Sure?</h3>
-        </div>
-        <div class="sure-buttons-container">
-            <button class="btn btn-success btn-lg" id="acceptApplication">Accept</button>
-            <button class="btn btn-danger btn-lg" id="cancelAccepting">Cancel</button>
-        </div>
-    </div>
 
-    <!-- Are you sure popup  -->
-    <div class="popupWindow hidePopupWindow" id="removePopupWindow">
-        <div class="popup-message">
-            <img class="mb-2" src="../images/remove.png">
-            <h3>Are You Sure?</h3>
-        </div>
-        <div class="sure-buttons-container">
-            <button class="btn btn-danger btn-lg" id="RemoveApplication">Remove</button>
-            <button class="btn btn-primary btn-lg" id="cancelRemoving">Cancel</button>
-        </div>
-    </div>
 
     <%- include("partials/footer") -%>

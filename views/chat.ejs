@@ -23,8 +23,8 @@
                         <% type = "sender";} %>
 
                 <div class="message message-<%= type %>">
-                    <h3><%= message.userName %></h3>
-                    <p><%= message.message %></p>
+                    <p><%= message.userName %></p>
+                    <h4><%= message.message %></h4>
                 </div>
 
                 <%}); %>
@@ -44,13 +44,27 @@
 
         <% if(project.userID == userID){ %>
             <div class="chat-buttons-container">
-                <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Complete Project</button>
-                <button class="btn btn-danger btn-lg mt-3" id="removeProject" onclick="removeProject()">unEstablish Project</button>
+                <button class="btn btn-primary btn-lg mt-3" onclick="completeProject()">Complete Project</button>
+                <button class="btn btn-danger btn-lg mt-3" onclick="stopProject()">Stop Project</button>
             </div>
         <% } %>
 
 
       </main>
+
+
+      <div class="popupWindow hidePopupWindow" id="completePopupWindow">
+        <div class="popup-message">
+            <img class="mb-2" src="../images/accept.png">
+            <h3>Are You Sure?</h3>
+        </div>
+        <div class="sure-buttons-container">
+            <form action="" method="POST">
+                <button type="submit" class="btn btn-success btn-lg" id="acceptApplication">Complete</button>
+                <button type="button" class="btn btn-danger btn-lg" id="cancelAccepting" onclick="completeProject()">Cancel</button>
+            </form>
+        </div>
+    </div>
 
       <script>
         var objDiv = document.getElementById("messages-container");
