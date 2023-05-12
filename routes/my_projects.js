@@ -29,7 +29,14 @@ router.get('/', async (req,res)=>{
     else{
         userID = req.session.userID;
         console.log('GET req. in my_projects route ' + req.session.userID)
-        const Result = await project.find({userID: userID})//TODO: change this from finding all projects to only getting projects with the desired user
+        const Result = await project.find(
+        {
+            completed: false,
+            $or: [ 
+            {userID: userID,},
+            {"teammates.userID": userID} // checks if the user is a teammate of any project
+            ]
+        });
         res.render("my_projects",{projectsList: Result})
     }
 })
