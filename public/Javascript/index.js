@@ -1,22 +1,4 @@
-// =================== Project Page ======================
-if(document.URL.includes("/projects/")){
 
-
-
-
-
-    // Removing An application Popup window (Remove Button)
-    let portfolioButtons = document.getElementsByClassName("portfolioBtn") //Multible Elements
-
-    for(i = 0; i<removeButtons.length;i++){
-        portfolioButtons[i].addEventListener("click", () => {
-            window.location.href="portfolio.html";
-        });
-    }
-    
-
-
-}
 
 function stopProject(){
   document.getElementById("stopProjectPopupWindow").classList.toggle("hidePopupWindow")
@@ -169,9 +151,8 @@ if(document.URL.includes("portfolio")){
   const deletePrevProject = async (projectId)=>{
 
     console.log(projectId)
-    document.getElementById(projectId).style.visibility="hidden";
+    document.getElementById(projectId.split("-").at(-1)).style.visibility="hidden";
   
-    console.log('hi')
     console.log(projectId.split("-").at(-1))
 
     let req = fetch("http://localhost:3000/portfolio/deleteProject",{
@@ -199,41 +180,19 @@ if(document.URL.includes("prevProject.html")){
 
 // =================== Login Page ======================
 
-  // Get the form element
-const form1 = document.querySelector('#form1');
-
-// Add an event listener for the submit event
-form1.addEventListener('submit', function(event) {
-  event.preventDefault(); // prevent form submission
-  filterProjects();
-});
-function filterProjects() {
-  const searchTerm = document.getElementById('search').value.toLowerCase(); // convert search term to lowercase
-  const projects = document.querySelectorAll('.project'); // get all project elements
-  projects.forEach(function(project) {
-    const title = project.querySelector('.title').textContent.toLowerCase(); // get project title
-    if (title.includes(searchTerm)) {
-      project.classList.remove('hidden'); // show project if it matches search term
-    } else {
-      project.classList.add('hidden'); // hide project if it does not match search term
-    }
-  });
-}
-
-
 // Chat page
 
-function sendMessage(){
-  let url = document.URL.split("?")[0]
-  fetch(url + "/send", {
-    method: "PUT",
-    data: "Hello",
-    headers: {
-      "content-Type": 'application/x-www-form-urlencoded'
-  }
-  }).then((result)=>{
-    // let likesNb = document.querySelector(".likes-number");
-    // likesNb.innerHTML = parseInt(likesNb.innerHTML) + 1;
-    return result;    
-    })
-  }
+// function sendMessage(){
+//   let url = document.URL.split("?")[0]
+//   fetch(url + "/send", {
+//     method: "PUT",
+//     data: "Hello",
+//     headers: {
+//       "content-Type": 'application/x-www-form-urlencoded'
+//   }
+//   }).then((result)=>{
+//     // let likesNb = document.querySelector(".likes-number");
+//     // likesNb.innerHTML = parseInt(likesNb.innerHTML) + 1;
+//     return result;    
+//     })
+//   }

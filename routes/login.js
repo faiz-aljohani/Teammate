@@ -75,15 +75,11 @@ const loginUser = async (loginForm)=>{
   const pwd = loginForm["password"]
 
   const loggingUser = await User.findOne({ email: email })
-
-  console.log(loggingUser.length == 0)
+  
+  // console.log(loggingUser.length == 0)
   let validPwd = await loggingUser.validatePassword(pwd)
 
   if( !validPwd || loggingUser.length == 0) throw new Error("email OR passward is not correct")
-  
-  //log the result----------
-  // console.log(loggingUser)
-  //------------------------
 
   const userID  = loggingUser['_id'].toString();
   return userID;
@@ -92,7 +88,6 @@ const loginUser = async (loginForm)=>{
 
 const createSession = async (req,res,userID)=>{
   console.log('>> start createSession()')
-  
   //log s/ vars----------------
   // const reqUserID  = await req.session.userID;
   // const UserID = userID;
@@ -100,17 +95,17 @@ const createSession = async (req,res,userID)=>{
    //  ^ if the session still active this will have the userID if not it will be undifend 
   //  console.log(UserID)
   // console.log(req)
-  //-------------------------
+
+  //------------------------------------
 
   req.session.userID = userID
   req.session.save();
 
-
-  //-------------------------
+  //------------------------------------
   //to log the result V
   // console.log(req.session.userID)
   // >> { userID: '645423108f811aee90ecf429' }
-  //-------------------------
+  //------------------------------------
 }
 isSessionActive = (req)=>{
   //bcz express-session give you a plane cookie after you delete the cookie in logout 

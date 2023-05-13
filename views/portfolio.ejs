@@ -54,10 +54,10 @@
             <div class="row portfolio-container mb-5">
 
             <% for(i in projects){ %>
-                    <div class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
+                    <div id="<%=projects[i]._id%>" class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
                         <div class="row g-0">
                             <div class="col-6 col-md-4">
-                                <img src="../<%= projects[i].img.split(",")[0]%>" class="img-fluid rounded-start" alt=""> 
+                                <img src="../<%= projects[i].img.split(",")[0]%>" class="img-fluid rounded-start" alt="" onerror="this.src='../images/not-found.jpeg';">
                             </div>
                             <div class="col-6 col-md-8">
                                 <div class="card-body d-flex flex-column"> 
@@ -82,8 +82,6 @@
                                             <% for (j in projects[i].skills ){ %>
                                                 <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
                                             <%}%>
-                                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
                                         </div>
                                     </div>
                                 </div>

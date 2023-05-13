@@ -30,7 +30,8 @@
     <!-- *** -->
     <!-- <link rel="manifest" href="../images/site.webmanifest" /> -->
   </head>
-
+<!-- ---------- -->
+  
   <body class="register-body">
     <main id="register-main">
       <aside id="register-aside">
@@ -51,7 +52,7 @@
               name="full-name"
               minlength="4"
               maxlength="30"
-              pattern="^[a-zA-Z ]+"
+              pattern="^(?!.*?\s{2})[a-zA-Z]+\s[a-zA-Z]{1,50}$"
               required
             /><br /><br />
             <label for="email">Email:</label>
