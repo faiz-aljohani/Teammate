@@ -1,9 +1,8 @@
 const express = require('express');
-
 const app = express();
-// app.use(express.static('public'))
 app.use(express.static(__dirname + '/public'));
-// console.log(__dirname)
+const server = require('http').createServer(app);
+exports.server = server;
 
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
@@ -66,7 +65,7 @@ app.use("/my-projects",myProjectsRouter)
 app.use("/projects",projectRouter)
 app.use("/find-users",findUsersRouter)
 
-app.listen(3000 || process.env.PORT, () => {
+server.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');
 
 })

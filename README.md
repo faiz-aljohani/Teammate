@@ -3,7 +3,6 @@ k<p align="center">
 </p>
 <p style="color:red;">Note: Mongodb's port 271017 is blocked in the university's network. To connect with the database remotely you need to use a personal network.</p>
 # how to run
-- the main script is index.js
 - run `npm i` to install the dependencies
 - run `npm run devStart` 
 
@@ -11,7 +10,7 @@ k<p align="center">
 - Note (you can register at runtime and perform operations on that account)
 <br>One user you can try is:
 - faiz@gmail.com
-- 123
+- X123456X
 # phase 2
 In registerPage.html use the following to register succesfully: <br/>
 fullname:  admin<br/>

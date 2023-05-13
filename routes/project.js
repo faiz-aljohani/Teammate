@@ -1,4 +1,5 @@
 const express = require('express')
+
 const projects = require("../models/Projects.js");
 const users = require("../models/User.js");
 const chats = require("../models/Chat.js");
@@ -9,6 +10,45 @@ let projectOwner;
 const mongoose =  require("mongoose");
 const { log } = require('console');
 let alert = null;
+
+
+
+//For Chating
+const app = require("../app.js")
+const io = require("socket.io")(app.server, {cors: {origin: "*"}});
+
+io.on("connection", (socket) => {
+    console.log("user connected: " + socket.id);
+    socket.on("message", async (data) => {
+
+
+        socket.broadcast.emit("message", data)
+
+
+        let chatHistory = []
+        await chats.findOne({projectID: data.projectID}).then(result => {
+            chatHistory = result.chatHistory;
+        })
+
+
+        chatHistory.push({
+            userID: data.userID,
+            userName: data.username,
+            message: data.message
+        })
+
+
+
+        chats.findOneAndUpdate({projectID: data.projectID}, {chatHistory: chatHistory}, {new: true})
+        .then(result => {
+        })
+        
+    })
+
+})
+
+
+//========================
 
 router.get("/:id", async (req,res) => {
     if(!isSessionActive(req))
@@ -53,7 +93,12 @@ router.get("/:id", async (req,res) => {
                             chat = c;
                           })                    
                     }
-                    res.render("chat", {project: project, chat: chat, userID: userID});
+                    let userName
+                    await users.findOne({_id: userID}).then(user => {
+                        userName = user.firstName + " " + user.lastName;
+                    })
+
+                    res.render("chat", {project: project, chat: chat, userID: userID, userName:userName});
                 })
     
                 
@@ -157,11 +202,6 @@ router.post("/:projectID/establish", async (req,res)=>{
 
         projects.findOneAndUpdate({_id: projectID}, {established: true}, {new: true})
         .then(result => {
-            alert = {
-                type: "success",
-                title: "Established!",
-                message: " You have successfully established the project"
-            }
             res.redirect("/projects/" + projectID)
         }).catch(err => {
             alert = {
@@ -400,81 +440,3 @@ router.post("/:projectID/remove/:applicationUserID", async (req,res)=>{
         
     }
 })
-
-router.post("/:projectID/send", async (req,res) => {
-    const projectID = req.params.projectID;
-    const userID = req.session.userID;
-    const message = req.body.chatText;
-
-    let userName;
-    await users.find({_id : userID}).then((users) => {
-        userName = users[0].firstName + " " + users[0].lastName;
-    })
-
-    let chatHistory = []
-    await chats.findOne({projectID: projectID}).then(result => {
-        chatHistory = result.chatHistory;
-    })
-
-
-    chatHistory.push({
-        userID: userID,
-        userName: userName,
-        message: message
-    })
-
-
-
-    chats.findOneAndUpdate({projectID: projectID}, {chatHistory: chatHistory}, {new: true})
-    .then(result => {
-        res.redirect("/projects/" + projectID)
-    }).catch(err => {
-        alert = {
-            type: "danger",
-            title: "Error!",
-            message: " Please try again later."
-        }
-        res.redirect("/projects/" + projectID)
-    });
-    
-})
-
-
-// router.put("/:projectID/send", async (req,res) => {
-
-//     const projectID = req.params.projectID;
-//     const userID = req.session.userID;
-//     const message = req.body.chatText;
-
-//     let userName;
-//     await users.find({_id : userID}).then((users) => {
-//         userName = users[0].firstName + " " + users[0].lastName;
-//     })
-
-//     let chatHistory = []
-//     await chats.findOne({projectID: projectID}).then(result => {
-//         chatHistory = result.chatHistory;
-//     })
-
-
-//     chatHistory.push({
-//         userID: userID,
-//         userName: userName,
-//         message: message
-//     })
-
-
-
-//     chats.findOneAndUpdate({projectID: projectID}, {chatHistory: chatHistory}, {new: true})
-//     .then(result => {
-//         res.redirect("/projects/" + projectID)
-//     }).catch(err => {
-//         alert = {
-//             type: "danger",
-//             title: "Error!",
-//             message: " Please try again later."
-//         }
-//         res.redirect("/projects/" + projectID)
-//     });
-    
-// })
