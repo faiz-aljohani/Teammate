@@ -7,30 +7,34 @@
         </div>
     <% } %>
 
+    <div class="setting-main-container">
 
-    <form class="settings-container form-signin" action="/settings" method="POST">
-        <div class="settings-header">
-            <img class="settings-img mb-3" src="../images/man.png" alt="">
-            <h3>Settings</h3>
-        </div>
-
-        <div class="settings-body">
-            <div class="form-label-group">
-                <input type="text" id="name" name="fullName" class="form-control" value="<%= name %>" placeholder="Full Name" required autofocus>
+        <form class="settings-container form-signin" action="/settings" method="POST">
+            <div class="settings-header">
+                <img class="settings-img mb-3" src="../images/man.png" alt="">
+                <h3>Settings</h3>
             </div>
 
-            <div class="form-label-group  mt-3">
-                <input type="email" id="inputEmail" name="email" class="form-control"  value="<%= email %>" placeholder="Email address" required>
-            </div>
-    
-            <div>
-                <button class="btn btn-primary btn-lg btn-block mt-3 mb-2" type="submit">Save</button>
-            </div>
-            
-            <a class="change-password-lnk" id="changePassowrdBtn">Change Password</a>
-        </div>
+            <div class="settings-body">
+                <div class="form-label-group">
+                    <input type="text" id="name" name="fullName" class="form-control" value="<%= name %>" placeholder="Full Name" required autofocus>
+                </div>
 
-    </form>
+                <div class="form-label-group  mt-3">
+                    <input type="email" id="inputEmail" name="email" class="form-control"  value="<%= email %>" placeholder="Email address" required>
+                </div>
+        
+                <div>
+                    <button class="btn btn-primary btn-lg btn-block mt-3 mb-2" type="submit">Save</button>
+                </div>
+                
+                <a class="change-password-lnk" id="changePassowrdBtn">Change Password</a>
+            </div>
+
+        </form>
+    </div>
+
+
 
         <div class="popupWindow hidePopupWindow" id="changePasswordWindow">
             <div class="popup-message">
