@@ -5,8 +5,9 @@ const {isSessionActive} = require('./login')
 const router = express.Router()
 module.exports = router;
 router.get("/", async (req,res) => {
+
     if(!isSessionActive(req))
-        res.redirect("/login");
+        res.redirect("landing_page");
     else{
         let projectsList2;
         const query = {

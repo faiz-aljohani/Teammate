@@ -5,10 +5,10 @@
     box-sizing: border-box;
 
 }
-/* TO hide the unsearched projects */
-.hidden{
-    display: none; 
-}
+.hidden {
+    display: none;
+  }
+  
 
 body{
     font-family: 'Montserrat', sans-serif;

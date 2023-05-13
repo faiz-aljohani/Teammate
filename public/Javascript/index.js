@@ -159,18 +159,12 @@ if(document.URL.includes("prevProject.html")){
   //   tmpToHomePage();
   // });
 
-
-
-  // Get the form element
-const form1 = document.querySelector('#form1');
-
-// Add an event listener for the submit event
+// Search
+const form1 = document.querySelector('form1');
 form1.addEventListener('submit', function(event) {
-//   event.preventDefault(); // prevent form submission
+  event.preventDefault(); // prevent form submission
   filterProjects();
 });
-
-// Search function
 function filterProjects() {
   const searchTerm = document.getElementById('search').value.toLowerCase(); // convert search term to lowercase
   const projects = document.querySelectorAll('.project'); // get all project elements
