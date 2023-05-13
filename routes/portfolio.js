@@ -5,7 +5,7 @@ const UserModel = require("../models/User.js")
 // const database = require("../db");
 const app = express();
 const bodyParser = require("body-parser")
-const ejs = require("ejs")
+const ejs = require("ejs");
 const mongoose = require("mongoose");
 
 app.set('view engine', 'ejs');
