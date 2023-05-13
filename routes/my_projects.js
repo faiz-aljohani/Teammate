@@ -101,4 +101,4 @@ router.post("/searchMyProjects", async (req,res)=>{
             console.log(err);
     });
     res.render("my_projects",{projectsList: projectsFound})
-});
+}); 
