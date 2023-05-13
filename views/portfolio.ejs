@@ -5,17 +5,21 @@
 </header>
     <main>
 
-        <!-- Test it V -->
-        <% if (viewerID != ownerID) { %>
-            <div class="text-center">
-                <h4>You're currently viewing <%= ownerFirstName %>'s portfolio.</h4>
+
+
+        <div class="p-text-container mt-5 mb-3">
+            <div class="d-flex justify-content-between">
+                <h1>Portfolio</h1>
             </div>
-        <% } %>
+              
+                <p class="p-text"> <%= userName %></p>
+            <!-- <#%= project.title %> -->
+          </div>
 
         <!-- ------------------------------------- -->
       <div>
 
-          <div class="p-text-container mt-3 mb-3">
+          <div class="p-text-container mt-5 mb-3">
             <div class="d-flex justify-content-between">
                 <h1>About me</h1>
                 <% if (viewerID == ownerID) { %>
@@ -41,8 +45,9 @@
               <% } %>
             </div>
               
+            <div class="row portfolio-container mb-5">
+
             <% for(i in projects){ %>
-                <div class="row">
                     <div class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
                         <div class="row g-0">
                             <div class="col-6 col-md-4">
@@ -63,7 +68,7 @@
                                           <% } %>
                                         </div>
 
-                                        <p class="card-text portfolio-card-text">
+                                        <p class="portfolio-card-text">
                                             <%= projects[i].description %>
                                         </p>
                                         <div class="tags .portfolio-card-tag">
@@ -79,8 +84,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
             <%}%>
+        </div>
 
 
           </div>

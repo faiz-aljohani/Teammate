@@ -92,9 +92,10 @@
       <div class="applicationsCards">
         <div class="row">
 
-            <% let isTeammate = false; %>
 
             <% applications.forEach(application => { %>
+                <% let isTeammate = false; %>
+
                 <% project.teammates.forEach(member => {%>
                     <% if(member.userID == application.userID){ %>
                     <% isTeammate = true; %>
