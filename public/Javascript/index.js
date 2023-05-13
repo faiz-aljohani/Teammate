@@ -18,6 +18,10 @@ if(document.URL.includes("/projects/")){
 
 }
 
+function stopProject(){
+  document.getElementById("stopProjectPopupWindow").classList.toggle("hidePopupWindow")
+}
+
 function applyPopup(){
   document.getElementById("applicationWindow").classList.toggle("hidePopupWindow")
 }
@@ -195,3 +199,21 @@ function filterProjects() {
     }
   });
 }
+
+
+// Chat page
+
+function sendMessage(){
+  let url = document.URL.split("?")[0]
+  fetch(url + "/send", {
+    method: "PUT",
+    data: "Hello",
+    headers: {
+      "content-Type": 'application/x-www-form-urlencoded'
+  }
+  }).then((result)=>{
+    // let likesNb = document.querySelector(".likes-number");
+    // likesNb.innerHTML = parseInt(likesNb.innerHTML) + 1;
+    return result;    
+    })
+  }

@@ -78,7 +78,7 @@
             </div>
             
             <% if(projectOwner && projectOwner._id == userID){ %>
-                <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Establish</button>
+                <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Start Project</button>
                 <button class="btn btn-danger btn-lg mt-3" id="removeProject" onclick="removeProject()">Remove Project</button>
             <% }else{ %>
                 <button class="btn btn-primary btn-lg mt-3" onclick="applyPopup()">Apply</button>
@@ -163,7 +163,7 @@
         </div>
         <div class="sure-buttons-container">
             <form action="/projects/<%= project._id %>/establish" method="POST">
-                <button type="submit" class="btn btn-success btn-lg">Establish</button>
+                <button type="submit" class="btn btn-success btn-lg">Start</button>
                 <button type="button" class="btn btn-danger btn-lg" onclick="establishProject()">Cancel</button>
             </form>
 
