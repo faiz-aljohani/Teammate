@@ -199,28 +199,6 @@ if(document.URL.includes("prevProject.html")){
 
 // =================== Login Page ======================
 
-  // Get the form element
-const form1 = document.querySelector('#form1');
-
-// Add an event listener for the submit event
-form1.addEventListener('submit', function(event) {
-  event.preventDefault(); // prevent form submission
-  filterProjects();
-});
-function filterProjects() {
-  const searchTerm = document.getElementById('search').value.toLowerCase(); // convert search term to lowercase
-  const projects = document.querySelectorAll('.project'); // get all project elements
-  projects.forEach(function(project) {
-    const title = project.querySelector('.title').textContent.toLowerCase(); // get project title
-    if (title.includes(searchTerm)) {
-      project.classList.remove('hidden'); // show project if it matches search term
-    } else {
-      project.classList.add('hidden'); // hide project if it does not match search term
-    }
-  });
-}
-
-
 // Chat page
 
 function sendMessage(){
