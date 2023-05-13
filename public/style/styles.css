@@ -113,11 +113,13 @@ a{
 /* Carousel */
 .carousel-home{
     max-width: 1200px;
+
     width: 70%;
     margin: auto;
     margin-top: 40px;
-    height: 600px;
     overflow: hidden;
+    aspect-ratio: 2/1;
+
 }
 
 .carousel-home img{
@@ -129,6 +131,8 @@ a{
     box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
 
 }
+
+
 
 /* Cards */
 
@@ -387,6 +391,10 @@ a{
     
     .project-right-contaner{
         width: 70%;
+    }
+
+    .carousel-home{
+        display: none!important;
     }
 
   }
