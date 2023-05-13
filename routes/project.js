@@ -202,11 +202,6 @@ router.post("/:projectID/establish", async (req,res)=>{
 
         projects.findOneAndUpdate({_id: projectID}, {established: true}, {new: true})
         .then(result => {
-            alert = {
-                type: "success",
-                title: "Established!",
-                message: " You have successfully established the project"
-            }
             res.redirect("/projects/" + projectID)
         }).catch(err => {
             alert = {
