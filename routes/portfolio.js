@@ -90,7 +90,7 @@ router.get("/:id",async (req, res)=>{
         if (user != null){
             let userName = user.firstName + " " + user.lastName;
 
-            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, userName: userName}) ;
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, userName: userName,description: user.description}) ;
         }
         
     }
@@ -155,7 +155,7 @@ router.post("/searchPortfolio", async (req,res)=>{
         .catch(function (err) {
             console.log(err);
     });
-    res.render("portfolio",{projects: projectsFound, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+    res.render("portfolio",{projects: projectsFound, viewerID: userID, ownerID: userID, ownerFirstName: "",description: user.description})
 });
 
 // to save the edit on about me field
