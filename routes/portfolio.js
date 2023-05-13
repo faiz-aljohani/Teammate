@@ -37,6 +37,11 @@ router.get("/", async (req,res) => {
     else{
         console.log('GET req. in portfolio route')
         userID = req.session.userID;
+        let userName
+        await UserModel.findOne({_id: userID}).then(user => {
+            userName = user.firstName + " " + user.lastName;
+        })
+
         const Result = await ProjectModel.find({
                 completed: true,
                 $or: [ 
@@ -51,7 +56,7 @@ router.get("/", async (req,res) => {
             const User = await UserModel.findOne({_id: mongoose.Types.ObjectId.createFromHexString(userID)})
             // console.log(User)
             // console.log(User.description)
-            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: "", description: User.description})
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: "", userName: userName,description: User.description})
 
         }catch(error){
             console.log("you did somethign wrong!")
@@ -83,12 +88,9 @@ router.get("/:id",async (req, res)=>{
             return;
         });
         if (user != null){
-            let ownerFirstName = user.firstName;
-            //Capitalize the first letter
-            ownerFirstName = 
-            ownerFirstName.charAt(0).toUpperCase()
-                + ownerFirstName.slice(1);
-            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, ownerFirstName: ownerFirstName}) ;
+            let userName = user.firstName + " " + user.lastName;
+
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, userName: userName}) ;
         }
         
     }
