@@ -6,14 +6,12 @@ const {isSessionActive} = require('./login')
 
 router.get("/", async (req,res) => {
 
-    // req.session = null;
-
     const cookies = req.cookies;
 
     for (let prop in cookies) {   
-    res.clearCookie(prop); //Or res.cookie(prop, '', {expires: new Date(0)});
+    res.clearCookie(prop); 
     }
-    
+
     req.session.destroy(function(err) {
         if(err) {
             console.log(err);
@@ -21,7 +19,6 @@ router.get("/", async (req,res) => {
         else {
             console.log("isSessionActive " + isSessionActive(req))
             res.redirect("/login");
-
         }
     });
 })

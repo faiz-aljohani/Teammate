@@ -127,7 +127,38 @@ if(document.URL.includes("portfolio")){
     document.querySelector("#cancelAddingPrevProject").addEventListener("click", () =>{
         document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
     })
+    
+    document.querySelector("#edit-about-me").addEventListener("click", () =>{
+      document.getElementById("about-me-text").focus();
+      
+    })
+
+  //   document.querySelector("#cancelAddingPrevProject").addEventListener("click", () =>{
+  //     document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
+  //   })
+  // document.querySelector("#cancelAddingPrevProject").addEventListener("click", () =>{
+  //   document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
+  //   })
 }
+  const saveChnageInAboutMe = async ()=>{
+  
+    let data = await document.getElementById("about-me-text").textContent
+
+    console.log(data)
+    console.log(      document.getElementById("about-me-text").textContent    )
+
+
+    let req = fetch("http://localhost:3000/portfolio/updateDescription",{
+      method: 'post',
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "description": `${data}`
+      })
+    })
+    console.log(req)
+  }
 // =================== prevProject Page ======================
 // fix below code
 if(document.URL.includes("prevProject.html")){
@@ -141,25 +172,6 @@ if(document.URL.includes("prevProject.html")){
 }
 
 // =================== Login Page ======================
-
-// function tmpToHomePage() {
-//     const email = document.getElementById('email').value;
-//     const password = document.getElementById('password').value;
-  
-//     if (email === 'admin@admin.com' && password === '123456') {
-//       window.location.href = 'index.html';
-//     } else {
-//       alert('Incorrect email or password');
-//     }
-//   }
-  
-  // const loginForm = document.getElementById('login-form');
-  // loginForm.addEventListener('submit', (event) => {
-  //   event.preventDefault();
-  //   tmpToHomePage();
-  // });
-
-
 
   // Get the form element
 const form1 = document.querySelector('#form1');

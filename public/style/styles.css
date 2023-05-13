@@ -144,7 +144,8 @@ a{
 
 }
 .portfolio-card{
-    width: 1000px;
+    width: 75%;
+    height: 100%;
 }
 .portfolio-card-title {
     margin-top: 5rem;
@@ -153,7 +154,7 @@ a{
     text-align: left;
 }
 .portfolio-card-text{
-    /* font-size: 3rem; */
+    font-size: 1rem;
     padding-left: 1rem;
     text-align: left;
 }
@@ -161,6 +162,11 @@ a{
     justify-content: space-evenly;
     padding: 0 5rem;
 }
+.portfolio-editable-text:empty:not(:focus)::before {
+    content: attr(data-placeholder);
+  }
+
+
 .card:hover{
     transform: scale(1.04);
     transition-timing-function: ease-in-out;
@@ -250,9 +256,13 @@ a{
 }
 
 .p-text-container h1{
+    display: flexbox;
     color: #656ED3;
     font-weight: 700;
     text-transform: uppercase;
+    justify-content: space-evenly;
+
+    
 }
 
 .p-text-container .p-text{

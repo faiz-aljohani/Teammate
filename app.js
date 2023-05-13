@@ -25,7 +25,9 @@ const logoutRouter = require('./routes/logout');
 const findUsersRouter = require('./routes/find-users')
 
 app.set('view engine', 'ejs');
-// app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
 app.use(express.static('public'))
 app.use("/images",express.static('images'))
 

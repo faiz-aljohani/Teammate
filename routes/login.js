@@ -11,9 +11,10 @@ loginRouter = router;
 let loginForm ; 
 
 //----------------------------------Client Req.
-router.get('/', (req,res)=>{
+router.get('/', async (req,res)=>{
     console.log('GET req. in login route')
     console.log("is active: " + isSessionActive(req))
+
 
     if(isSessionActive(req)){
       res.redirect("/")
@@ -69,7 +70,7 @@ router.post('/logging', async (req,res)=>{
 //----------------------------------------Func.
 
 const loginUser = async (loginForm)=>{
-  
+
   const email = loginForm['email'];
   const pwd = loginForm["password"]
 
@@ -115,8 +116,8 @@ const createSession = async (req,res,userID)=>{
 isSessionActive = (req)=>{
   //bcz express-session give you a plane cookie after you delete the cookie in logout 
   // I diff. between our cookie and plane cookie  by userID
-  console.log("session:")
-  console.log(req.session)
+  // console.log("session:")
+  // console.log(req.session)
   return req.session !== undefined && req.session.userID !== undefined ;
 }
 module.exports = {

@@ -1,23 +1,97 @@
-<%- include("partials/header") -%>
+    
+    
+    <%- include("partials/header") -%>
 
-    </header>
-
-
+</header>
     <main>
-        <!-- add previous project "button"  -->
-        <div class="main-buttons">
-            <!-- <form class="d-flex" id="form1" method="post" action="/portfolio/searchPortfolio">
-                <input class="form-control me-2" name="searchQuery"type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-light" type="submit"><img class="searchSymbol" src="/images/search-symbol.png"></button>
-            </form> -->
-            <% if (viewerID == ownerID) { %>
-                
-                <button class="btn btn-primary me-1" id="add-prev-project">add previous projects</button>
-                <button class="btn btn-primary" id="edit-about-me">edit "About me"</button>
-                
-            <% } %>
-        
-        </div>
+
+        <!-- Test it V -->
+        <% if (viewerID != ownerID) { %>
+            <div class="text-center">
+                <h4>You're currently viewing <%= ownerFirstName %>'s portfolio.</h4>
+            </div>
+        <% } %>
+
+        <!-- ------------------------------------- -->
+      <div>
+
+          <div class="p-text-container mt-3 mb-3">
+            <div class="d-flex justify-content-between">
+                <h1>About me</h1>
+                <% if (viewerID == ownerID) { %>
+                    <button class="btn btn-primary h-50" id="edit-about-me">        
+                        <i class="material-icons" style="font-size:16px">edit</i> Edit
+                    </button>
+                    <% } %>
+            </div>
+              
+              <p  onfocusout="saveChnageInAboutMe()" id="about-me-text" data-placeholder="..." contenteditable class="p-text portfolio-editable-text"></p>
+              <!-- <#%= project.title %> -->
+          </div>
+
+          <div class="p-text-container">
+            <div class="d-flex justify-content-between">
+                <h1>My Previous Projects</h1>
+              <% if (viewerID == ownerID) { %>
+                    <button class="btn btn-primary me-1 h-50" id="add-prev-project">
+                        
+                        <i class="material-icons" style="font-size:16px">add</i> Add
+
+                    </button>
+              <% } %>
+            </div>
+              
+            <% for(i in projects){ %>
+                <div class="row">
+                    <div class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
+                        <div class="row g-0">
+                            <div class="col-6 col-md-4">
+                                <img src="../<%= projects[i].img.split(",")[0]%>" class="img-fluid rounded-start" alt=""> 
+                            </div>
+                            <div class="col-6 col-md-8">
+                                <div class="card-body d-flex flex-column"> 
+                                    <div class="h-100">
+
+                                        <div class="d-flex justify-content-between">
+                                            <h1 class="card-title mb-3 mt-1 portfolio-card-title"><%= projects[i].title %> </h1>
+                                            <% if (viewerID == ownerID) { %>
+                                                <button class="btn btn-primary me-1 h-50" id="delete-prev-project">
+                                                    
+                                                    <i class="material-icons" style="font-size:16px">delete_outline</i>
+                            
+                                                </button>
+                                          <% } %>
+                                        </div>
+
+                                        <p class="card-text portfolio-card-text">
+                                            <%= projects[i].description %>
+                                        </p>
+                                        <div class="tags .portfolio-card-tag">
+                            
+                                            <% for (j in projects[i].skills ){ %>
+                                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
+                                            <%}%>
+                                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
+                                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+
+
+          </div>
+      </div>
+
+          
+
+
+        <!-- ------------------------------------- -->
+
+        <br>
         <!-- popup window for adding previous projects -->
         <div class="popupWindow hidePopupWindow" id="addPrevProjectPopupWindow">
             <!-- popup message -->
@@ -31,10 +105,10 @@
                     <div class="form-group row  mt-3">
                         <label for="Title" class="col-sm-4 col-form-label" >Project Title</label>
                         <div class="col-sm-8">
-                            <input type="text" name="title" class="form-control"  placeholder="title" id="title" required>
+                            <input type="text" name="title" class="form-control"  placeholder="title" id="title"  maxlength="20" required>
                         </div>    
                     </div>
-                    <textarea class="form-control mt-3" name="description" id="description" cols="30" rows="5" placeholder="Project Description and your contribution" required></textarea>             
+                    <textarea class="form-control mt-3" name="description" id="description" cols="30" rows="5" maxlength="120" placeholder="Project Description and your contribution" required></textarea>             
                     
                     <!-- <div class="form-group row  mt-3">
                         <label for="link" class="col-sm-4 col-form-label" >Project link</label>
@@ -46,7 +120,7 @@
                     <div class="form-group row  mt-3">
                         <label for="skills" class="col-sm-4 col-form-label">Skills used</label>
                         <div class="col-sm-8">
-                          <input name="skills" id="skills" type="text" class="form-control" placeholder="Javascript, css, HTML" required>
+                        <input name="skills" id="skills" type="text" class="form-control" placeholder="Javascript, css, HTML" required>
                         </div>    
                     </div>    
                     <div class="form-group row mt-3">
@@ -64,7 +138,7 @@
                     <!-- <div>
                         <label for="contactChoice1">completed?</label>
                         <input type="checbox" name="completed" value="true" />
-                      </div> -->
+                    </div> -->
                     <div class="sure-buttsons-container mt-3">
                         <button class="btn btn-primary btn-lg mb-2" id="addProject">Add</button>
                     </div>
@@ -72,46 +146,8 @@
                 </form>
             </div>
         </div>
-        <% if (viewerID != ownerID) { %>
-            <div class="text-center">
-                <h4>You're currently viewing <%= ownerFirstName %>'s portfolio.</h4>
-            </div>
-        <% } %>
 
-        <h1 class="text-center">About me:</h1>
-        <p><%= ownerID.description%></p>
-        <!-- previous projects will be below -->
-        <h1 class="text-center">Projects Portfolio</h1>
-        
-            <% for(i in projects){ %>
-                <div class="row">
-                    <div class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
-                        <div class="row g-0">
-                            <div class="col-6 col-md-5">
-                                <img src="../<%= projects[i].img.split(",")[0]%>" class="img-fluid rounded-start" alt=""> <!--../images/1683297321022.jpeg-->
-                            </div>
-                            <div class="col-6 col-md-7">
-                                <div class="card-body d-flex flex-column"> 
-                                    <div class="h-100">
-                                        <h1 class="card-title mb-3 portfolio-card-title"><%= projects[i].title %> </h1>
-                                        <p class="card-text portfolio-card-text">
-                                            <%= projects[i].description %>
-                                        </p>
-                                        <div class="tags .portfolio-card-tag">
-                            
-                                            <% for (j in projects[i].skills ){ %>
-                                                <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#<%= projects[i].skills[j] %></span></a>
-                                            <%}%>
-                                            <!-- <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#HTML</span></a>
-                                            <a href=""><span class="tag tag-firestore tag-md me-3 mb-2">#CSS</span></a> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <%}%>
+
         
     </main>
 <%- include("partials/footer") -%>

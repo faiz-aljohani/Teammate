@@ -88,6 +88,7 @@ const registerNewUser = async (registerForm)=>{
     lastName: lastName,
     email: email,
     pwd: pwd,
+    description: ""
   })
 
   newUser.save()
