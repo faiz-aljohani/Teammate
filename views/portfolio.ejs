@@ -25,7 +25,13 @@
                     <% } %>
             </div>
               
-              <p  onfocusout="saveChnageInAboutMe()" id="about-me-text" data-placeholder="..." contenteditable class="p-text portfolio-editable-text"></p>
+              <p onfocusout="saveChnageInAboutMe()" id="about-me-text" data-placeholder="..." contenteditable class="p-text portfolio-editable-text">
+                <% if (description) { %>
+                       
+                <%=description%>
+            
+                <% } %>
+              </p>
               <!-- <#%= project.title %> -->
           </div>
 
@@ -55,10 +61,10 @@
                                         <div class="d-flex justify-content-between">
                                             <h1 class="card-title mb-3 mt-1 portfolio-card-title"><%= projects[i].title %> </h1>
                                             <% if (viewerID == ownerID) { %>
-                                                <button class="btn btn-primary me-1 h-50" id="delete-prev-project">
+                                                <button class="btn btn-primary me-1 h-50" id="delete-prev-project-<%=projects[i]._id%>" onClick="deletePrevProject(this.id)">
                                                     
                                                     <i class="material-icons" style="font-size:16px">delete_outline</i>
-                            
+        
                                                 </button>
                                           <% } %>
                                         </div>

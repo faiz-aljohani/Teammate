@@ -44,8 +44,15 @@ router.get("/", async (req,res) => {
                 {"teammates.userID": userID} // checks if the user is a teammate of any project
                 ]
         })
+        // console.log(mongoose.Types.ObjectId.createFromHexString(userID))
+        // console.log(req.session.userID)
+        
         try{
-            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+            const User = await UserModel.findOne({_id: mongoose.Types.ObjectId.createFromHexString(userID)})
+            // console.log(User)
+            // console.log(User.description)
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: "", description: User.description})
+
         }catch(error){
             console.log("you did somethign wrong!")
             // console.log(error)
@@ -170,6 +177,34 @@ router.post("/updateDescription", async (req,res)=>{
         const dbReq = await UserModel.updateOne(
             {_id: mongoose.Types.ObjectId.createFromHexString(userID)},
             {description: newDescription['description']}
+        );
+
+    }
+    catch(e){
+        console.log(e)
+    }
+    
+
+    res.end();
+    })  
+
+// to save the edit on about me field
+router.post("/deleteProject", async (req,res)=>{
+    console.log('post req. to delete Project in portfolio route')
+
+    let projectId = await req.body.projectId;
+
+    console.log(req.body)
+    // console.log(req)
+
+    console.log(projectId)
+    console.log(mongoose.Types.ObjectId.createFromHexString(projectId))
+
+
+
+    try{
+        const dbReq = await ProjectModel.deleteOne(
+            {_id: mongoose.Types.ObjectId.createFromHexString(projectId)},
         );
 
     }
