@@ -10,7 +10,7 @@ k<p align="center">
 - Note (you can register at runtime and perform operations on that account)
 <br>One user you can try is:
 - faiz@gmail.com
-- X123456X
+- X123123X
 # phase 2
 In registerPage.html use the following to register succesfully: <br/>
 fullname:  admin<br/>
