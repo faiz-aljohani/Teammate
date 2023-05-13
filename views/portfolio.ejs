@@ -54,7 +54,7 @@
             <div class="row portfolio-container mb-5">
 
             <% for(i in projects){ %>
-                    <div class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
+                    <div id="<%=projects[i]._id%>" class="btn card portfolio-card col col-4 m-1 mt-5 mb-1">
                         <div class="row g-0">
                             <div class="col-6 col-md-4">
                                 <img src="../<%= projects[i].img.split(",")[0]%>" class="img-fluid rounded-start" alt="" onerror="this.src='../images/not-found.jpeg';">

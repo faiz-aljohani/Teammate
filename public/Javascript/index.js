@@ -151,9 +151,8 @@ if(document.URL.includes("portfolio")){
   const deletePrevProject = async (projectId)=>{
 
     console.log(projectId)
-    document.getElementById(projectId).style.visibility="hidden";
+    document.getElementById(projectId.split("-").at(-1)).style.visibility="hidden";
   
-    console.log('hi')
     console.log(projectId.split("-").at(-1))
 
     let req = fetch("http://localhost:3000/portfolio/deleteProject",{
