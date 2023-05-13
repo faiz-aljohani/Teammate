@@ -199,15 +199,50 @@ router.post("/deleteProject", async (req,res)=>{
     console.log(req.body)
     // console.log(req)
 
-    console.log(projectId)
-    console.log(mongoose.Types.ObjectId.createFromHexString(projectId))
+    // console.log(projectId)
+    // console.log(mongoose.Types.ObjectId.createFromHexString(projectId))
 
 
 
     try{
-        const dbReq = await ProjectModel.deleteOne(
+
+        const oldTeammates =  await ProjectModel.findOne({_id: mongoose.Types.ObjectId.createFromHexString(projectId)})
+        console.log(oldTeammates)
+
+        console.log(oldTeammates.teammates)
+        let TeammatesList = oldTeammates.teammates
+
+        if(TeammatesList.length == 0 ){
+            //delete the whole projecT
+            await ProjectModel.deleteOne(
             {_id: mongoose.Types.ObjectId.createFromHexString(projectId)},
-        );
+        )
+        }else{
+            //UPDATE OWNER
+            await ProjectModel.updateOne(
+                {_id: mongoose.Types.ObjectId.createFromHexString(projectId)},
+                {userID: TeammatesList[0]._id.toString()}
+            )
+            //REMOVE the owner from teammates
+            TeammatesList.shift()
+
+            // Update teammates
+            await ProjectModel.updateOne(
+                {_id: mongoose.Types.ObjectId.createFromHexString(projectId)},
+                {teammates: TeammatesList}
+            )
+
+        }
+       
+        // await UserModel.updateOne
+        // const dbReq = await UserModel.updateOne(
+        //     {_id: mongoose.Types.ObjectId.createFromHexString(userID)},
+        //     {teammates: newTeammates}
+        // );
+
+        // const dbReq = await ProjectModel.up(
+        //     {_id: mongoose.Types.ObjectId.createFromHexString(projectId)},
+        // );
 
     }
     catch(e){
