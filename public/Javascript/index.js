@@ -1,22 +1,4 @@
-// =================== Project Page ======================
-if(document.URL.includes("/projects/")){
 
-
-
-
-
-    // Removing An application Popup window (Remove Button)
-    let portfolioButtons = document.getElementsByClassName("portfolioBtn") //Multible Elements
-
-    for(i = 0; i<removeButtons.length;i++){
-        portfolioButtons[i].addEventListener("click", () => {
-            window.location.href="portfolio.html";
-        });
-    }
-    
-
-
-}
 
 function stopProject(){
   document.getElementById("stopProjectPopupWindow").classList.toggle("hidePopupWindow")
@@ -201,17 +183,17 @@ if(document.URL.includes("prevProject.html")){
 
 // Chat page
 
-function sendMessage(){
-  let url = document.URL.split("?")[0]
-  fetch(url + "/send", {
-    method: "PUT",
-    data: "Hello",
-    headers: {
-      "content-Type": 'application/x-www-form-urlencoded'
-  }
-  }).then((result)=>{
-    // let likesNb = document.querySelector(".likes-number");
-    // likesNb.innerHTML = parseInt(likesNb.innerHTML) + 1;
-    return result;    
-    })
-  }
+// function sendMessage(){
+//   let url = document.URL.split("?")[0]
+//   fetch(url + "/send", {
+//     method: "PUT",
+//     data: "Hello",
+//     headers: {
+//       "content-Type": 'application/x-www-form-urlencoded'
+//   }
+//   }).then((result)=>{
+//     // let likesNb = document.querySelector(".likes-number");
+//     // likesNb.innerHTML = parseInt(likesNb.innerHTML) + 1;
+//     return result;    
+//     })
+//   }

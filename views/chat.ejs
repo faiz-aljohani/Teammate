@@ -1,6 +1,9 @@
 <%- include("partials/header") -%>
 
       </header>
+      <p style="display: none;" id="userName"><%= userName %></p>
+      <p style="display: none;" id="userID"><%= userID%></p>
+      <p style="display: none;" id="projectID"><%= project._id%></p>
 
       <main class="chat-main">
 
@@ -12,7 +15,7 @@
             </div>
 
 
-
+            
             <div class="messages-container" id="messages-container">
 
                 <% chat.chatHistory.forEach(message => { %>
@@ -34,16 +37,10 @@
 
 
             <div class="messgae-form-container message-input">
-                <form class="message-form" action="/projects/<%= project._id %>/send" method="POST" >
-                    <input class="form-control chat-input me-2" name="chatText" type="text" required placeholder="Message">
-                    <button type="submit" class="btn chat-btn btn-primary">Send</button>
-            </form>
-
-            <!-- <form class="message-form">
-                <input class="form-control chat-input me-2" name="chatText" type="text" required placeholder="Message">
-                <button type="button" class="btn chat-btn btn-primary" onclick="sendMessage()">Send</button>
-        </form> -->
-
+                <form class="message-form">
+                    <input class="form-control chat-input me-2" id="message-text" name="chatText" type="text" required placeholder="Message">
+                    <button type="button" class="btn chat-btn btn-primary" onclick="sendMessage()"><img src="../images/send.png" alt=""></button>
+                </form>
             </div>
         </div>
 
@@ -85,9 +82,71 @@
     </div>
 
       <script>
-        var objDiv = document.getElementById("messages-container");
-        objDiv.scrollTop = objDiv.scrollHeight;
+        var messagesContainer = document.getElementById("messages-container");
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        const socket = io("http://localhost:3000")
+        socket.on('connection')
+
+        socket.on("message", (data) => {
+            const username = document.createElement("p");
+            username.textContent = data.username;
+            const userID =  document.querySelector("#userName").textContent
+
+            let type = "receiver"
+            if(data.userID == userID){
+                type = "sender"
+            }
+            
+            displayMessage(username,data.message,type)
+        })
+
+
+        const displayMessage = (userName, message, type) => {
+
+            const messageDiv = document.createElement("div")
+            messageDiv.classList.add("message")
+            messageDiv.classList.add("message-" + type)
+
+            const messageH4 = document.createElement("h4");
+            messageH4.textContent = message;
+
+            messageDiv.appendChild(userName)
+            messageDiv.appendChild(messageH4)
+
+            document.querySelector("#messages-container").appendChild(messageDiv)            
+
+            document.querySelector("#message-text").value = ""
+
+            // messagesContainer.scrollTop = objDiv.scrollHeight;
+        }
+
+        const sendMessage = () => {
+            
+            const messageText = document.querySelector("#message-text").value;
+            if(messageText == ""){
+                return false;
+            }
+
+            const userName = document.createElement("p");
+            userName.textContent = document.querySelector("#userName").textContent
+            displayMessage(userName,messageText, "sender")
+
+            const userID =  document.querySelector("#userID").textContent
+            const projectID =  document.querySelector("#projectID").textContent
+
+            message= {
+                message: messageText,
+                username: userName.textContent,
+                userID: userID,
+                projectID: projectID
+            }
+
+            socket.emit("message", message)
+        }
+
       </script>
+
 
 
 <%- include("partials/footer") -%>
