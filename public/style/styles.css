@@ -263,14 +263,11 @@ a{
 }
 
 .p-text-container h1{
-    display: flexbox;
     color: #656ED3;
     font-weight: 700;
     text-transform: uppercase;
-    justify-content: space-evenly;
-
-    
 }
+
 
 .p-text-container .p-text{
     font-size: 1.5rem;

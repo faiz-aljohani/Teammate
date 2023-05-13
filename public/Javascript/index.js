@@ -137,19 +137,23 @@ if(document.URL.includes("portfolio")){
       
     })
 
-  //   document.querySelector("#cancelAddingPrevProject").addEventListener("click", () =>{
-  //     document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
-  //   })
-  // document.querySelector("#cancelAddingPrevProject").addEventListener("click", () =>{
-  //   document.querySelector("#addPrevProjectPopupWindow").classList.toggle("hidePopupWindow")
-  //   })
+    // document.querySelector("#delete-prev-project").addEventListener("click", (e) =>{
+    //   console.log(e)
+    // })
+
+    document.getElementById("about-me-text").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+          document.getElementById("about-me-text").blur();
+      }
+      });
 }
+
   const saveChnageInAboutMe = async ()=>{
   
     let data = await document.getElementById("about-me-text").textContent
 
-    console.log(data)
-    console.log(      document.getElementById("about-me-text").textContent    )
+    // console.log(data)
+    // console.log(      document.getElementById("about-me-text").textContent    )
 
 
     let req = fetch("http://localhost:3000/portfolio/updateDescription",{
@@ -161,8 +165,26 @@ if(document.URL.includes("portfolio")){
         "description": `${data}`
       })
     })
-    console.log(req)
   }
+  const deletePrevProject = async (projectId)=>{
+
+    console.log(projectId)
+    document.getElementById(projectId).style.visibility="hidden";
+  
+    console.log('hi')
+    console.log(projectId.split("-").at(-1))
+
+    let req = fetch("http://localhost:3000/portfolio/deleteProject",{
+      method: 'post',
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "projectId": `${projectId.split("-").at(-1)}`
+      })
+    })
+  }
+
 // =================== prevProject Page ======================
 // fix below code
 if(document.URL.includes("prevProject.html")){
