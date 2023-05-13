@@ -76,11 +76,10 @@ const loginUser = async (loginForm)=>{
 
   const loggingUser = await User.findOne({ email: email })
 
-  // console.log(loggingUser)
-  // console.log(loggingUser)
-  // console.log(loggingUser)
+  console.log(loggingUser.length == 0)
+  let validPwd = await loggingUser.validatePassword(pwd)
 
-  if( !loggingUser.validatePassword(pwd) || loggingUser.length == 0) throw new Error("email OR passward is not correct")
+  if( !validPwd || loggingUser.length == 0) throw new Error("email OR passward is not correct")
   
   //log the result----------
   // console.log(loggingUser)
