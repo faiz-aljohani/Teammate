@@ -22,10 +22,12 @@ const homeRouter = require('./routes/home');
 const projectRouter = require('./routes/project');
 const settingRouter = require('./routes/settings');
 const logoutRouter = require('./routes/logout');
-
+const findUsersRouter = require('./routes/find-users')
 
 app.set('view engine', 'ejs');
-// app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
 app.use(express.static('public'))
 app.use("/images",express.static('images'))
 
@@ -62,8 +64,7 @@ app.use("/register",registerRouter)
 app.use("/login",loginRouter)
 app.use("/my-projects",myProjectsRouter)
 app.use("/projects",projectRouter)
-
-
+app.use("/find-users",findUsersRouter)
 
 app.listen(3000 || process.env.PORT, () => {
   console.log('The server is running on port number 3000');

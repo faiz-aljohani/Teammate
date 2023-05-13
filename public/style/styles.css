@@ -144,7 +144,8 @@ a{
 
 }
 .portfolio-card{
-    width: 1000px;
+    width: 75%;
+    height: 100%;
 }
 .portfolio-card-title {
     margin-top: 5rem;
@@ -153,7 +154,7 @@ a{
     text-align: left;
 }
 .portfolio-card-text{
-    /* font-size: 3rem; */
+    font-size: 1rem;
     padding-left: 1rem;
     text-align: left;
 }
@@ -161,6 +162,11 @@ a{
     justify-content: space-evenly;
     padding: 0 5rem;
 }
+.portfolio-editable-text:empty:not(:focus)::before {
+    content: attr(data-placeholder);
+  }
+
+
 .card:hover{
     transform: scale(1.04);
     transition-timing-function: ease-in-out;
@@ -175,7 +181,7 @@ a{
 .card img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:cover;
     margin: 0;
 }
 
@@ -200,6 +206,11 @@ a{
 .card-btn{
     color: black;
     text-decoration: none;
+    width: 100%;
+}
+
+.card-body{
+    width: 100%;
 }
 
 
@@ -207,6 +218,8 @@ a{
 
 .tags{
     display: flex;
+    padding-bottom: 20px;
+    height: auto;
 }
 
 .tag {
@@ -250,9 +263,13 @@ a{
 }
 
 .p-text-container h1{
+    display: flexbox;
     color: #656ED3;
     font-weight: 700;
     text-transform: uppercase;
+    justify-content: space-evenly;
+
+    
 }
 
 .p-text-container .p-text{
@@ -446,6 +463,7 @@ footer{
 
     height: 70px;
     background-color: #29245E;
+
     margin-top: auto;
     color: #EBEFFF;
     padding-top: 25px;
@@ -1030,4 +1048,22 @@ a {
 .message-receiver{
     background-color: #EBEFFF;
     padding-right: 50px;
+}
+/*find-users page*/
+.userCard{
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.userCard h3{
+    color: #29245E;
+    font-weight: 700;
+}
+.userCard p{
+    font-size: 1rem;
+    font-weight: 700;
 }

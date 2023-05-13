@@ -1,0 +1,29 @@
+<%- include("partials/header") -%>
+
+    </header>
+
+
+    <main>
+        <div class="main-buttons">
+            <form class="d-flex" id="form1" method="post" action="/find-users/search">
+                <input class="form-control me-2" name="searchQuery"type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light" type="submit"><img class="searchSymbol" src="/images/search-symbol.png"></button>
+            </form>
+        </div>
+        <% if (users != null) { %>
+            <% users.forEach( user =>{ %>
+                <div class="row">
+                    <div class="col col-12 userCard m-2">
+                        <h3>name: <%= user.firstName %> <%= user.lastName%></h3>
+                        <h3>email: <%= user.email%></h3>
+                        <p><%=user.description%></p>
+                        <div class="center"><a class="btn btn-secondary btn-sm mt-1 portfolioBtn" href="/portfolio/<%= user._id %>">Portfolio</a></div>
+                        
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+            
+        
+    </main>
+<%- include("partials/footer") -%>

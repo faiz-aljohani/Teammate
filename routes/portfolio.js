@@ -6,8 +6,15 @@ const UserModel = require("../models/User.js")
 const app = express();
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
+const mongoose = require("mongoose");
+
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded());
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 const path = require("path");
 const multer = require("multer")
@@ -30,9 +37,20 @@ router.get("/", async (req,res) => {
     else{
         console.log('GET req. in portfolio route')
         userID = req.session.userID;
-        const Result = await ProjectModel.find({userID: userID, completed: true})
+        let userName
+        await UserModel.findOne({_id: userID}).then(user => {
+            userName = user.firstName + " " + user.lastName;
+        })
+
+        const Result = await ProjectModel.find({
+                completed: true,
+                $or: [ 
+                {userID: userID,},
+                {"teammates.userID": userID} // checks if the user is a teammate of any project
+                ]
+        })
         try{
-            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, ownerFirstName: ""})
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: userID, userName: userName})
         }catch(error){
             console.log("you did somethign wrong!")
             // console.log(error)
@@ -63,12 +81,9 @@ router.get("/:id",async (req, res)=>{
             return;
         });
         if (user != null){
-            let ownerFirstName = user.firstName;
-            //Capitalize the first letter
-            ownerFirstName = 
-            ownerFirstName.charAt(0).toUpperCase()
-                + ownerFirstName.slice(1);
-            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, ownerFirstName: ownerFirstName}) ;
+            let userName = user.firstName + " " + user.lastName;
+
+            res.render("portfolio",{projects: Result, viewerID: userID, ownerID: ownerID, userName: userName}) ;
         }
         
     }
@@ -135,4 +150,38 @@ router.post("/searchPortfolio", async (req,res)=>{
     });
     res.render("portfolio",{projects: projectsFound, viewerID: userID, ownerID: userID, ownerFirstName: ""})
 });
+
+// to save the edit on about me field
+router.post("/updateDescription", async (req,res)=>{
+    console.log('post req. to update in portfolio route')
+
+    userID = req.session.userID; 
+    let newDescription = await req.body;
+
+    // console.log(req.body)
+    // console.log(req)
+
+    console.log(newDescription)
+    console.log(newDescription['description'])
+    console.log(userID)
+    console.log(mongoose.Types.ObjectId.createFromHexString(userID))
+
+
+
+    try{
+        const dbReq = await UserModel.updateOne(
+            {_id: mongoose.Types.ObjectId.createFromHexString(userID)},
+            {description: newDescription['description']}
+        );
+
+    }
+    catch(e){
+        console.log(e)
+    }
+    
+
+    res.end();
+    })  
+
+
 module.exports = router;

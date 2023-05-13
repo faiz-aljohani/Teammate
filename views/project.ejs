@@ -52,7 +52,7 @@
                     
 
                     <div class="carousel-item active">
-                        <img src="../<%= project.img.split(",")[0] %>" class="d-block w-100" alt="...">
+                        <img src="../<%= project.img.split(",")[0] %>" class="d-block w-100" alt="..." onerror="this.src='../images/not-found.jpeg';">
                     </div>
 
                     <% for(let i = 1; i < project.img.split(",").length; i++){ %>
@@ -78,7 +78,7 @@
             </div>
             
             <% if(projectOwner && projectOwner._id == userID){ %>
-                <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Establish</button>
+                <button class="btn btn-primary btn-lg mt-3" id="establishProject" onclick="establishProject()">Start Project</button>
                 <button class="btn btn-danger btn-lg mt-3" id="removeProject" onclick="removeProject()">Remove Project</button>
             <% }else{ %>
                 <button class="btn btn-primary btn-lg mt-3" onclick="applyPopup()">Apply</button>
@@ -92,9 +92,10 @@
       <div class="applicationsCards">
         <div class="row">
 
-            <% let isTeammate = false; %>
 
             <% applications.forEach(application => { %>
+                <% let isTeammate = false; %>
+
                 <% project.teammates.forEach(member => {%>
                     <% if(member.userID == application.userID){ %>
                     <% isTeammate = true; %>
@@ -163,7 +164,7 @@
         </div>
         <div class="sure-buttons-container">
             <form action="/projects/<%= project._id %>/establish" method="POST">
-                <button type="submit" class="btn btn-success btn-lg">Establish</button>
+                <button type="submit" class="btn btn-success btn-lg">Start</button>
                 <button type="button" class="btn btn-danger btn-lg" onclick="establishProject()">Cancel</button>
             </form>
 
